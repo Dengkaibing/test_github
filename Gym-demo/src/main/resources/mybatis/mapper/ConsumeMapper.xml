@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.respository.ConsumeMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.Consume">
+    <id column="consume_Id" jdbcType="INTEGER" property="consumeId" />
+    <result column="member_name" jdbcType="VARCHAR" property="memberName" />
+    <result column="product_Name" jdbcType="VARCHAR" property="productName" />
+    <result column="consume_Date" jdbcType="VARCHAR" property="consumeDate" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="settle_accounts" jdbcType="VARCHAR" property="settleAccounts" />
+    <result column="payment_method" jdbcType="VARCHAR" property="paymentMethod" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    consume_Id, member_name, product_Name, consume_Date, number, settle_accounts, payment_method, 
+    price
+  </sql>
+  <select id="selectByExample" parameterType="com.example.entity.ConsumeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from consume
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="PageSize != null and PageSize !=0 and StartRow!=null">
+      limit  #{StartRow},#{PageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from consume
+    where consume_Id = #{consumeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from consume
+    where consume_Id = #{consumeId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.entity.ConsumeExample">
+    delete from consume
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.Consume">
+    insert into consume (consume_Id, member_name, product_Name, 
+      consume_Date, number, settle_accounts, 
+      payment_method, price)
+    values (#{consumeId,jdbcType=INTEGER}, #{memberName,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
+      #{consumeDate,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, #{settleAccounts,jdbcType=VARCHAR}, 
+      #{paymentMethod,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.Consume">
+    insert into consume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="consumeId != null">
+        consume_Id,
+      </if>
+      <if test="memberName != null">
+        member_name,
+      </if>
+      <if test="productName != null">
+        product_Name,
+      </if>
+      <if test="consumeDate != null">
+        consume_Date,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="settleAccounts != null">
+        settle_accounts,
+      </if>
+      <if test="paymentMethod != null">
+        payment_method,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="consumeId != null">
+        #{consumeId,jdbcType=INTEGER},
+      </if>
+      <if test="memberName != null">
+        #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="consumeDate != null">
+        #{consumeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="settleAccounts != null">
+        #{settleAccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentMethod != null">
+        #{paymentMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.entity.ConsumeExample" resultType="java.lang.Long">
+    select count(*) from consume
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update consume
+    <set>
+      <if test="record.consumeId != null">
+        consume_Id = #{record.consumeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.memberName != null">
+        member_name = #{record.memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productName != null">
+        product_Name = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.consumeDate != null">
+        consume_Date = #{record.consumeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.number != null">
+        number = #{record.number,jdbcType=INTEGER},
+      </if>
+      <if test="record.settleAccounts != null">
+        settle_accounts = #{record.settleAccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paymentMethod != null">
+        payment_method = #{record.paymentMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update consume
+    set consume_Id = #{record.consumeId,jdbcType=INTEGER},
+      member_name = #{record.memberName,jdbcType=VARCHAR},
+      product_Name = #{record.productName,jdbcType=VARCHAR},
+      consume_Date = #{record.consumeDate,jdbcType=VARCHAR},
+      number = #{record.number,jdbcType=INTEGER},
+      settle_accounts = #{record.settleAccounts,jdbcType=VARCHAR},
+      payment_method = #{record.paymentMethod,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=DOUBLE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.Consume">
+    update consume
+    <set>
+      <if test="memberName != null">
+        member_name = #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        product_Name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="consumeDate != null">
+        consume_Date = #{consumeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="settleAccounts != null">
+        settle_accounts = #{settleAccounts,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentMethod != null">
+        payment_method = #{paymentMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where consume_Id = #{consumeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.Consume">
+    update consume
+    set member_name = #{memberName,jdbcType=VARCHAR},
+      product_Name = #{productName,jdbcType=VARCHAR},
+      consume_Date = #{consumeDate,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER},
+      settle_accounts = #{settleAccounts,jdbcType=VARCHAR},
+      payment_method = #{paymentMethod,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE}
+    where consume_Id = #{consumeId,jdbcType=INTEGER}
+  </update>
+</mapper>

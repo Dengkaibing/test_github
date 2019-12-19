@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.respository.StocklistMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.Stocklist">
+    <id column="stock_id" jdbcType="VARCHAR" property="stockId" />
+    <result column="stock_Date" jdbcType="VARCHAR" property="stockDate" />
+    <result column="product_Id" jdbcType="INTEGER" property="productId" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_Type" jdbcType="VARCHAR" property="productType" />
+    <result column="purchase_price" jdbcType="DOUBLE" property="purchasePrice" />
+    <result column="stock_numbers" jdbcType="INTEGER" property="stockNumbers" />
+    <result column="employees" jdbcType="VARCHAR" property="employees" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    stock_id, stock_Date, product_Id, product_name, product_Type, purchase_price, stock_numbers, 
+    employees
+  </sql>
+  <select id="selectByExample" parameterType="com.example.entity.StocklistExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from stocklist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="PageSize != null and PageSize !=0 and StartRow!=null">
+      limit  #{StartRow},#{PageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from stocklist
+    where stock_id = #{stockId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from stocklist
+    where stock_id = #{stockId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.entity.StocklistExample">
+    delete from stocklist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.Stocklist">
+    insert into stocklist (stock_id, stock_Date, product_Id, 
+      product_name, product_Type, purchase_price, 
+      stock_numbers, employees)
+    values (#{stockId,jdbcType=VARCHAR}, #{stockDate,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER}, 
+      #{productName,jdbcType=VARCHAR}, #{productType,jdbcType=VARCHAR}, #{purchasePrice,jdbcType=DOUBLE}, 
+      #{stockNumbers,jdbcType=INTEGER}, #{employees,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.Stocklist">
+    insert into stocklist
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stockId != null">
+        stock_id,
+      </if>
+      <if test="stockDate != null">
+        stock_Date,
+      </if>
+      <if test="productId != null">
+        product_Id,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productType != null">
+        product_Type,
+      </if>
+      <if test="purchasePrice != null">
+        purchase_price,
+      </if>
+      <if test="stockNumbers != null">
+        stock_numbers,
+      </if>
+      <if test="employees != null">
+        employees,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stockId != null">
+        #{stockId,jdbcType=VARCHAR},
+      </if>
+      <if test="stockDate != null">
+        #{stockDate,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null">
+        #{productType,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasePrice != null">
+        #{purchasePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="stockNumbers != null">
+        #{stockNumbers,jdbcType=INTEGER},
+      </if>
+      <if test="employees != null">
+        #{employees,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.entity.StocklistExample" resultType="java.lang.Long">
+    select count(*) from stocklist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update stocklist
+    <set>
+      <if test="record.stockId != null">
+        stock_id = #{record.stockId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stockDate != null">
+        stock_Date = #{record.stockDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productId != null">
+        product_Id = #{record.productId,jdbcType=INTEGER},
+      </if>
+      <if test="record.productName != null">
+        product_name = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productType != null">
+        product_Type = #{record.productType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.purchasePrice != null">
+        purchase_price = #{record.purchasePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.stockNumbers != null">
+        stock_numbers = #{record.stockNumbers,jdbcType=INTEGER},
+      </if>
+      <if test="record.employees != null">
+        employees = #{record.employees,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update stocklist
+    set stock_id = #{record.stockId,jdbcType=VARCHAR},
+      stock_Date = #{record.stockDate,jdbcType=VARCHAR},
+      product_Id = #{record.productId,jdbcType=INTEGER},
+      product_name = #{record.productName,jdbcType=VARCHAR},
+      product_Type = #{record.productType,jdbcType=VARCHAR},
+      purchase_price = #{record.purchasePrice,jdbcType=DOUBLE},
+      stock_numbers = #{record.stockNumbers,jdbcType=INTEGER},
+      employees = #{record.employees,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.Stocklist">
+    update stocklist
+    <set>
+      <if test="stockDate != null">
+        stock_Date = #{stockDate,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        product_Id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null">
+        product_Type = #{productType,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasePrice != null">
+        purchase_price = #{purchasePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="stockNumbers != null">
+        stock_numbers = #{stockNumbers,jdbcType=INTEGER},
+      </if>
+      <if test="employees != null">
+        employees = #{employees,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where stock_id = #{stockId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.Stocklist">
+    update stocklist
+    set stock_Date = #{stockDate,jdbcType=VARCHAR},
+      product_Id = #{productId,jdbcType=INTEGER},
+      product_name = #{productName,jdbcType=VARCHAR},
+      product_Type = #{productType,jdbcType=VARCHAR},
+      purchase_price = #{purchasePrice,jdbcType=DOUBLE},
+      stock_numbers = #{stockNumbers,jdbcType=INTEGER},
+      employees = #{employees,jdbcType=VARCHAR}
+    where stock_id = #{stockId,jdbcType=VARCHAR}
+  </update>
+</mapper>

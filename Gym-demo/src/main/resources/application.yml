@@ -1,0 +1,12 @@
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+  config-location:  classpath:/mybatis/config/mybatis-config.xml
+spring:
+  datasource:
+    username: root
+    password: dkb2219
+    url: jdbc:mysql://localhost:3306/mysql?characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+logging:
+  level:
+    com.example.repository: DEBUG

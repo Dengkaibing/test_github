@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.respository.AppointmentMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.Appointment">
+    <id column="appointment_Id" jdbcType="INTEGER" property="appointmentId" />
+    <result column="appointment_Date" jdbcType="VARCHAR" property="appointmentDate" />
+    <result column="appointment_User" jdbcType="VARCHAR" property="appointmentUser" />
+    <result column="appointment_phone" jdbcType="VARCHAR" property="appointmentPhone" />
+    <result column="appointMent_Product" jdbcType="VARCHAR" property="appointmentProduct" />
+    <result column="appointMent_time" jdbcType="VARCHAR" property="appointmentTime" />
+    <result column="conductor" jdbcType="VARCHAR" property="conductor" />
+    <result column="appointment_Style" jdbcType="VARCHAR" property="appointmentStyle" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    appointment_Id, appointment_Date, appointment_User, appointment_phone, appointMent_Product, 
+    appointMent_time, conductor, appointment_Style
+  </sql>
+  <select id="selectByExample" parameterType="com.example.entity.AppointmentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from appointment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="PageSize != null and PageSize !=0 and StartRow!=null">
+      limit  #{StartRow},#{PageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from appointment
+    where appointment_Id = #{appointmentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from appointment
+    where appointment_Id = #{appointmentId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.entity.AppointmentExample">
+    delete from appointment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.Appointment">
+    insert into appointment (appointment_Id, appointment_Date, appointment_User, 
+      appointment_phone, appointMent_Product, appointMent_time, 
+      conductor, appointment_Style)
+    values (#{appointmentId,jdbcType=INTEGER}, #{appointmentDate,jdbcType=VARCHAR}, #{appointmentUser,jdbcType=VARCHAR}, 
+      #{appointmentPhone,jdbcType=VARCHAR}, #{appointmentProduct,jdbcType=VARCHAR}, #{appointmentTime,jdbcType=VARCHAR}, 
+      #{conductor,jdbcType=VARCHAR}, #{appointmentStyle,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.Appointment">
+    insert into appointment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appointmentId != null">
+        appointment_Id,
+      </if>
+      <if test="appointmentDate != null">
+        appointment_Date,
+      </if>
+      <if test="appointmentUser != null">
+        appointment_User,
+      </if>
+      <if test="appointmentPhone != null">
+        appointment_phone,
+      </if>
+      <if test="appointmentProduct != null">
+        appointMent_Product,
+      </if>
+      <if test="appointmentTime != null">
+        appointMent_time,
+      </if>
+      <if test="conductor != null">
+        conductor,
+      </if>
+      <if test="appointmentStyle != null">
+        appointment_Style,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appointmentId != null">
+        #{appointmentId,jdbcType=INTEGER},
+      </if>
+      <if test="appointmentDate != null">
+        #{appointmentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="appointmentUser != null">
+        #{appointmentUser,jdbcType=VARCHAR},
+      </if>
+      <if test="appointmentPhone != null">
+        #{appointmentPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="appointmentProduct != null">
+        #{appointmentProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="appointmentTime != null">
+        #{appointmentTime,jdbcType=VARCHAR},
+      </if>
+      <if test="conductor != null">
+        #{conductor,jdbcType=VARCHAR},
+      </if>
+      <if test="appointmentStyle != null">
+        #{appointmentStyle,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.entity.AppointmentExample" resultType="java.lang.Long">
+    select count(*) from appointment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update appointment
+    <set>
+      <if test="record.appointmentId != null">
+        appointment_Id = #{record.appointmentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.appointmentDate != null">
+        appointment_Date = #{record.appointmentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appointmentUser != null">
+        appointment_User = #{record.appointmentUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appointmentPhone != null">
+        appointment_phone = #{record.appointmentPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appointmentProduct != null">
+        appointMent_Product = #{record.appointmentProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appointmentTime != null">
+        appointMent_time = #{record.appointmentTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conductor != null">
+        conductor = #{record.conductor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appointmentStyle != null">
+        appointment_Style = #{record.appointmentStyle,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update appointment
+    set appointment_Id = #{record.appointmentId,jdbcType=INTEGER},
+      appointment_Date = #{record.appointmentDate,jdbcType=VARCHAR},
+      appointment_User = #{record.appointmentUser,jdbcType=VARCHAR},
+      appointment_phone = #{record.appointmentPhone,jdbcType=VARCHAR},
+      appointMent_Product = #{record.appointmentProduct,jdbcType=VARCHAR},
+      appointMent_time = #{record.appointmentTime,jdbcType=VARCHAR},
+      conductor = #{record.conductor,jdbcType=VARCHAR},
+      appointment_Style = #{record.appointmentStyle,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.Appointment">
+    update appointment
+    <set>
+      <if test="appointmentDate != null">
+        appointment_Date = #{appointmentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="appointmentUser != null">
+        appointment_User = #{appointmentUser,jdbcType=VARCHAR},
+      </if>
+      <if test="appointmentPhone != null">
+        appointment_phone = #{appointmentPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="appointmentProduct != null">
+        appointMent_Product = #{appointmentProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="appointmentTime != null">
+        appointMent_time = #{appointmentTime,jdbcType=VARCHAR},
+      </if>
+      <if test="conductor != null">
+        conductor = #{conductor,jdbcType=VARCHAR},
+      </if>
+      <if test="appointmentStyle != null">
+        appointment_Style = #{appointmentStyle,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where appointment_Id = #{appointmentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.Appointment">
+    update appointment
+    set appointment_Date = #{appointmentDate,jdbcType=VARCHAR},
+      appointment_User = #{appointmentUser,jdbcType=VARCHAR},
+      appointment_phone = #{appointmentPhone,jdbcType=VARCHAR},
+      appointMent_Product = #{appointmentProduct,jdbcType=VARCHAR},
+      appointMent_time = #{appointmentTime,jdbcType=VARCHAR},
+      conductor = #{conductor,jdbcType=VARCHAR},
+      appointment_Style = #{appointmentStyle,jdbcType=VARCHAR}
+    where appointment_Id = #{appointmentId,jdbcType=INTEGER}
+  </update>
+</mapper>

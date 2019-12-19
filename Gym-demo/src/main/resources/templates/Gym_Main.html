@@ -1,0 +1,2992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>青龙健身主页</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="../JS/jquery-3.4.1.js"></script>
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../JS/jquery.table2excel.js"></script>
+    <style type="text/css">
+        .custom-nav .sub-menu-list{
+            list-style: none;
+            display: none;
+            margin: 0;
+            padding: 0;
+            background: #018F93;
+        }
+        .custom-nav .sub-menu-list>li>a{
+            color: #fff;
+            font-size: 13px;
+            display: block;
+            padding: 10px 5px 10px 50px;
+            -moz-transition: all 0.2s ease-out 0s;
+            -webkit-transition: all 0.2s ease-out 0s;
+            transition: all 0.2s ease-out 0s;
+        }
+        body,
+        dd,
+        dl,
+        dt,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ol,
+        p,
+        pre,
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-weight: 400;
+            color: #333333;
+        }
+
+        a{
+            text-decoration: none;
+            font-size: 18px;
+            color: #333333;
+        }
+        li {
+            list-style: none;
+            display: list-item;
+            text-align: -webkit-match-parent;
+        }
+        img {
+            border: none;
+        }
+        span {
+            color: #FBFBFB;
+        }
+        .left-side-inner{
+            padding: 0px;
+            margin-bottom: 50px;
+        }
+        .sticky-left-side{
+            position: fixed;
+            height: 100%;
+            z-index: 100;
+        }
+        .left-side{
+            width: 200px;
+            position: absolute;
+
+        }
+        .custom-nav>li.nav-active >a{
+            background-color: #26b1b3;
+            border: 1px solid  #018F93;
+            color: #F5F5F5;
+            font-size:14px ;
+        }
+        ul.nav ul.sub-menu-list >li>a:hover{
+            background-color: #5CB85C;
+            text-decoration: none;/*去掉a标签下的斜线*/
+        }
+        .nav-active a span{
+            font-size: 5px;
+            color: #000000;
+            float: right;
+            margin-top: 6px;
+        }
+        .main-content{
+            margin-left: 200px ;
+            background: #eff0f4;
+        }
+        select{
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+            height: 30px;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+            line-height: 1.42857;
+            -moz-appearance: none;
+            color: #666;
+            cursor: pointer;
+            font-family: Arial,Calibri,Tahoma,Verdana;
+            font-size: 1.1em;
+            padding: 0.2em 0.4em;
+            vertical-align: middle;
+            box-sizing: content-box;
+        }
+        .ContentSearch{
+            padding: 20px 0 20px 20px;
+        }
+        #membertotal tbody tr td {
+            padding: 0 10px 0 10px;
+        }
+        .ContentOperate{
+            border-style: solid none none none;
+            border-width: 1px;
+            border-color: #D3D8DB;
+            margin: 10px 0 0 0;
+            padding: 5px 0 5px 10px;
+            vertical-align: middle;
+        }
+        .btn{
+            border-radius: 3px;
+            font-size: 12px;
+            line-height: 1.5;
+            padding: 5px 10px;
+            width: 64px;
+        }
+        table.GridViewTable  tbody tr:hover{
+            background-color: #018F93;
+        }
+        .dropdown-menu li a{
+            font-size: 14px;
+        }
+        #topulli{
+            height: 50px;
+            background-color: #018F93;
+            float: left;
+        }
+        #topulli ul.sub-menu-list li{
+            float: left;
+            height: 50px;
+            position: relative;
+            display: block;
+        }
+        #topulli ul.sub-menu-list li a{
+            display: block;
+            text-decoration: none;
+            font-size: 16px;
+            line-height: 50px;
+            padding:0 10px 0 10px;
+        }
+        #this_on{
+            background-color: #C4E3F3;
+        }
+        #this_on a span{
+            font-size: 12px;
+            color: #000000;
+            float: right;
+            margin-top: 18px;
+        }
+        #M_regist{
+            border: none;
+            z-index: 10000;
+            position: fixed;
+            top: 25%;
+            left: 40%;
+            background-color: #018F93;
+            display:  none;
+            border-radius:10px ;
+        }
+        #S_regist{
+            border: none;
+            z-index: 10000;
+            position: fixed;
+            top: 25%;
+            left: 40%;
+            background-color: #018F93;
+            display:  none;
+            border-radius:10px ;
+        }
+        #T_regist{
+            border: none;
+            z-index:10001;
+            position: fixed;
+            top: 25%;
+            left: 40%;
+            background-color: #018F93;
+            display:  none;
+            border-radius:10px ;
+        }
+        #R_regist{
+            border: none;
+            z-index:10001;
+            position: fixed;
+            top: 25%;
+            left: 40%;
+            background-color: #018F93;
+            display:  none;
+            border-radius:10px ;
+        }
+        #E_regist{
+            border: none;
+            z-index:10001;
+            position: fixed;
+            top: 25%;
+            left: 40%;
+            background-color: #018F93;
+            display:  none;
+            border-radius:10px ;
+        }
+        #A_app{
+            border: none;
+            z-index:10001;
+            position: fixed;
+            top: 25%;
+            left: 40%;
+            background-color: #018F93;
+            display:  none;
+            border-radius:10px ;
+        }
+        .left-top{
+            width: 11px;
+            height: 30px;
+            line-height: 30px;
+            border: 0;
+            overflow: hidden;
+        }
+        .right-top{
+            width: 11px;
+            height: 30px;
+            line-height: 30px;
+            border: 0;
+            overflow: hidden;
+        }
+        .easyDialog_title{
+            font-size:14px ;
+            height: 30px;
+            line-height: 30px;
+            overflow: hidden;
+            padding: 4px;
+            font-weight: bold;
+            color: #A6E1EC;
+        }
+        .hidden1{
+            width: 100%;
+            height: 754px;
+            position: absolute;
+            background-color: #002;
+            filter: alpha(opacity=30);
+            opacity: 0.3;
+            z-Index: 2;
+            display: none;
+        }
+        form table.table tbody tr{
+            display: block;
+            margin-left: 20px;
+            margin-right: 20px;
+            height: 40px;
+            line-height: 40px;
+            border: none;
+        }
+        form table.table tbody tr td{
+            padding: 2px;
+            height: 40px;
+            line-height: 40px;
+            border: none;
+        }
+        form table.table tbody tr td input{
+            padding: 0;
+            height: 30px;
+            width: 100px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-inverse" style="margin-bottom: 0px;">
+    <div class="container-fluid" >
+
+        <div class="navbar-header ">
+            <a class="navbar-brand" style="margin:0  20px 0 20px ; padding: 0;"><img src="../Img/Robben.jpg" style="height: 50px;"></a>
+            <a class="navbar-brand" href="#">青龙健身房</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+            <div id="topulli">
+                <ul class="sub-menu-list">
+                    <li id="this_on"><a href="#"class="m_management">会员管理</a></li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">admin <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人中心</a></li>
+                        <li><a href="#">资料设置</a></li>
+                        <li><a href="#">注销</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="left-side sticky-left-side" style="overflow: hidden ;outline:  none; background-color: #018F93;">
+    <div id="divSideTree" class="left-side-inner">
+        <ul class="nav nav-pills nav-stacked custom-nav">
+            <li class="nav-active"><a href="#">会员管理 <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></a>
+            </li>
+            <ul class="sub-menu-list ">
+                <li><a href="#" class="m_management">会员管理</a></li>
+                <li><a href="#" class="m_regist">会员登记</a></li>
+                <li><a href="#" class="mc_Type">会员卡类型</a></li>
+                <li><a href="#" class="m_recharge">会员充值查询</a></li>
+            </ul>
+            <li class="nav-active"><a href="#">自主平台 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>   </li>
+            <ul class="sub-menu-list ">
+                <li><a href="#" class="a_app">私教预约管理</a></li>
+                <li><a href="#">自主消费管理</a></li>
+            </ul>
+            <li class="nav-active"><a href="#">服务与商品 <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></a>   </li>
+            <ul class="sub-menu-list ">
+                <li><a href="#" class="service">服务项目</a></li>
+                <li><a href="#" class="product">商品管理</a></li>
+                <li><a href="#" class="service_type">服务项目类型</a></li>
+                <li><a href="#" class="product_type">商品类型</a></li>
+            </ul>
+            <li class="nav-active"><a href="#">库存管理<span class="glyphicon glyphicon-plus" aria-hidden="true"  ></span></a>   </li>
+            <ul class="sub-menu-list">
+                <li><a href="#" class="w_ware">库存统计</a></li>
+                <li><a href="#" class="consume">消费统计</a></li>
+                <li><a href="#" class="s_stock">入库统计</a></li>
+            </ul>
+            <li class="nav-active"><a href="#">系统设置 <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></a>   </li>
+            <ul class="sub-menu-list ">
+                <li><a href="#"class="e_employees">员工管理</a></li>
+                <li><a href="#"class="e_employeesType">员工类型</a></li>
+                <li><a href="#" class="user_record">登录日志</a></li>
+            </ul>
+        </ul>
+    </div>
+</div>
+<div class="hidden1"></div>
+<div class="main-content" style=" height: 754px; ">
+    <div id="ct100_divContentSearch" class="ContentSearch">
+        <table id="membertotal">
+            <tbody>
+            <tr>
+                <td><input name="textName" type="text" placeholder="卡号" style="height: 32px; width: 194px; display: inline;"></td>
+                <td> <select id="selectType">
+                    <option value="">所有类型</option>
+                    <option value="钻石会员">钻石会员</option>
+                    <option value="白金会员">白金会员</option>
+                    <option value="黄金会员">黄金会员</option>
+                    <option value="普通会员">普通会员</option>
+                </select></td>
+                <td> <select id="counselorType">
+                    <option value="">会籍顾问</option>
+                </select></td>
+                <td>每页显示<input name="page" type="text" value="10" style="width: 34px;padding-left: 5px;
+                                                                              padding-right: 5px;">条</td>
+                <td> <a class="btn btn-info" style="width: 80px;" id="select"><span class="glyphicon glyphicon-search" style="float: left;"></span>查询</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="ct100_divContentOperator" class="ContentOperate">
+        <a class="btn btn-info" id="insert"><span class="glyphicon glyphicon-plus"></span>添加</a>
+        <a class="btn btn-danger"id="delete"><span class="glyphicon glyphicon-remove"></span>删除</a>
+        <a class="btn btn-danger" id="update"><span class="glyphicon glyphicon-pencil"></span>修改</a>
+        <a class="btn btn-warning"id="import"><span class="glyphicon glyphicon-import"></span>导入</a>
+        <a class="btn btn-warning" id="export"><span class="glyphicon glyphicon-export"></span>导出</a>
+    </div>
+    <div id="GVScrollBar">
+        <div id="Intable"style="width: 100%; overflow-x: auto ; border-bottom: 1px solid #018F93;">
+            <table class="GridViewTable table table-hover table-striped" id="Mem">
+                <tbody>
+                        <tr class="success">
+                            <th></th>
+                            <th>会员编号</th>
+                            <th>会员姓名</th>
+                            <th>性别</th>
+                            <th>会员卡号</th>
+                            <th>会员类型</th>
+                            <th>联系电话</th>
+                            <th>会籍顾问</th>
+                            <th>卡内余额</th>
+                            <th>积分</th>
+                        </tr>
+                        <tr th:each="member:${memberList}" class="Show_data">
+                            <td><input type="checkbox" ></td>
+                            <td th:text="${member.memberId}" ></td>
+                            <td th:text="${member.memberName}"contenteditable="true"></td>
+                            <td th:text="${member.memberSex}"contenteditable="true"></td>
+                            <td th:text="${member.memberIdcard}"contenteditable="true"></td>
+                            <td th:text="${member.memberType}"contenteditable="true"></td>
+                            <td th:text="${member.memberTelephone}"contenteditable="true"></td>
+                            <td th:text="${member.memberCounselor}"contenteditable="true"></td>
+                            <td th:text="${member.cardBalance}"contenteditable="true"></td>
+                            <td th:text="${member.credit}"contenteditable="true"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    <div class="pageclass">
+        <nav aria-label="Page navigation" style="margin-left: 35%;">
+            <ul class="pagination pagination-sm" id="m_page">
+                <li id="pageUp">
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>
+                    </a>
+                </li>
+                <li class="active"><a href="#" >1</a></li>
+                <li ><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">6</a></li>
+                <li><a href="#">7</a></li>
+                <li><a href="#">8</a></li>
+                <li><a href="#">9</a></li>
+                <li id="pageDown">
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div id="M_regist">
+    <table  style="cursor: move; width:100%">
+        <tbody>
+        <tr style="border-bottom: 1px solid #000022;">
+            <td class="left-top"></td>
+            <td class="easyDialog_title">会员添加</td>
+            <td class="close"><span class=" glyphicon glyphicon-remove" id="spanclose" style="margin-top: 6px;"></span></td>
+            <td class="right-top"></td>
+        </tr>
+        </tbody>
+    </table>
+    <form>
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>会员编号：</td><td><input type="text" name="memberId"></td><td>会员姓名：</td><td><input type="text" name="memberName"></td>
+            </tr>
+
+            <tr>
+                <td>性别：</td>
+                <td><select id="memeberSex"style="width: 100px;height: 30px;padding: 0;margin-left: 28px; border-radius:5px; ">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select></td>
+                <td>会员类型：</td><td>
+                <select id="memberType" style="width: 100px; height: 30px;padding: 0;">
+                <option value="钻石会员">钻石会员</option>
+                <option value="白金会员">白金会员</option>
+                <option value="黄金会员">黄金会员</option>
+                <option value="普通会员">普通会员</option>
+            </select></td>
+            </tr>
+            <tr>
+                <td>会籍顾问：</td><td><input type="text" name="memberCounselor"></td><td>会员卡号：</td><td><input type="text"name="memberIdcard"></td>
+            </tr>
+            <tr>
+                <td>联系电话：</td><td><input type="text" name="memberTelephone"></td><td>卡内余额：</td><td><input type="text" name="cardBalance"></td>
+            </tr>
+            <tr>
+                <td>积分：</td><td><input type="text" name="credit" style="margin-left: 28px	;"></td>
+            </tr>
+            <tr style="padding-left: 80px; width: 100%;">
+                <td ><input type="button" value="添加" class="btn btn-info"id="Insert_Member"></td>
+                <td style="padding-left: 20px;"><input type="button"value="退出" id="exit" class="btn btn-warning"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div id="T_regist">
+    <table  border="0" cellpadding="0"cellspacing="0" width="100%" style="cursor: move;">
+        <tbody>
+        <tr style="border-bottom: 1px solid #000022;">
+            <td class="left-top"></td>
+            <td class="easyDialog_title">会员卡添加</td>
+            <td class="close"><span class=" glyphicon glyphicon-remove" id="T_spanclose" style="margin-top: 6px;"></span></td>
+            <td class="right-top"></td>
+        </tr>
+        </tbody>
+    </table>
+    <form >
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>类别名称：</td><td><input type="text" name="typeName"></td><td>商品折扣：</td><td><input type="text" name="productDiscount"></td>
+            </tr>
+            <tr>
+                <td>充值金额：</td><td><input type="text" name="rMoney"></td><td>赠送金额：</td><td><input type="text" name="gMoney"></td>
+            </tr>
+            <tr>
+                <td>使用时限：</td><td><input type="text" name="potLife"></td><td>有效天数：</td><td><input type="text" name="validDays"></td>
+            </tr>
+            <tr style="padding-left: 80px; width: 100%;">
+                <td ><input type="button" value="添加" class="btn btn-info"id="Insert_MemberType"></td>
+                <td style="padding-left: 20px;"><input type="button"value="退出" id="T_exit" class="btn btn-warning"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div id="R_regist">
+    <table  border="0" cellpadding="0"cellspacing="0" width="100%" style="cursor: move;">
+        <tbody>
+        <tr style="border-bottom: 1px solid #000022;">
+            <td class="left-top"></td>
+            <td class="easyDialog_title">会员卡添加</td>
+            <td class="close"><span class=" glyphicon glyphicon-remove" id="R_spanclose" style="margin-top: 6px;"></span></td>
+            <td class="right-top"></td>
+        </tr>
+        </tbody>
+    </table>
+    <form >
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>会员卡号：</td><td><input type="text" name="R_Idcard"></td><td>会员姓名：</td><td><input type="text" name="R_Name"></td>
+            </tr>
+            <tr>
+                <td>会员类型：</td> <td> <select id="R_MType">
+                <option value="">所有类型</option>
+                <option value="钻石会员">钻石会员</option>
+                <option value="白金会员">白金会员</option>
+                <option value="黄金会员">黄金会员</option>
+                <option value="普通会员">普通会员</option>
+            </select></td>
+                <td>充值类型：</td> <td> <select id="R_RType">
+                <option value="">所有类型</option>
+                <option value="存储充值">存储充值</option>
+                <option value="开卡充值">开卡充值</option>
+
+            </select></td>
+            </tr>
+            <tr>
+                <td>充值金额：</td><td><input type="text" name="R_Money"></td> <td>支付方式：</td><td><input type="text" name="R_payment"></td>
+            </tr>
+            <tr>
+                <td>经办员工：</td><td><input type="text" name="R_employees"></td>
+            </tr>
+            <tr style="padding-left: 80px; width: 100%;">
+                <td ><input type="button" value="添加" class="btn btn-info"id="Insert_memberrecharge"></td>
+                <td style="padding-left: 20px;"><input type="button"value="退出" id="R_exit" class="btn btn-warning"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div id="A_app">
+    <table  border="0" cellpadding="0"cellspacing="0" width="100%" style="cursor: move;">
+        <tbody>
+        <tr style="border-bottom: 1px solid #000022;">
+            <td class="left-top"></td>
+            <td class="easyDialog_title">服务预约</td>
+            <td class="close"><span class=" glyphicon glyphicon-remove" id="A_spanclose" style="margin-top: 6px;"></span></td>
+            <td class="right-top"></td>
+        </tr>
+        </tbody>
+    </table>
+    <form >
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>会员姓名：</td><td><input type="text" name="A_Name"></td><td>经办员工：</td><td><input type="text" name="A_employees"></td>
+            </tr>
+            <tr>
+                <td>联系电话：</td>
+                <td><input type="text" name="A_phone"></td>
+                <td>预约方式：</td><td> <select id="A_style">
+                 <option value="电话预约">电话预约</option>
+                <option value="微信预约">微信预约</option>
+            </select>
+            </td>
+            </tr>
+            <tr>
+                <td>预约时间：</td><td><input type="text" name="A_time" placeholder="时间格式 年：月：日 时：分：秒" style="width: 280px;"></td>
+            </tr>
+            <tr>
+                <td>服务类型：</td> <td> <select id="A_Type">
+            </select></td>
+            </tr>
+            <tr style="padding-left: 80px; width: 100%;">
+                <td ><input type="button" value="预约" class="btn btn-info"id="Insert_Appointment"></td>
+                <td style="padding-left: 20px;"><input type="button"value="退出" id="A_exit" class="btn btn-warning"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div id="S_regist">
+    <table  border="0" cellpadding="0"cellspacing="0" width="100%" style="cursor: move;">
+        <tbody>
+        <tr style="border-bottom: 1px solid #000022;">
+            <td class="left-top"></td>
+            <td class="easyDialog_title">增加服务</td>
+            <td class="close"><span class=" glyphicon glyphicon-remove" id="S_spanclose" style="margin-top: 6px;"></span></td>
+            <td class="right-top"></td>
+        </tr>
+        </tbody>
+    </table>
+    <form >
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>服务编号：</td><td><input type="text" name="serviceId"></td><td>服务名称：</td><td><input type="text" name="serviceName"></td>
+            </tr>
+            <tr>
+                <td>服务分类：</td>
+                <td><input type="text" name="serviceType"></td>
+                <td>服务售价：</td><td><input type="text" name="servicePrice"></td>
+            </tr>
+            <tr>
+                <td>是否积分兑换：</td> <td> <select id="serviceCredit">
+                <option value="是">是</option>
+                <option value="否">否</option>
+            </select></td>
+            </tr>
+            <tr style="padding-left: 80px; width: 100%;">
+                <td ><input type="button" value="添加" class="btn btn-info"id="Insert_Service"></td>
+                <td style="padding-left: 20px;"><input type="button"value="退出" id="S_exit" class="btn btn-warning"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div id="E_regist">
+    <table  border="0" cellpadding="0"cellspacing="0" width="100%" style="cursor: move;">
+        <tbody>
+        <tr style="border-bottom: 1px solid #000022;">
+            <td class="left-top"></td>
+            <td class="easyDialog_title">增加员工</td>
+            <td class="close"><span class=" glyphicon glyphicon-remove" id="E_spanclose" style="margin-top: 6px;"></span></td>
+            <td class="right-top"></td>
+        </tr>
+        </tbody>
+    </table>
+    <form >
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>员工编号：</td><td><input type="text" name="employeeId"></td><td>员工姓名：</td><td><input type="text" name="employeeName"></td>
+            </tr>
+            <tr>
+                <td>员工类型：</td> <td> <select id="employeeType">
+            </select></td>
+                <td>员工性别：</td> <td> <select id="employeeSex">
+                <option value="女">男</option>
+                <option value="男">女</option>
+            </select></td>
+            </tr>
+            <tr>
+                <td>员工电话：</td><td><input type="text" name="employeePhone"></td><td>加入时间：</td><td><input type="text" name="employeeDate"></td>
+            </tr>
+            <tr style="padding-left: 80px; width: 100%;">
+                <td ><input type="button" value="添加" class="btn btn-info"id="Insert_Employee"></td>
+                <td style="padding-left: 20px;"><input type="button"value="退出" id="E_exit" class="btn btn-warning"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<script>//li 点击展开
+$(document).ready(function()
+{
+    $("#divSideTree ul li").next("ul").hide();
+    $("#divSideTree ul li").click(function()
+    {
+        $(this).next("ul").toggle();
+        var text=$(this).children().children().attr('class');
+        if(text=='glyphicon glyphicon-plus')
+        {
+            $(this).children().children().removeClass();
+            $(this).children().children().addClass('glyphicon glyphicon-minus');
+        }
+        else
+        {
+            $(this).children().children().removeClass();
+            $(this).children().children().addClass('glyphicon glyphicon-plus');
+        }
+    });
+});
+//首部li生成
+$('ul.nav ul.sub-menu-list >li>a').click(function(){
+    var ele=$('#topulli ul li');
+    var eclass=$(this).attr('class');
+    var flag=true;
+    var message=$(this).text();
+    for(var i=0;i<ele.length;i++)
+    {    console.log(ele[i]);
+        if(ele.eq(i).children().text()==message)
+        {
+            flag=false;
+            ele.removeAttr('id').children().children().removeClass();
+            ele.eq(i).attr('id','this_on').children().addClass(eclass).children().addClass('glyphicon glyphicon-remove');
+            break;
+        }
+    }
+    if(flag)
+    {
+        $('#topulli ul li').removeAttr('id').children().children().removeClass();
+        $('#topulli ul').append('<li id="this_on"><a href="#">'+message+'<span class="glyphicon glyphicon-remove"></span></a></li>');
+        $('#this_on').children().addClass(eclass);
+    }
+});
+/*顶部布局栏跳转*/
+$(document).on('click','#topulli ul li a span',function(){//代理模式，动态生成的元素也能赋予事件
+    $(this).parent().parent().prev().attr('id','this_on').children().children().addClass('glyphicon glyphicon-remove');
+    $(this).parent().parent().remove();
+});
+$(document).on('click','#topulli ul li',function(){
+    $(this).siblings().removeAttr('id');
+    $(this).siblings().children().children().removeClass();
+    $(this).attr('id','this_on').children().children().addClass('glyphicon glyphicon-remove');
+
+});
+</script>
+<script>
+    //点击回到会员管理页面
+    $(document).on('click','.m_management',function () {
+        $('#Intable table').remove();
+        $('#ct100_divContentSearch table').remove();
+        $('#ct100_divContentOperator a').remove();
+        $('div.pageclass nav ul').remove();
+        $('#ct100_divContentSearch').append('<table id="membertotal">\n' +
+            '            <tbody>\n' +
+            '            <tr>\n' +
+            '                <td><input name="textName" type="text" placeholder="卡号" style="height: 32px; width: 194px; display: inline;"></td>\n' +
+            '                <td> <select id="selectType">\n' +
+            '                    <option value="">所有类型</option>\n' +
+            '                    <option value="钻石会员">钻石会员</option>\n' +
+            '                    <option value="白金会员">白金会员</option>\n' +
+            '                    <option value="黄金会员">黄金会员</option>\n' +
+            '                    <option value="普通会员">普通会员</option>\n' +
+            '                </select></td>\n' +
+            '                <td> <select id="counselorType">\n' +
+            '                    <option value="">会籍顾问</option>\n' +
+            '                </select></td>\n' +
+            '                <td>每页显示<input name="page" type="text" value="10" style="width: 34px;padding-left: 5px;\n' +
+            '                                                                              padding-right: 5px;">条</td>\n' +
+            '                <td> <a class="btn btn-info" style="width: 80px;" id="select"><span class="glyphicon glyphicon-search" style="float: left;"></span>查询</a>\n' +
+            '                </td>\n' +
+            '            </tr>\n' +
+            '            </tbody>\n' +
+            '        </table>');
+        $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="Mem">\n' +
+            '                <tbody>\n' +
+            '                        <tr class="success">\n' +
+            '                            <th></th>\n' +
+            '                            <th>会员编号</th>\n' +
+            '                            <th>会员姓名</th>\n' +
+            '                            <th>性别</th>\n' +
+            '                            <th>会员卡号</th>\n' +
+            '                            <th>会员类型</th>\n' +
+            '                            <th>联系电话</th>\n' +
+            '                            <th>会籍顾问</th>\n' +
+            '                            <th>卡内余额</th>\n' +
+            '                            <th>积分</th>\n' +
+            '                        </tr></tbody></table>');
+        $('#ct100_divContentOperator').append('<a class="btn btn-info" id="insert"><span class="glyphicon glyphicon-plus"></span>添加</a>\n' +
+            '        <a class="btn btn-danger"id="delete"><span class="glyphicon glyphicon-remove"></span>删除</a>\n' +
+            '        <a class="btn btn-danger" id="update"><span class="glyphicon glyphicon-pencil"></span>修改</a>\n' +
+            '        <a class="btn btn-warning"id="import"><span class="glyphicon glyphicon-import"></span>导入</a>\n' +
+            '        <a class="btn btn-warning" id="export"><span class="glyphicon glyphicon-export"></span>导出</a>');
+        $('div.pageclass nav').append('<ul class="pagination pagination-sm" id="m_page">\n' +
+            '                <li id="pageUp">\n' +
+            '                    <a href="#" aria-label="Previous">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '                <li class="active"><a href="#" >1</a></li>\n' +
+            '                <li ><a href="#">2</a></li>\n' +
+            '                <li><a href="#">3</a></li>\n' +
+            '                <li><a href="#">4</a></li>\n' +
+            '                <li><a href="#">5</a></li>\n' +
+            '                <li><a href="#">6</a></li>\n' +
+            '                <li><a href="#">7</a></li>\n' +
+            '                <li><a href="#">8</a></li>\n' +
+            '                <li><a href="#">9</a></li>\n' +
+            '                <li id="pageDown">\n' +
+            '                    <a href="#" aria-label="Next">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '            </ul>');
+        $.ajax({
+            url: "/JSON/Member",
+            data: {},
+            type: "POST",
+            success: function (data) {
+                $('.Show_data').remove();
+                if (data == '')
+                    alert("数据持续更新中!");
+                else {
+                    for (var i = 0; i < data.length; i++) {
+                        $('tr.success').after('<tr><td><input type="checkbox"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>')
+                        $('tr.success').next().addClass('Show_data');
+                        $('.Show_data td').eq(1).text(data[data.length - 1 - i].memberId);
+                        $('.Show_data td').eq(2).text(data[data.length - 1 - i].memberName);
+                        $('.Show_data td').eq(3).text(data[data.length - 1 - i].memberSex);
+                        $('.Show_data td').eq(4).text(data[data.length - 1 - i].memberIdcard);
+                        $('.Show_data td').eq(5).text(data[data.length - 1 - i].memberType);
+                        $('.Show_data td').eq(6).text(data[data.length - 1 - i].memberTelephone);
+                        $('.Show_data td').eq(7).text(data[data.length - 1 - i].memberCounselor);
+                        $('.Show_data td').eq(8).text(data[data.length - 1 - i].cardBalance);
+                        $('.Show_data td').eq(9).text(data[data.length - 1 - i].credit);
+
+                        $('.Show_data td').eq(2).prop("contenteditable", true);
+                        $('.Show_data td').eq(3).prop("contenteditable", true);
+                        $('.Show_data td').eq(4).prop("contenteditable", true);
+                        $('.Show_data td').eq(5).prop("contenteditable", true);
+                        $('.Show_data td').eq(6).prop("contenteditable", true);
+                        $('.Show_data td').eq(7).prop("contenteditable", true);
+                        $('.Show_data td').eq(8).prop("contenteditable", true);
+                        $('.Show_data td').eq(9).prop("contenteditable", true);
+                    }
+                }
+            }
+
+        });
+    });
+    //点击出现添加会员小页面
+    $(document).on('click','#insert',function () {
+        $('#M_regist').css({
+            "display":"block"
+        });
+        $('.hidden1').css({
+            "display":"block"
+        });
+    });
+    $('#exit').click(function(){
+        $('#M_regist').css({
+            "display":"none"
+        });
+        $('.hidden1').css({
+            "display":"none"
+        });
+    });
+    $('#spanclose').click(function(){
+        $('#M_regist').css({
+            "display":"none"
+        });
+        $('.hidden1').css({
+            "display":"none"
+        });
+    });
+    //确定添加会员
+    $(document).on('click','#Insert_Member',function () {
+        var memberId,memberName,memberSex,memberIdcard,memberType,memberTelephone,memberCounselor,cardBalance,credit;
+        memberId=$("input[name='memberId']").val();
+        memberName=$("input[name='memberName']").val();
+        memberCounselor=$("input[name='memberCounselor']").val();
+        memberIdcard=$("input[name='memberIdcard']").val();
+        memberTelephone=$("input[name='memberTelephone']").val();
+        cardBalance=$("input[name='cardBalance']").val();
+        credit=$("input[name='credit']").val();
+        memberSex=$('#memeberSex option:selected').text();//选择选中的值
+        memberType=$('#memberType option:selected').text();
+        console.log(memberId+"****"+memberSex+memberName);
+              $.ajax({
+                  url:"/JSON/Insert_Member",
+                  type:"POST",
+                  data:JSON.stringify({
+                      memberId:memberId,
+                      memberName: memberName,
+                      memberSex: memberSex,
+                      memberIdcard:memberIdcard,
+                      memberType:memberType,
+                      memberTelephone: memberTelephone,
+                      memberCounselor: memberCounselor,
+                      cardBalance:cardBalance,
+                      credit: credit
+                  }),
+                  datatype:"json",
+                  contentType:"application/json;charset=utf-8",
+                  success:function (data) {
+                          if(data==1) {
+                              alert("添加成功！");
+                              window.location.href = "/Gym/Main";
+                          }
+                          else
+                              alert("添加失败，请检查会员编号是否重复");
+                  }
+              });
+    });
+    //修改会员信息
+    $(document).on('click','#update',function () {
+    var count=0;
+    var message=confirm("你确定修改会员信息吗？");
+    if(message==true)
+    {
+        var memberId,memberName,memberSex,memberIdcard,memberType,memberTelephone,memberCounselor,cardBalance,credit;
+        $("input[type='checkbox']").each(function() {
+            if(this.checked==true)
+            {   count++;
+                memberId=$(this).parent().siblings().eq(0).text();
+                memberName=$(this).parent().siblings().eq(1).text();
+                memberSex=$(this).parent().siblings().eq(2).text();
+                memberIdcard=$(this).parent().siblings().eq(3).text();
+                memberType=$(this).parent().siblings().eq(4).text();
+                memberTelephone=$(this).parent().siblings().eq(5).text();
+                memberCounselor=$(this).parent().siblings().eq(6).text();
+                cardBalance=$(this).parent().siblings().eq(7).text();
+                credit=$(this).parent().siblings().eq(8).text();
+            }
+        });
+        if(count==1)
+        {
+            $.ajax({
+                url:"/JSON/Update_Member",
+                type:"post",
+                data:JSON.stringify({
+                    memberId:memberId,
+                    memberName: memberName,
+                    memberSex: memberSex,
+                    memberIdcard:memberIdcard,
+                    memberType:memberType,
+                    memberTelephone: memberTelephone,
+                    memberCounselor: memberCounselor,
+                    cardBalance:cardBalance,
+                    credit: credit
+                }),
+                datatype:"json",
+                contentType:"application/json;charset=utf-8",
+                success:function(data)
+                {
+                    if(data==1)
+                        alert("数据已修改,请刷新");
+                    else
+                        alert("数据修改失败请重试");
+                }
+            });
+        }
+        else
+            alert("修改失败，请检查是否多选!");
+    }
+
+});
+    //删除会员
+    $(document).on('click','#delete',function () {
+        var message=confirm("确定要删除？");
+        var count=0;
+        if(message==true){
+            $("input[type='checkbox']").each(function() {
+                if(this.checked==true)
+                {  count++;
+                    IdInfo=$(this).parent().next().text();
+                    console.log(IdInfo);
+                }
+            });
+            if(count==1)
+            {
+                $.ajax({
+                    url:"/JSON/Delete_Member",
+                    type:"Post",
+                    data:{memberId:IdInfo},
+                    success:function(data){
+                        if(data==1)
+                            alert("数据已删除,请刷新!");
+                        else{
+                            alert("删除失败");
+                        }
+                    }
+                });
+            }
+            else
+            {
+                alert("删除失败！请检查是否多选或者无选择!");
+            }
+
+        }
+    });
+    //根据条件查询会员
+    $(document).on('click','#select',function () {
+        var memberIdcard=$("input[name='textName']").val();
+        var memberType=$('#selectType option:selected').val();
+        var page=$("input[name='page']").val();
+        $('ul.pagination li').eq(1).addClass('active').siblings().removeClass();
+        console.log(page);
+        var membercounselor=$("#counselorType option:selected").val();
+        if((!isNaN(page))&&page>=0){
+            $.ajax({
+                url:"/JSON/Select",
+                type:"post",
+                data:{
+                    memberIdcard:memberIdcard,
+                    memberType:memberType,
+                    page:page,
+                    membercounselor:membercounselor
+                },
+                success:function (data) {
+                    $('.Show_data').remove();
+                    if (data == '')
+                        alert("没有数据哦，请检查你的条件");
+                    else {
+                        for (var i = 0; i < data.length; i++) {
+                            $('tr.success').after('<tr><td><input type="checkbox"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>')
+                            $('tr.success').next().addClass('Show_data');
+                            $('.Show_data td').eq(1).text(data[data.length-1-i].memberId);
+                            $('.Show_data td').eq(2).text(data[data.length-1-i].memberName);
+                            $('.Show_data td').eq(3).text(data[data.length-1-i].memberSex);
+                            $('.Show_data td').eq(4).text(data[data.length-1-i].memberIdcard);
+                            $('.Show_data td').eq(5).text(data[data.length-1-i].memberType);
+                            $('.Show_data td').eq(6).text(data[data.length-1-i].memberTelephone);
+                            $('.Show_data td').eq(7).text(data[data.length-1-i].memberCounselor);
+                            $('.Show_data td').eq(8).text(data[data.length-1-i].cardBalance);
+                            $('.Show_data td').eq(9).text(data[data.length-1-i].credit);
+                            $('.Show_data td').eq(2).prop("contenteditable",true);
+                            $('.Show_data td').eq(3).prop("contenteditable",true);
+                            $('.Show_data td').eq(4).prop("contenteditable",true);
+                            $('.Show_data td').eq(5).prop("contenteditable",true);
+                            $('.Show_data td').eq(6).prop("contenteditable",true);
+                            $('.Show_data td').eq(7).prop("contenteditable",true);
+                            $('.Show_data td').eq(8).prop("contenteditable",true);
+                            $('.Show_data td').eq(9).prop("contenteditable",true);
+                        }
+                    }
+                }
+            });
+        }
+        else
+            alert("请输入大于0的页数");
+    });
+    //会员信息数据分页
+    $(document).on('click','#m_page li',function () {
+        var size=$("input[name='page']").val();
+        var id=$(this).attr('id');
+        var m=$('#m_page li.active').children().text();
+        if(id==undefined) {
+
+            $(this).addClass('active');
+            $(this).siblings().removeClass();
+        }
+        else{
+            if(id=='pageDown'&&m!=9)
+            {
+                $('#m_page li.active').next().addClass('active').siblings().removeClass();
+            }
+
+            else if(id=='pageUp'&&m!=1)
+            {
+                $('ul.pagination li.active').prev().addClass('active').siblings().removeClass();
+            }
+            else
+                alert("没有更多数据了");
+
+        }
+        var page=$('#m_page li.active').children().text();
+        $.ajax({
+            url:"/JSON/Page",
+            data:{
+                page:page,
+                size:size
+            },
+            type:"POST",
+            success:function (data) {
+                $('.Show_data').remove();
+                if(data=='')
+                    alert("数据持续更新中!");
+                else
+                {
+                    for (var i = 0; i < data.length; i++) {
+                        $('tr.success').after('<tr><td><input type="checkbox"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>')
+                        $('tr.success').next().addClass('Show_data');
+                        $('.Show_data td').eq(1).text(data[data.length-1-i].memberId);
+                        $('.Show_data td').eq(2).text(data[data.length-1-i].memberName);
+                        $('.Show_data td').eq(3).text(data[data.length-1-i].memberSex);
+                        $('.Show_data td').eq(4).text(data[data.length-1-i].memberIdcard);
+                        $('.Show_data td').eq(5).text(data[data.length-1-i].memberType);
+                        $('.Show_data td').eq(6).text(data[data.length-1-i].memberTelephone);
+                        $('.Show_data td').eq(7).text(data[data.length-1-i].memberCounselor);
+                        $('.Show_data td').eq(8).text(data[data.length-1-i].cardBalance);
+                        $('.Show_data td').eq(9).text(data[data.length-1-i].credit);
+
+                        $('.Show_data td').eq(2).prop("contenteditable",true);
+                        $('.Show_data td').eq(3).prop("contenteditable",true);
+                        $('.Show_data td').eq(4).prop("contenteditable",true);
+                        $('.Show_data td').eq(5).prop("contenteditable",true);
+                        $('.Show_data td').eq(6).prop("contenteditable",true);
+                        $('.Show_data td').eq(7).prop("contenteditable",true);
+                        $('.Show_data td').eq(8).prop("contenteditable",true);
+                        $('.Show_data td').eq(9).prop("contenteditable",true);
+                    }
+                }
+            }
+        });
+    });
+</script>
+<script>
+    //跳转至出现充值查询界面
+    $(document).on('click','.m_recharge',function () {
+    $('#Intable table').remove();
+    $('#ct100_divContentSearch table').remove();
+    $('#ct100_divContentOperator a').remove();
+    $('div.pageclass nav ul').remove();
+    $('#ct100_divContentSearch').append('<table id="MemTypetotal"><tbody><tr>\n' +
+        '            <td>充值单号:</td><td style="margin: 0px 10px 0 10px;display: block;"><input name="numbers" type="text" placeholder="充值单号" style="height: 32px; width: 194px; display: inline;"></td>\n' +
+        '                            <td> <a class="btn btn-info" style="width: 80px;" id="t_select"><span class="glyphicon glyphicon-search" style="float: left;"></span>查询</a>\n' +
+        '                            </td>                                                    \n' +
+        '          </tr></tbody></table>');
+    $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="mrecharge"><tbody>\n' +
+        '         <tr class="success">\n' +
+        '          <th>充值时间</th>\n' +
+        '          <th>会员卡号</th>\n' +
+        '          <th>会员姓名</th>\n' +
+        '          <th>会员类型</th>\n' +
+        '          <th>充值类型</th>\n' +
+        '          <th>充值金额</th>\n' +
+        '          <th>当前余额金额</th>\n' +
+        '          <th>支付方式</th>\n' +
+        '          <th>经办员工</th>\n' +
+        '          <th>充值单号</th>\n' +
+        '          </tr></tbody></table>');
+    $('#ct100_divContentOperator').append('<a class="btn btn-info" id="r_insert"><span class="glyphicon glyphicon-plus"></span>充值</a>');
+    $('div.pageclass nav').append('<ul class="pagination pagination-sm" id="r_page">\n' +
+        '                <li id="pageUp">\n' +
+        '                    <a href="#" aria-label="Previous">\n' +
+        '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+        '                    </a>\n' +
+        '                </li>\n' +
+        '                <li class="active"><a href="#" >1</a></li>\n' +
+        '                <li ><a href="#">2</a></li>\n' +
+        '                <li><a href="#">3</a></li>\n' +
+        '                <li><a href="#">4</a></li>\n' +
+        '                <li><a href="#">5</a></li>\n' +
+        '                <li><a href="#">6</a></li>\n' +
+        '                <li><a href="#">7</a></li>\n' +
+        '                <li><a href="#">8</a></li>\n' +
+        '                <li><a href="#">9</a></li>\n' +
+        '                <li id="pageDown">\n' +
+        '                    <a href="#" aria-label="Next">\n' +
+        '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+        '                    </a>\n' +
+        '                </li>\n' +
+        '            </ul>');
+    $.ajax({
+        url:"/JSON/memberrecharge",
+        type:"post",
+        data:{},
+        async:false,//请求是否同步，false为异步即后面的执行不会等待ajax返回结果
+        success:function (data) {
+            for(var i=0;i<data.length;i++)
+            {
+                $('tr.success').after('<tr>' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          </tr>');
+                $('tr.success').next().addClass('Show_data');
+                $('tr.Show_data td').eq(0).text(data[data.length-1-i].rechargeDate);
+                $('tr.Show_data td').eq(1).text(data[data.length-1-i].memberIdcard);
+                $('tr.Show_data td').eq(2).text(data[data.length-1-i].memberName);
+                $('tr.Show_data td').eq(3).text(data[data.length-1-i].memberTypename);
+                $('tr.Show_data td').eq(4).text(data[data.length-1-i].rechargeType);
+                $('tr.Show_data td').eq(5).text(data[data.length-1-i].realrecharge);
+                $('tr.Show_data td').eq(6).text(data[data.length-1-i].currentBlance);
+                $('tr.Show_data td').eq(7).text(data[data.length-1-i].payment);
+                $('tr.Show_data td').eq(8).text(data[data.length-1-i].employees);
+                $('tr.Show_data td').eq(9).text(data[data.length-1-i].numbers);
+
+
+            }
+        }
+    });
+});
+    //出现会员卡充值小界面
+    $(document).on('click','#r_insert',function(){
+        $('#R_regist').css({
+            "display":"block"
+        });
+        $('.hidden1').css({
+            "display":"block"
+        });
+    });
+    $(document).on('click','#R_exit',function () {
+        $('#R_regist').css({
+            "display":"none"
+        });
+        $('.hidden1').css({
+            "display":"none"
+        });
+    });
+    $(document).on('click','#R_spanclose',function () {
+        $('#R_regist').css({
+            "display":"none"
+        });
+        $('.hidden1').css({
+            "display":"none"
+        });
+    });
+    //会员充值
+    function ShowR(){
+    $('tr.Show_data').remove();
+    $.ajax({
+        url:"/JSON/memberrecharge",
+        type:"post",
+        data:{},
+        async:false,//请求是否同步，false为异步即后面的执行不会等待ajax返回结果
+        success:function (data) {
+            for(var i=0;i<data.length;i++)
+            {
+                $('tr.success').after('<tr>' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          </tr>');
+                $('tr.success').next().addClass('Show_data');
+                $('tr.Show_data td').eq(0).text(data[data.length-1-i].rechargeDate);
+                $('tr.Show_data td').eq(1).text(data[data.length-1-i].memberIdcard);
+                $('tr.Show_data td').eq(2).text(data[data.length-1-i].memberName);
+                $('tr.Show_data td').eq(3).text(data[data.length-1-i].memberTypename);
+                $('tr.Show_data td').eq(4).text(data[data.length-1-i].rechargeType);
+                $('tr.Show_data td').eq(5).text(data[data.length-1-i].realrecharge);
+                $('tr.Show_data td').eq(6).text(data[data.length-1-i].currentBlance);
+                $('tr.Show_data td').eq(7).text(data[data.length-1-i].payment);
+                $('tr.Show_data td').eq(8).text(data[data.length-1-i].employees);
+                $('tr.Show_data td').eq(9).text(data[data.length-1-i].numbers);
+
+
+            }
+        }
+    });
+}
+   //确认会员卡充值
+    $('#Insert_memberrecharge').click(function (){
+var memberIdcard=$("input[name='R_Idcard']").val();
+var memberName=$("input[name='R_Name']").val();
+var memberTypename=$('#R_MType option:selected').val();
+var rechargeType=$('#R_RType option:selected').val();
+var realrecharge=$("input[name='R_Money']").val();
+var payment=$("input[name='R_payment']").val();
+var employees=$("input[name='R_employees']").val();
+$.ajax({
+    url:"/JSON/R_member",
+    type:"POST",
+    data:JSON.stringify({
+        memberIdcard: memberIdcard,
+        memberName: memberName,
+        memberTypename: memberTypename,
+        rechargeType:rechargeType,
+        realrecharge: realrecharge,
+        payment: payment,
+        employees:employees
+    }),
+    datatype:"json",
+    contentType:"application/json;charset=utf-8",
+     success:function (data) {
+        if(data==1) {
+
+            alert('充值成功！');
+            ShowR();
+        }
+        else
+        alert('充值失败！');
+     }
+})
+    });
+</script>
+<script>//会员卡类型数据操作
+    //点击跳转至会员卡界面
+    $(document).on('click','.mc_Type',function () {
+    $('#Intable table').remove();
+    $('#ct100_divContentSearch table').remove();
+    $('#ct100_divContentOperator a').remove();
+    $('div.pageclass nav ul').remove();
+    $('#ct100_divContentSearch').append('<table id="MemTypetotal"><tbody><tr>\n' +
+        '            <td>卡类型名称:</td><td style="margin: 0px 10px 0 10px;display: block;"><input name="typeName1" type="text" placeholder="输入名称查询" style="height: 32px; width: 194px; display: inline;"></td>\n' +
+        '                            <td> <a class="btn btn-info" style="width: 80px;" id="t_select"><span class="glyphicon glyphicon-search" style="float: left;"></span>查询</a>\n' +
+        '                            </td>                                                    \n' +
+        '          </tr></tbody></table>');
+    $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="MemType"><tbody>\n' +
+        '         <tr class="success">\n' +
+        '          <th><input type="checkbox"> </th>\n' +
+        '          <th>类别名称</th>\n' +
+        '          <th>商品折扣</th>\n' +
+        '          <th>充值金额</th>\n' +
+        '          <th>赠送金额</th>\n' +
+        '          <th>使用时限</th>\n' +
+        '          <th>有效天数</th>\n' +
+        '          </tr></tbody></table>');
+    $('#ct100_divContentOperator').append('<a class="btn btn-info" id="t_insert"><span class="glyphicon glyphicon-plus"></span>添加</a>\n' +
+        '        <a class="btn btn-danger"id="t_delete"><span class="glyphicon glyphicon-remove"></span>删除</a>\n' +
+        '        <a class="btn btn-danger" id="t_update"><span class="glyphicon glyphicon-pencil"></span>修改</a>\n' +
+        '        <a class="btn btn-warning"id="t_import"><span class="glyphicon glyphicon-import"></span>导入</a>\n' +
+        '        <a class="btn btn-warning" id="t_export"><span class="glyphicon glyphicon-export"></span>导出</a>');
+    $('div.pageclass nav').append('<ul class="pagination pagination-sm" id="t_page">\n' +
+        '                <li id="pageUp">\n' +
+        '                    <a href="#" aria-label="Previous">\n' +
+        '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+        '                    </a>\n' +
+        '                </li>\n' +
+        '                <li class="active"><a href="#" >1</a></li>\n' +
+        '                <li ><a href="#">2</a></li>\n' +
+        '                <li><a href="#">3</a></li>\n' +
+        '                <li><a href="#">4</a></li>\n' +
+        '                <li><a href="#">5</a></li>\n' +
+        '                <li><a href="#">6</a></li>\n' +
+        '                <li><a href="#">7</a></li>\n' +
+        '                <li><a href="#">8</a></li>\n' +
+        '                <li><a href="#">9</a></li>\n' +
+        '                <li id="pageDown">\n' +
+        '                    <a href="#" aria-label="Next">\n' +
+        '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+        '                    </a>\n' +
+        '                </li>\n' +
+        '            </ul>');
+    $.ajax({
+        url:"/JSON/memberType",
+        type:"post",
+        data:{},
+        async:false,//请求是否同步，false为异步即后面的执行不会等待ajax返回结果
+        success:function (data) {
+            for(var i=0;i<data.length;i++)
+            {
+                $('tr.success').after('<tr><td><input type="checkbox" style="size: 12px;"></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          <td></td>\n' +
+                    '          </tr>');
+                $('tr.success').next().addClass('Show_data');
+                $('tr.Show_data td').eq(1).text(data[data.length-1-i].typeName);
+                $('tr.Show_data td').eq(2).text(data[data.length-1-i].productDiscount);
+                $('tr.Show_data td').eq(3).text(data[data.length-1-i].rechargeMoney);
+                $('tr.Show_data td').eq(4).text(data[data.length-1-i].givenMoney);
+                $('tr.Show_data td').eq(5).text(data[data.length-1-i].potLife);
+                $('tr.Show_data td').eq(6).text(data[data.length-1-i].validDays);
+                $('.Show_data td').eq(2).prop("contenteditable",true);
+                $('.Show_data td').eq(3).prop("contenteditable",true);
+                $('.Show_data td').eq(4).prop("contenteditable",true);
+                $('.Show_data td').eq(5).prop("contenteditable",true);
+                $('.Show_data td').eq(6).prop("contenteditable",true);
+            }
+        }
+    });
+});
+    //点击出现添加会员卡类型小界面
+    $(document).on('click','#t_insert',function(){
+    console.log("zzz");
+    $('#T_regist').css({
+        "display":"block"
+    });
+    $('.hidden1').css({
+        "display":"block"
+    });
+});
+    $(document).on('click','#T_exit',function () {
+    $('#T_regist').css({
+        "display":"none"
+    });
+    $('.hidden1').css({
+        "display":"none"
+    });
+});
+    $(document).on('click','#T_spanclose',function () {
+    $('#T_regist').css({
+        "display":"none"
+    });
+    $('.hidden1').css({
+        "display":"none"
+    });
+});
+     //添加会员卡类型
+    $('#Insert_MemberType').click(function () {
+      var typeName=$("input[name='typeName']").val();
+      var productDiscount=$("input[name='productDiscount']").val();
+      var rechargeMoney=$("input[name='rMoney']").val();
+      var givenMoney=$("input[name='gMoney']").val();
+      var potLife=$("input[name='potLife']").val();
+      var validDays=$("input[name='validDays']").val();
+      $.ajax({
+          url:"/JSON/Insert_memberType",
+          type:"post",
+          data:JSON.stringify(
+          {
+              typeName:typeName,
+              productDiscount:productDiscount,
+              rechargeMoney:rechargeMoney,
+              givenMoney:givenMoney,
+              potLife:potLife,
+              validDays:validDays
+          }),
+          datatype:"json",
+          contentType:"application/json;charset=utf-8",
+          success:function (data) {
+              if(data==1) {
+                  alert("添加成功,请刷新");
+
+              }
+              else
+                  alert("添加失败，请检查会员编号是否重复");
+          }
+      });
+  })
+    //更新会员卡类型数据
+    $(document).on('click','#t_update',function () {
+       var count=0;
+       var message=confirm("你确定修改会员信息吗？");
+       if(message==true)
+       {
+           var typeName,productDiscount,rechargeMoney,giveMoney,potLife,validDays;
+           $("input[type='checkbox']").each(function() {
+               if(this.checked==true)
+               {   count++;
+                   typeName=$(this).parent().siblings().eq(0).text();
+                   productDiscount=$(this).parent().siblings().eq(1).text();
+                   rechargeMoney=$(this).parent().siblings().eq(2).text();
+                   giveMoney=$(this).parent().siblings().eq(3).text();
+                   potLife=$(this).parent().siblings().eq(4).text();
+                   validDays=$(this).parent().siblings().eq(5).text();
+
+               }
+           });
+           if(count==1)
+           {
+               $.ajax({
+                   url:"/JSON/Update_memberType",
+                   type:"post",
+                   data:JSON.stringify({
+                      typeName:typeName,
+                       productDiscount:productDiscount,
+                       rechargeMoney:rechargeMoney,
+                       givenMoney:giveMoney,
+                       potLife:potLife,
+                       validDays:validDays
+                   }),
+                   datatype:"json",
+                   contentType:"application/json;charset=utf-8",
+                   success:function(data)
+                   {
+                       if(data==1)
+                           alert("数据已修改,请刷新");
+                       else
+                           alert("数据修改失败请重试");
+                   }
+               });
+           }
+           else
+               alert("修改失败，请检查是否多选!");
+       }
+   });
+    //会员卡类型删除
+    $(document).on('click','#t_delete',function () {
+     var typeName;
+     var count=0;
+    var message=confirm("确定要删除？");
+    if(message==true){
+        $("input[type='checkbox']").each(function() {
+            if(this.checked==true)
+            {  count++;
+                typeName=$(this).parent().next().text();
+                console.log(typeName);
+            }
+        });
+        if(count==1)
+        {
+            $.ajax({
+                url:"/JSON/Delete_memberType",
+                type:"Post",
+                data:{typeName:typeName},
+                success:function(data){
+                    if(data==1)
+                        alert("数据已删除,请刷新!");
+                    else{
+                        alert("删除失败");
+                    }
+                }
+            });
+        }
+        else
+        {
+            alert("删除失败！请检查是否多选或者无选择!");
+        }
+
+    }
+});
+    //会员卡类型添加
+    $(document).on('click','#t_select',function () {
+       var typeName=$("input[name='typeName1']").val();
+       $.ajax({
+           url:"/JSON/SelectmemberType",
+           type:"POST",
+           data: {typeName:typeName},
+            success:function (data) {
+                $('.Show_data').remove();
+                if (data == '')
+                    alert("没有数据哦，请检查你的条件");
+                else {
+                    for (var i = 0; i < data.length; i++)
+                    {
+                        $('tr.success').after('<tr><td><input type="checkbox"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>')
+                        $('tr.success').next().addClass('Show_data');
+                        $('.Show_data td').eq(1).text(data[data.length-1-i].typeName);
+                        $('.Show_data td').eq(2).text(data[data.length-1-i].productDiscount);
+                        $('.Show_data td').eq(3).text(data[data.length-1-i].rechargeMoney);
+                        $('.Show_data td').eq(4).text(data[data.length-1-i].givenMoney);
+                        $('.Show_data td').eq(5).text(data[data.length-1-i].potLife);
+                        $('.Show_data td').eq(6).text(data[data.length-1-i].validDays);
+                        $('.Show_data td').eq(2).prop("contenteditable",true);
+                        $('.Show_data td').eq(3).prop("contenteditable",true);
+                        $('.Show_data td').eq(4).prop("contenteditable",true);
+                        $('.Show_data td').eq(5).prop("contenteditable",true);
+                        $('.Show_data td').eq(6).prop("contenteditable",true);
+                    }
+                }
+                        }
+       });
+    });
+    //会员卡数据分页
+    $(document).on('click','#t_page li',function () {
+    var id=$(this).attr('id');
+    var m=$('#t_page li.active').children().text();
+    if(id==undefined) {
+
+        $(this).addClass('active');
+        $(this).siblings().removeClass();
+    }
+    else{
+        if(id=='pageDown'&&m!=9)
+        {
+            $('#t_page li.active').next().addClass('active').siblings().removeClass();
+        }
+
+        else if(id=='pageUp'&&m!=1)
+        {
+            $('ul.pagination li.active').prev().addClass('active').siblings().removeClass();
+        }
+        else
+            alert("没有更多数据了");
+
+    }
+    var page=$('#t_page li.active').children().text();
+    $.ajax({
+        url:"/JSON/typePage",
+        data:{
+            page:page,
+        },
+        type:"POST",
+        success:function (data) {
+            $('.Show_data').remove();
+            if(data=='')
+                alert("数据持续更新中!");
+            else
+            {
+                for (var i = 0; i < data.length; i++) {
+                    $('tr.success').after('<tr><td><input type="checkbox"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>')
+                    $('tr.success').next().addClass('Show_data');
+                    $('.Show_data td').eq(1).text(data[data.length-1-i].typeName);
+                    $('.Show_data td').eq(2).text(data[data.length-1-i].productDiscount);
+                    $('.Show_data td').eq(3).text(data[data.length-1-i].rechargeMoney);
+                    $('.Show_data td').eq(4).text(data[data.length-1-i].givenMoney);
+                    $('.Show_data td').eq(5).text(data[data.length-1-i].potLife);
+                    $('.Show_data td').eq(6).text(data[data.length-1-i].validDays);
+                    $('.Show_data td').eq(2).prop("contenteditable",true);
+                    $('.Show_data td').eq(3).prop("contenteditable",true);
+                    $('.Show_data td').eq(4).prop("contenteditable",true);
+                    $('.Show_data td').eq(5).prop("contenteditable",true);
+                    $('.Show_data td').eq(6).prop("contenteditable",true);
+                }
+            }
+        }
+    });
+});
+</script>
+<script>
+     //跳转至添加会员界面
+    $(document).on('click','.m_regist',function () {
+        $('#M_regist').css({
+            "display":"block"
+        });
+        $('.hidden1').css({
+            "display":"block"
+        });
+    });
+</script>
+<script>
+    //点击跳转至商品表
+    $(document).on('click','.product',function () {
+        $('#Intable table').remove();
+        $('#ct100_divContentSearch table').remove();
+        $('#ct100_divContentOperator a').remove();
+        $('div.pageclass nav ul').remove();
+        $('#ct100_divContentSearch').append('<table id="MemTypetotal"><tbody><tr>\n' +
+            '            <td>商品类型名称:</td><td style="margin: 0px 10px 0 10px;display: block;"><input name="typeName1" type="text" placeholder="输入名称查询" style="height: 32px; width: 194px; display: inline;"></td>\n' +
+            '                            <td> <a class="btn btn-info" style="width: 80px;" id="p_select"><span class="glyphicon glyphicon-search" style="float: left;"></span>查询</a>\n' +
+            '                            </td>                                                    \n' +
+            '          </tr></tbody></table>');
+        $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="product"><tbody>\n' +
+            '         <tr class="success">\n' +
+            '           <th></th>\n'       +
+            '          <th>商品编号</th>\n' +
+            '          <th>商品名称</th>\n' +
+            '          <th>商品售价</th>\n' +
+            '          <th>商品分类</th>\n' +
+            '          <th>是否积分兑换</th>\n' +
+            '          </tr></tbody></table>');
+        $('#ct100_divContentOperator').append('<a class="btn btn-success" id="p_purchase"><span class="glyphicon glyphicon-plus"></span>购买</a>\n' +
+            '        <a class="btn btn-danger"id="p_delete"><span class="glyphicon glyphicon-remove"></span>删除</a>\n' +
+            '       <a class="btn btn-warning" id="p_export"><span class="glyphicon glyphicon-export"></span>导出</a>');
+        $('div.pageclass nav').append('<ul class="pagination pagination-sm" id="p_page">\n' +
+            '                <li id="pageUp">\n' +
+            '                    <a href="#" aria-label="Previous">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '                <li class="active"><a href="#" >1</a></li>\n' +
+            '                <li ><a href="#">2</a></li>\n' +
+            '                <li><a href="#">3</a></li>\n' +
+            '                <li><a href="#">4</a></li>\n' +
+            '                <li><a href="#">5</a></li>\n' +
+            '                <li><a href="#">6</a></li>\n' +
+            '                <li><a href="#">7</a></li>\n' +
+            '                <li><a href="#">8</a></li>\n' +
+            '                <li><a href="#">9</a></li>\n' +
+            '                <li id="pageDown">\n' +
+            '                    <a href="#" aria-label="Next">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '            </ul>');
+        $.ajax({
+            url:"/JSON/Product",
+            type:"post",
+            data:{},
+            async:false,//请求是否同步，false为异步即后面的执行不会等待ajax返回结果
+            success:function (data) {
+                for(var i=0;i<data.length;i++)
+                {
+                    $('tr.success').after('<tr><td><input type="checkbox" ></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          </tr>');
+                    $('tr.success').next().addClass('Show_data');
+                    $('tr.Show_data td').eq(1).text(data[data.length-1-i].productId);
+                    $('tr.Show_data td').eq(2).text(data[data.length-1-i].productName);
+                    $('tr.Show_data td').eq(3).text(data[data.length-1-i].productPrice);
+                    $('tr.Show_data td').eq(4).text(data[data.length-1-i].productType);
+                    $('tr.Show_data td').eq(5).text(data[data.length-1-i].productCredit);
+                    $('.Show_data td').eq(2).prop("contenteditable",true);
+                    $('.Show_data td').eq(3).prop("contenteditable",true);
+                    $('.Show_data td').eq(4).prop("contenteditable",true);
+                    $('.Show_data td').eq(5).prop("contenteditable",true);
+
+                }
+            }
+        });
+    });
+    $(document).on('click','#p_purchase',function () {
+        var memberName=prompt("请输入会员姓名");
+        var number=prompt("请输入购买数量");
+        var paymentMethod=prompt("付款方式");
+        var productName,price;
+        var count=0;
+        $("input[type='checkbox']").each(function() {
+            if(this.checked==true)
+            {  count++;
+                productName=$(this).parent().next().next().text();
+                price=$(this).parent().next().next().next().text();
+            }
+        });
+        if(count==1)
+        {
+            $.ajax({
+                url:"/JSON/Purchase",
+                type:"post",
+                data:JSON.stringify({
+                    memberName:memberName,
+                    number:number,
+                    productName:productName,
+                    price:price,
+                    paymentMethod:paymentMethod
+                }),
+                datatype:"json",
+                contentType:"application/json;charset:utf-8",
+                success:function (data) {
+                    if (data==1) {
+                        $('#Intable table').remove();
+                        $('#ct100_divContentSearch table').remove();
+                        $('#ct100_divContentOperator a').remove();
+                        $('div.pageclass nav ul').remove();
+                        $('#ct100_divContentSearch').append('<table id="MemTypetotal"><tbody><tr>\n' +
+                            '            <td>账单单号:</td><td style="margin: 0px 10px 0 10px;display: block;"><input name="typeName1" type="text" placeholder="输入单号查询" style="height: 32px; width: 194px; display: inline;"></td>\n' +
+                            '                            <td> <a class="btn btn-info" style="width: 80px;" id="c_select"><span class="glyphicon glyphicon-search" style="float: left;"></span>查询</a>\n' +
+                            '                            </td>                                                    \n' +
+                            '          </tr></tbody></table>');
+                        $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="product"><tbody>\n' +
+                            '         <tr class="success">\n' +
+                            '           <th></th>\n' +
+                            '          <th>结账时间</th>\n' +
+                            '          <th>会员姓名</th>\n' +
+                            '          <th>消费产品</th>\n' +
+                            '          <th>售价</th>\n' +
+                            '          <th>数量</th>\n' +
+                            '          <th>总额</th>\n' +
+                            '          <th>结账方式</th>\n' +
+                            '          <th>是否结账</th>\n' +
+                            '          <th>单号</th>\n' +
+                            '          </tr></tbody></table>');
+                        $('#ct100_divContentOperator').append('<a class="btn btn-info" id="c_insert"><span class="glyphicon glyphicon-plus"></span>结账</a>\n' +
+                            '        <a class="btn btn-danger"id="c_delete"><span class="glyphicon glyphicon-remove"></span>删除</a>\n' +
+                            '        <a class="btn btn-warning" id="c_export"><span class="glyphicon glyphicon-export"></span>导出</a>');
+                        $('div.pageclass nav').append('<ul class="pagination pagination-sm" id="c_page">\n' +
+                            '                <li id="pageUp">\n' +
+                            '                    <a href="#" aria-label="Previous">\n' +
+                            '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+                            '                    </a>\n' +
+                            '                </li>\n' +
+                            '                <li class="active"><a href="#" >1</a></li>\n' +
+                            '                <li ><a href="#">2</a></li>\n' +
+                            '                <li><a href="#">3</a></li>\n' +
+                            '                <li><a href="#">4</a></li>\n' +
+                            '                <li><a href="#">5</a></li>\n' +
+                            '                <li><a href="#">6</a></li>\n' +
+                            '                <li><a href="#">7</a></li>\n' +
+                            '                <li><a href="#">8</a></li>\n' +
+                            '                <li><a href="#">9</a></li>\n' +
+                            '                <li id="pageDown">\n' +
+                            '                    <a href="#" aria-label="Next">\n' +
+                            '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+                            '                    </a>\n' +
+                            '                </li>\n' +
+                            '            </ul>');
+                        $.ajax({
+                            url: "/JSON/Consume",
+                            type: "post",
+                            data: {},
+                            async: false,//请求是否同步，false为异步即后面的执行不会等待ajax返回结果
+                            success: function (data) {
+                                for (var i = 0; i < data.length; i++) {
+                                    $('tr.success').after('<tr><td><input type="checkbox" ></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          </tr>');
+                                    $('tr.success').next().addClass('Show_data');
+                                    $('tr.Show_data td').eq(1).text(data[data.length - 1 - i].consumeDate);
+                                    $('tr.Show_data td').eq(2).text(data[data.length - 1 - i].memberName);
+                                    $('tr.Show_data td').eq(3).text(data[data.length - 1 - i].productName);
+                                    $('tr.Show_data td').eq(4).text(data[data.length - 1 - i].price);
+                                    $('tr.Show_data td').eq(5).text(data[data.length - 1 - i].number);
+                                    $('tr.Show_data td').eq(6).text(data[data.length - 1 - i].number * data[data.length - 1 - i].price);
+                                    $('tr.Show_data td').eq(7).text(data[data.length - 1 - i].paymentMethod);
+                                    $('tr.Show_data td').eq(8).text(data[data.length - 1 - i].settleAccounts);
+                                    $('tr.Show_data td').eq(9).text(data[data.length - 1 - i].consumeId);
+                                }
+                            }
+                        });
+                    }
+                    else if(data==0)
+                    {
+                        alert("您不是会员请先办理会员！");
+                    }
+                    else{
+                        alert("您会员余额不足，请充值");
+                    }
+                }
+
+            });
+        }
+    })
+</script>
+<script>
+    //跳转服务列表
+    $(document).on('click','.service',function () {
+        $('#Intable table').remove();
+        $('#ct100_divContentSearch table').remove();
+        $('#ct100_divContentOperator a').remove();
+        $('div.pageclass nav ul').remove();
+        $('#ct100_divContentSearch').append('<table id="MemTypetotal"><tbody><tr>\n' +
+            '            <td>服务类型名称:</td><td style="margin: 0px 10px 0 10px;display: block;"><input name="typeName1" type="text" placeholder="输入名称查询" style="height: 32px; width: 194px; display: inline;"></td>\n' +
+            '                            <td> <a class="btn btn-info" style="width: 80px;" id="s_select"><span class="glyphicon glyphicon-search" style="float: left;"></span>查询</a>\n' +
+            '                            </td>                                                    \n' +
+            '          </tr></tbody></table>');
+        $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="product"><tbody>\n' +
+            '         <tr class="success">\n' +
+            '           <th></th>\n'       +
+            '          <th>服务编号</th>\n' +
+            '          <th>服务名称</th>\n' +
+            '          <th>服务分类</th>\n' +
+            '          <th>服务售价</th>\n' +
+            '          <th>是否积分兑换</th>\n' +
+            '          </tr></tbody></table>');
+        $('#ct100_divContentOperator').append('<a class="btn btn-info" id="s_insert"><span class="glyphicon glyphicon-plus"></span>添加</a>\n' +
+            '<a class="btn btn-primary" id="s_app"><span class="glyphicon glyphicon-plus"></span>预约</a>\n' +
+            '        <a class="btn btn-danger"id="s_delete"><span class="glyphicon glyphicon-remove"></span>删除</a>\n' +
+            '        <a class="btn btn-warning" id="s_export"><span class="glyphicon glyphicon-export"></span>导出</a>');
+        $('div.pageclass nav').append('<ul class="pagination pagination-sm" id="s_page">\n' +
+            '                <li id="pageUp">\n' +
+            '                    <a href="#" aria-label="Previous">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '                <li class="active"><a href="#" >1</a></li>\n' +
+            '                <li ><a href="#">2</a></li>\n' +
+            '                <li><a href="#">3</a></li>\n' +
+            '                <li><a href="#">4</a></li>\n' +
+            '                <li><a href="#">5</a></li>\n' +
+            '                <li><a href="#">6</a></li>\n' +
+            '                <li><a href="#">7</a></li>\n' +
+            '                <li><a href="#">8</a></li>\n' +
+            '                <li><a href="#">9</a></li>\n' +
+            '                <li id="pageDown">\n' +
+            '                    <a href="#" aria-label="Next">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '            </ul>');
+        $.ajax({
+            url:"/JSON/Service",
+            type:"post",
+            data:{},
+            async:false,//请求是否同步，false为异步即后面的执行不会等待ajax返回结果
+            success:function (data) {
+                for(var i=0;i<data.length;i++)
+                {
+                    $('tr.success').after('<tr><td><input type="checkbox" ></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          </tr>');
+                    $('tr.success').next().addClass('Show_data');
+                    $('tr.Show_data td').eq(1).text(data[data.length-1-i].serviceId);
+                    $('tr.Show_data td').eq(2).text(data[data.length-1-i].serviceName);
+                    $('tr.Show_data td').eq(3).text(data[data.length-1-i].serviceType);
+                    $('tr.Show_data td').eq(4).text(data[data.length-1-i].servicePrice);
+                    $('tr.Show_data td').eq(5).text(data[data.length-1-i].serviceCredit);
+                    $('.Show_data td').eq(2).prop("contenteditable",true);
+                    $('.Show_data td').eq(3).prop("contenteditable",true);
+                    $('.Show_data td').eq(4).prop("contenteditable",true);
+                    $('.Show_data td').eq(5).prop("contenteditable",true);
+
+                }
+            }
+        });
+    });
+    //添加到预约服务表
+    $(document).on('click','#s_app',function () {
+        $('#A_app').css({
+            "display":"block"
+        });
+        $('.hidden1').css({
+            "display":"block"
+        });
+    });
+    $('#A_exit').click(function(){
+        $('#A_app').css({
+            "display":"none"
+        });
+        $('.hidden1').css({
+            "display":"none"
+        });
+    });
+    $('#A_spanclose').click(function(){
+        $('#A_app').css({
+            "display":"none"
+        });
+        $('.hidden1').css({
+            "display":"none"
+        });
+    });
+    //预约服务
+    $(document).on('click','#Insert_Appointment',function () {
+        var appointmentUser = $("input[name='A_Name']").val();
+        var appointmentPhone = $("input[name='A_phone']").val();
+        var conductor = $("input[name='A_employees']").val();
+        var appointmentStyle = $('#A_style option:selected').val();
+        var appointmentTime = $("input[name='A_time']").val();
+        var appointmentProduct = $("#A_Type option:selected").val();
+        $.ajax({
+            url: "/JSON/InsertAppointment",
+            type: "post",
+            data: JSON.stringify({
+                appointmentUser: appointmentUser,
+                appointmentPhone: appointmentPhone,
+                appointmentStyle:appointmentStyle,
+                conductor: conductor,
+                appointmentTime: appointmentTime,
+                appointmentProduct: appointmentProduct
+            }),
+            datatype: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                if (data == true) {
+                    alert("预约成功");
+                    function ShowAppointment() {
+                        $('#Intable table').remove();
+                        $('#ct100_divContentSearch table').remove();
+                        $('#ct100_divContentOperator a').remove();
+                        $('div.pageclass nav ul').remove();
+                        $('#ct100_divContentSearch').append('<table id="MemTypetotal"><tbody><tr>\n' +
+                            '            <td>预约单号:</td><td style="margin: 0px 10px 0 10px;display: block;"><input name="typeName1" type="text" placeholder="输入单号" style="height: 32px; width: 194px; display: inline;"></td>\n' +
+                            '                            <td> <a class="btn btn-info" style="width: 80px;" id="a_select"><span class="glyphicon glyphicon-search" style="float: left;"></span>查询</a>\n' +
+                            '                            </td>                                                    \n' +
+                            '          </tr></tbody></table>');
+                        $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="product"><tbody>\n' +
+                            '         <tr class="success">\n' +
+                            '           <th></th>\n' +
+                            '          <th>预约时间</th>\n' +
+                            '          <th>预约人</th>\n' +
+                            '          <th>预约对象</th>\n' +
+                            '          <th>预约方式</th>\n' +
+                            '          <th>申请时间</th>\n' +
+                            '          <th>联系电话</th>\n' +
+                            '           <th>处理人</th>\n' +
+                            '           <th>预约单号</th>\n' +
+                            '          </tr></tbody></table>');
+                        $('#ct100_divContentOperator').append('<a class="btn btn-danger"id="a_delete"><span class="glyphicon glyphicon-remove"></span>删除</a>\n' +
+                            '        <a class="btn btn-danger" id="a_update"><span class="glyphicon glyphicon-pencil"></span>修改</a>\n' +
+                            '        <a class="btn btn-warning" id="a_export"><span class="glyphicon glyphicon-export"></span>导出</a>');
+                        $('div.pageclass nav').append('<ul class="pagination pagination-sm" id="a_page">\n' +
+                            '                <li id="pageUp">\n' +
+                            '                    <a href="#" aria-label="Previous">\n' +
+                            '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+                            '                    </a>\n' +
+                            '                </li>\n' +
+                            '                <li class="active"><a href="#" >1</a></li>\n' +
+                            '                <li ><a href="#">2</a></li>\n' +
+                            '                <li><a href="#">3</a></li>\n' +
+                            '                <li><a href="#">4</a></li>\n' +
+                            '                <li><a href="#">5</a></li>\n' +
+                            '                <li><a href="#">6</a></li>\n' +
+                            '                <li><a href="#">7</a></li>\n' +
+                            '                <li><a href="#">8</a></li>\n' +
+                            '                <li><a href="#">9</a></li>\n' +
+                            '                <li id="pageDown">\n' +
+                            '                    <a href="#" aria-label="Next">\n' +
+                            '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+                            '                    </a>\n' +
+                            '                </li>\n' +
+                            '            </ul>');
+                        $.ajax({
+                            url: "/JSON/Appointment",
+                            type: "post",
+                            data: {},
+                            async: false,//请求是否同步，false为异步即后面的执行不会等待ajax返回结果
+                            success: function (data) {
+                                for (var i = 0; i < data.length; i++) {
+                                    $('tr.success').after('<tr><td><input type="checkbox" ></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          <td></td>\n' +
+                                        '          </tr>');
+                                    $('tr.success').next().addClass('Show_data');
+                                    $('tr.Show_data td').eq(1).text(data[data.length - 1 - i].appointmentDate);
+                                    $('tr.Show_data td').eq(2).text(data[data.length - 1 - i].appointmentUser);
+                                    $('tr.Show_data td').eq(3).text(data[data.length - 1 - i].appointmentProduct);
+                                    $('tr.Show_data td').eq(4).text(data[data.length - 1 - i].appointmentStyle);
+                                    $('tr.Show_data td').eq(5).text(data[data.length - 1 - i].appointmentTime);
+                                    $('tr.Show_data td').eq(6).text(data[data.length - 1 - i].appointmentPhone);
+                                    $('tr.Show_data td').eq(7).text(data[data.length - 1 - i].conductor);
+                                    $('tr.Show_data td').eq(8).text(data[data.length - 1 - i].appointmentId);
+                                    $('.Show_data td').eq(1).prop("contenteditable", true);
+                                    $('.Show_data td').eq(2).prop("contenteditable", true);
+                                    $('.Show_data td').eq(3).prop("contenteditable", true);
+                                    $('.Show_data td').eq(4).prop("contenteditable", true);
+                                    $('.Show_data td').eq(5).prop("contenteditable", true);
+                                    $('.Show_data td').eq(6).prop("contenteditable", true);
+                                    $('.Show_data td').eq(7).prop("contenteditable", true);
+                                }
+                            }
+                        });
+                    }
+                    ShowAppointment();
+                }
+                else
+                    alert("预约失败");
+            }
+        });
+    });
+    $(document).on('click','#s_insert',function(){
+        $('#S_regist').css({
+            "display":"block"
+        });
+        $('.hidden1').css({
+            "display":"block"
+        });
+    });
+    $(document).on('click','#S_exit',function () {
+        $('#S_regist').css({
+            "display":"none"
+        });
+        $('.hidden1').css({
+            "display":"none"
+        });
+    });
+    $(document).on('click','#S_spanclose',function () {
+        $('#S_regist').css({
+            "display":"none"
+        });
+        $('.hidden1').css({
+            "display":"none"
+        });
+    });
+    $(document).on('click','#Insert_Service',function () {
+        var serviceId=$("input[name='serviceId']").val();
+        var serviceName=$("input[name='serviceName']").val();
+        var servicePrice=$("input[name='servicePrice']").val();
+        var serviceType=$("input[name='serviceType']").val();
+        var serviceCredit=$('#serviceCredit option:selected').val();
+        $.ajax({
+            url:"/JSON/InsertService",
+            type:"post",
+            data:JSON.stringify({
+                serviceId:serviceId,
+                serviceName:serviceName,
+                servicePrice:servicePrice,
+                serviceType:serviceType,
+                serviceCredit:serviceCredit,
+            }),
+            datatype:"json",
+            contentType:"application/json;charset=utf-8",
+            success:function (data) {
+                 if(data==1)
+                     alert("添加成功");
+                 else
+                     alert("添加失败");
+            }
+        });
+    });
+    $(document).on('click','#s_delete',function () {
+        var message=confirm("确定要删除？");
+        var count=0;
+        var serviceId;
+        if(message==true){
+            $("input[type='checkbox']").each(function() {
+                if(this.checked==true)
+                {  count++;
+                    serviceId=$(this).parent().next().text();
+                    console.log(serviceId);
+                }
+            });
+            if(count==1)
+            {
+                $.ajax({
+                    url:"/JSON/DeleteService",
+                    type:"Post",
+                    data:{serviceId:serviceId},
+                    success:function(data){
+                        if(data==1)
+                            alert("数据已删除,请刷新!");
+                        else{
+                            alert("删除失败");
+                        }
+                    }
+                });
+            }
+            else
+            {
+                alert("删除失败！请检查是否多选或者无选择!");
+            }
+
+        }
+
+    });
+</script>
+<script>
+      //跳转私教预约表
+    $(document).on('click','.a_app',function () {
+        $('#Intable table').remove();
+        $('#ct100_divContentSearch table').remove();
+        $('#ct100_divContentOperator a').remove();
+        $('div.pageclass nav ul').remove();
+        $('#ct100_divContentSearch').append('<table id="MemTypetotal"><tbody><tr>\n' +
+            '            <td>预约单号:</td><td style="margin: 0px 10px 0 10px;display: block;"><input name="typeName1" type="text" placeholder="输入单号" style="height: 32px; width: 194px; display: inline;"></td>\n' +
+            '                            <td> <a class="btn btn-info" style="width: 80px;" id="a_select"><span class="glyphicon glyphicon-search" style="float: left;"></span>查询</a>\n' +
+            '                            </td>                                                    \n' +
+            '          </tr></tbody></table>');
+        $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="product"><tbody>\n' +
+            '         <tr class="success">\n' +
+            '           <th></th>\n'       +
+            '          <th>预约时间</th>\n' +
+            '          <th>预约人</th>\n' +
+            '          <th>预约对象</th>\n' +
+            '          <th>预约方式</th>\n' +
+            '          <th>申请时间</th>\n' +
+            '          <th>联系电话</th>\n' +
+            '           <th>处理人</th>\n' +
+            '           <th>预约单号</th>\n' +
+            '          </tr></tbody></table>');
+        $('#ct100_divContentOperator').append('<a class="btn btn-danger"id="a_delete"><span class="glyphicon glyphicon-remove"></span>删除</a>\n' +
+            '        <a class="btn btn-danger" id="a_update"><span class="glyphicon glyphicon-pencil"></span>修改</a>\n' +
+            '        <a class="btn btn-warning" id="a_export"><span class="glyphicon glyphicon-export"></span>导出</a>');
+        $('div.pageclass nav').append('<ul class="pagination pagination-sm" id="a_page">\n' +
+            '                <li id="pageUp">\n' +
+            '                    <a href="#" aria-label="Previous">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '                <li class="active"><a href="#" >1</a></li>\n' +
+            '                <li ><a href="#">2</a></li>\n' +
+            '                <li><a href="#">3</a></li>\n' +
+            '                <li><a href="#">4</a></li>\n' +
+            '                <li><a href="#">5</a></li>\n' +
+            '                <li><a href="#">6</a></li>\n' +
+            '                <li><a href="#">7</a></li>\n' +
+            '                <li><a href="#">8</a></li>\n' +
+            '                <li><a href="#">9</a></li>\n' +
+            '                <li id="pageDown">\n' +
+            '                    <a href="#" aria-label="Next">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '            </ul>');
+        $.ajax({
+            url:"/JSON/Appointment",
+            type:"post",
+            data:{},
+            async:false,//请求是否同步，false为异步即后面的执行不会等待ajax返回结果
+            success:function (data) {
+                for(var i=0;i<data.length;i++)
+                {
+                    $('tr.success').after('<tr><td><input type="checkbox" ></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          </tr>');
+                    $('tr.success').next().addClass('Show_data');
+                    $('tr.Show_data td').eq(1).text(data[data.length-1-i].appointmentDate);
+                    $('tr.Show_data td').eq(2).text(data[data.length-1-i].appointmentUser);
+                    $('tr.Show_data td').eq(3).text(data[data.length-1-i].appointmentProduct);
+                    $('tr.Show_data td').eq(4).text(data[data.length-1-i].appointmentStyle);
+                    $('tr.Show_data td').eq(5).text(data[data.length-1-i].appointmentTime);
+                    $('tr.Show_data td').eq(6).text(data[data.length-1-i].appointmentPhone);
+                    $('tr.Show_data td').eq(7).text(data[data.length-1-i].conductor);
+                    $('tr.Show_data td').eq(8).text(data[data.length-1-i].appointmentId);
+                    $('.Show_data td').eq(1).prop("contenteditable",true);
+                    $('.Show_data td').eq(2).prop("contenteditable",true);
+                    $('.Show_data td').eq(3).prop("contenteditable",true);
+                    $('.Show_data td').eq(4).prop("contenteditable",true);
+                    $('.Show_data td').eq(5).prop("contenteditable",true);
+                    $('.Show_data td').eq(6).prop("contenteditable",true);
+                    $('.Show_data td').eq(7).prop("contenteditable",true);
+                }
+            }
+        });
+    });
+</script>
+<script>
+    //服务类别
+    $(document).on('click','.service_type',function () {
+        $('#Intable table').remove();
+        $('#ct100_divContentSearch table').remove();
+        $('#ct100_divContentOperator a').remove();
+        $('div.pageclass nav ul').remove();
+        $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="product"><tbody>\n' +
+            '         <tr class="success">\n' +
+            '           <th class="col-md-6"></th>\n'       +
+            '          <th class="col-md-6">类别名称</th>\n' +
+            '          </tr></tbody></table>');
+        $('#ct100_divContentOperator').append('<a class="btn btn-info"id="st_insert"><span class="glyphicon glyphicon-plus"></span>添加</a>\n' +
+            '        <a class="btn btn-danger" id="st_update"><span class="glyphicon glyphicon-pencil"></span>删除</a>');
+        $('div.pageclass nav').append('<ul class="pagination pagination-sm" id="st_page">\n' +
+            '                <li id="pageUp">\n' +
+            '                    <a href="#" aria-label="Previous">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '                <li class="active"><a href="#" >1</a></li>\n' +
+            '                <li ><a href="#">2</a></li>\n' +
+            '                <li><a href="#">3</a></li>\n' +
+            '                <li><a href="#">4</a></li>\n' +
+            '                <li><a href="#">5</a></li>\n' +
+            '                <li><a href="#">6</a></li>\n' +
+            '                <li><a href="#">7</a></li>\n' +
+            '                <li><a href="#">8</a></li>\n' +
+            '                <li><a href="#">9</a></li>\n' +
+            '                <li id="pageDown">\n' +
+            '                    <a href="#" aria-label="Next">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '            </ul>');
+        $.ajax({
+            url:"/JSON/ServiceType",
+            type:"post",
+            data:{},
+            async:false,//请求是否同步，false为异步即后面的执行不会等待ajax返回结果
+            success:function (data) {
+                for(var i=0;i<data.length;i++)
+                {
+                    $('tr.success').after('<tr><td><input type="checkbox" ></td>\n' +
+                        '          <td></td>\n' +
+                        '          </tr>');
+                    $('tr.success').next().addClass('Show_data');
+                    $('tr.Show_data td').eq(1).text(data[data.length-1-i]);
+
+                }
+            }
+        });
+    });
+
+</script>
+<script>
+    //商品类别
+    $(document).on('click','.product_type',function () {
+        $('#Intable table').remove();
+        $('#ct100_divContentSearch table').remove();
+        $('#ct100_divContentOperator a').remove();
+        $('div.pageclass nav ul').remove();
+        $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="product"><tbody>\n' +
+            '         <tr class="success">\n' +
+            '           <th class="col-md-6"></th>\n'       +
+            '          <th class="col-md-6">类别名称</th>\n' +
+            '          </tr></tbody></table>');
+        $('#ct100_divContentOperator').append('<a class="btn btn-info"id="pt_insert"><span class="glyphicon glyphicon-plus"></span>添加</a>\n' +
+            '        <a class="btn btn-danger" id="pt_update"><span class="glyphicon glyphicon-pencil"></span>删除</a>');
+        $('div.pageclass nav').append('<ul class="pagination pagination-sm" id="pt_page">\n' +
+            '                <li id="pageUp">\n' +
+            '                    <a href="#" aria-label="Previous">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '                <li class="active"><a href="#" >1</a></li>\n' +
+            '                <li ><a href="#">2</a></li>\n' +
+            '                <li><a href="#">3</a></li>\n' +
+            '                <li><a href="#">4</a></li>\n' +
+            '                <li><a href="#">5</a></li>\n' +
+            '                <li><a href="#">6</a></li>\n' +
+            '                <li><a href="#">7</a></li>\n' +
+            '                <li><a href="#">8</a></li>\n' +
+            '                <li><a href="#">9</a></li>\n' +
+            '                <li id="pageDown">\n' +
+            '                    <a href="#" aria-label="Next">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '            </ul>');
+        $.ajax({
+            url:"/JSON/ProductType",
+            type:"post",
+            data:{},
+            async:false,//请求是否同步，false为异步即后面的执行不会等待ajax返回结果
+            success:function (data) {
+                for(var i=0;i<data.length;i++)
+                {
+                    $('tr.success').after('<tr><td><input type="checkbox" ></td>\n' +
+                        '          <td></td>\n' +
+                        '          </tr>');
+                    $('tr.success').next().addClass('Show_data');
+                    $('tr.Show_data td').eq(1).text(data[data.length-1-i]);
+
+                }
+            }
+        });
+    });
+</script>
+<script>
+    //消费表
+    $(document).on('click','.consume',function () {
+    $('#Intable table').remove();
+        $('#ct100_divContentSearch table').remove();
+        $('#ct100_divContentOperator a').remove();
+        $('div.pageclass nav ul').remove();
+        $('#ct100_divContentSearch').append('<table id="MemTypetotal"><tbody><tr>\n' +
+            '            <td>账单单号:</td><td style="margin: 0px 10px 0 10px;display: block;"><input name="typeName1" type="text" placeholder="输入单号查询" style="height: 32px; width: 194px; display: inline;"></td>\n' +
+            '                            <td> <a class="btn btn-info" style="width: 80px;" id="c_select"><span class="glyphicon glyphicon-search" style="float: left;"></span>查询</a>\n' +
+            '                            </td>                                                    \n' +
+            '          </tr></tbody></table>');
+        $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="product"><tbody>\n' +
+            '         <tr class="success">\n' +
+            '           <th></th>\n'  +
+            '          <th>结账时间</th>\n' +
+            '          <th>会员姓名</th>\n' +
+            '          <th>消费产品</th>\n' +
+            '          <th>售价</th>\n' +
+            '          <th>数量</th>\n' +
+            '          <th>总额</th>\n' +
+            '          <th>结账方式</th>\n' +
+            '          <th>是否结账</th>\n' +
+            '          <th>单号</th>\n' +
+            '          </tr></tbody></table>');
+        $('#ct100_divContentOperator').append('<a class="btn btn-info" id="c_insert"><span class="glyphicon glyphicon-plus"></span>结账</a>\n' +
+            '        <a class="btn btn-danger"id="c_delete"><span class="glyphicon glyphicon-remove"></span>删除</a>\n' +
+            '        <a class="btn btn-warning" id="c_export"><span class="glyphicon glyphicon-export"></span>导出</a>');
+        $('div.pageclass nav').append('<ul class="pagination pagination-sm" id="c_page">\n' +
+            '                <li id="pageUp">\n' +
+            '                    <a href="#" aria-label="Previous">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '                <li class="active"><a href="#" >1</a></li>\n' +
+            '                <li ><a href="#">2</a></li>\n' +
+            '                <li><a href="#">3</a></li>\n' +
+            '                <li><a href="#">4</a></li>\n' +
+            '                <li><a href="#">5</a></li>\n' +
+            '                <li><a href="#">6</a></li>\n' +
+            '                <li><a href="#">7</a></li>\n' +
+            '                <li><a href="#">8</a></li>\n' +
+            '                <li><a href="#">9</a></li>\n' +
+            '                <li id="pageDown">\n' +
+            '                    <a href="#" aria-label="Next">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '            </ul>');
+        $.ajax({
+            url:"/JSON/Consume",
+            type:"post",
+            data:{},
+            async:false,//请求是否同步，false为异步即后面的执行不会等待ajax返回结果
+            success:function (data) {
+                for(var i=0;i<data.length;i++)
+                {
+                    $('tr.success').after('<tr><td><input type="checkbox" ></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          <td></td>\n' +
+                        '          </tr>');
+                    $('tr.success').next().addClass('Show_data');
+                    $('tr.Show_data td').eq(1).text(data[data.length-1-i].consumeDate);
+                    $('tr.Show_data td').eq(2).text(data[data.length-1-i].memberName);
+                    $('tr.Show_data td').eq(3).text(data[data.length-1-i].productName);
+                    $('tr.Show_data td').eq(4).text(data[data.length-1-i].price);
+                    $('tr.Show_data td').eq(5).text(data[data.length-1-i].number);
+                    $('tr.Show_data td').eq(6).text(data[data.length-1-i].number*data[data.length-1-i].price);
+                    $('tr.Show_data td').eq(7).text(data[data.length-1-i].paymentMethod);
+                    $('tr.Show_data td').eq(8).text(data[data.length-1-i].settleAccounts);
+                    $('tr.Show_data td').eq(9).text(data[data.length-1-i].consumeId);
+                }
+            }
+        });
+});
+    //删除消费单
+    $(document).on('click','#c_delete',function(){
+        var message=confirm("确定要删除？");
+        var count=0;
+        var consumeId;
+        if(message==true){
+            $("input[type='checkbox']").each(function() {
+                if(this.checked==true)
+                {  count++;
+                    consumeId=$(this).parent().next().next().next().next().next().next().next().next().next().text();
+                    console.log(consumeId);
+                }
+            });
+            if(count==1)
+            {
+                $.ajax({
+                    url:"/JSON/DeleteConsume",
+                    type:"Post",
+                    data:{consumeId:consumeId},
+                    success:function(data){
+                        if(data==1)
+                            alert("数据已删除,请刷新!");
+                        else{
+                            alert("删除失败");
+                        }
+                    }
+                });
+            }
+            else
+            {
+                alert("删除失败！请检查是否多选或者无选择!");
+            }
+
+        }
+
+    });
+</script>
+<script>
+      // 库存统计
+      $(document).on('click','.w_ware',function () {
+          $('#Intable table').remove();
+          $('#ct100_divContentSearch table').remove();
+          $('#ct100_divContentOperator a').remove();
+          $('div.pageclass nav ul').remove();
+          $('#ct100_divContentSearch').append('<table id="MemTypetotal"><tbody><tr>\n' +
+              '            <td>账单单号:</td><td style="margin: 0px 10px 0 10px;display: block;"><input name="typeName1" type="text" placeholder="输入商品编号查询" style="height: 32px; width: 194px; display: inline;"></td>\n' +
+              '                            <td> <a class="btn btn-info" style="width: 80px;" id="w_select"><span class="glyphicon glyphicon-search" style="float: left;"></span>查询</a>\n' +
+              '                            </td>                                                    \n' +
+              '          </tr></tbody></table>');
+          $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="product"><tbody>\n' +
+              '         <tr class="success">\n' +
+              '           <th></th>\n'       +
+              '          <th>商品编号</th>\n' +
+              '          <th>商品名称</th>\n' +
+              '          <th>商品类别</th>\n' +
+              '          <th>商品进价</th>\n' +
+              '          <th>商品售价</th>\n' +
+              '          <th>库存数量</th>\n' +
+              '          </tr></tbody></table>');
+          $('#ct100_divContentOperator').append('<a class="btn btn-info" id="w_insert"><span class="glyphicon glyphicon-plus"></span>入库</a>\n' +
+              '        <a class="btn btn-danger"id="w_delete"><span class="glyphicon glyphicon-remove"></span>删除</a>\n' +
+              '        <a class="btn btn-warning" id="w_export"><span class="glyphicon glyphicon-export"></span>导出</a>');
+          $('div.pageclass nav').append('<ul class="pagination pagination-sm" id="w_page">\n' +
+              '                <li id="pageUp">\n' +
+              '                    <a href="#" aria-label="Previous">\n' +
+              '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+              '                    </a>\n' +
+              '                </li>\n' +
+              '                <li class="active"><a href="#" >1</a></li>\n' +
+              '                <li ><a href="#">2</a></li>\n' +
+              '                <li><a href="#">3</a></li>\n' +
+              '                <li><a href="#">4</a></li>\n' +
+              '                <li><a href="#">5</a></li>\n' +
+              '                <li><a href="#">6</a></li>\n' +
+              '                <li><a href="#">7</a></li>\n' +
+              '                <li><a href="#">8</a></li>\n' +
+              '                <li><a href="#">9</a></li>\n' +
+              '                <li id="pageDown">\n' +
+              '                    <a href="#" aria-label="Next">\n' +
+              '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+              '                    </a>\n' +
+              '                </li>\n' +
+              '            </ul>');
+          $.ajax({
+              url:"/JSON/Warehouse",
+              type:"post",
+              data:{},
+              async:false,//请求是否同步，false为异步即后面的执行不会等待ajax返回结果
+              success:function (data) {
+                  for(var i=0;i<data.length;i++)
+                  {
+                      $('tr.success').after('<tr><td><input type="checkbox" ></td>\n' +
+                          '          <td></td>\n' +
+                          '          <td></td>\n' +
+                          '          <td></td>\n' +
+                          '          <td></td>\n' +
+                          '          <td></td>\n' +
+                          '          <td></td>\n' +
+                          '          </tr>');
+                      $('tr.success').next().addClass('Show_data');
+                      $('tr.Show_data td').eq(1).text(data[data.length-1-i].productId);
+                      $('tr.Show_data td').eq(2).text(data[data.length-1-i].productName);
+                      $('tr.Show_data td').eq(3).text(data[data.length-1-i].productType);
+                      $('tr.Show_data td').eq(4).text(data[data.length-1-i].purchchasingPrice);
+                      $('tr.Show_data td').eq(5).text(data[data.length-1-i].sellPrice);
+                      $('tr.Show_data td').eq(6).text(data[data.length-1-i].stockNumber);
+                  }
+              }
+          });
+      });
+      //商品进库
+    $(document).on('click','#w_insert',function () {
+        var productId=prompt("请输入商品ID")
+        var number;
+         if(productId!="")
+              numbers=prompt("请输入进货数量！");
+         $.ajax({
+             url:"/JSON/InsertWare",
+             type:"post",
+             data: {
+                 productId: productId,
+                 numbers:numbers
+             },
+             success:function (data) {
+                 if(data==1)
+                     alert("进货成功！");
+                 else
+                     alert("进货失败");
+             }
+         });
+    });
+</script>
+<script>
+    //进货统计
+    $(document).on('click','.s_stock',function () {
+        $('#Intable table').remove();
+        $('#ct100_divContentSearch table').remove();
+        $('#ct100_divContentOperator a').remove();
+        $('div.pageclass nav ul').remove();
+        $('#ct100_divContentSearch').append('<table id="membertotal">\n' +
+            '            <tbody>\n' +
+            '            <tr>\n' +
+            '                <td><input name="textName" type="text" placeholder="请输入商品ID" style="height: 32px; width: 194px; display: inline;"></td>\n' +
+            '                <td> <a class="btn btn-info" style="width: 80px;" id="select"><span class="glyphicon glyphicon-search" style="float: left;"></span>查询</a>\n' +
+            '                </td>\n' +
+            '            </tr>\n' +
+            '            </tbody>\n' +
+            '        </table>');
+        $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="Mem">\n' +
+            '                <tbody>\n' +
+            '                        <tr class="success">\n' +
+            '                            <th></th>\n' +
+            '                            <th>进库时间</th>\n' +
+            '                            <th>商品编号</th>\n' +
+            '                            <th>商品名称</th>\n' +
+            '                            <th>商品分类</th>\n' +
+            '                            <th>商品进价</th>\n' +
+            '                            <th>进货数量</th>\n' +
+            '                            <th>操作员</th>\n' +
+            '                            <th>进货单号</th>\n' +
+            '                        </tr></tbody></table>');
+        $('#ct100_divContentOperator').append(
+            '        <a class="btn btn-danger" id="st_update"><span class="glyphicon glyphicon-pencil"></span>修改</a>\n' +
+            '        <a class="btn btn-warning" id="st_export"><span class="glyphicon glyphicon-export"></span>导出</a>');
+        $('div.pageclass nav').append('<ul class="pagination pagination-sm" id="st_page">\n' +
+            '                <li id="pageUp">\n' +
+            '                    <a href="#" aria-label="Previous">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '                <li class="active"><a href="#" >1</a></li>\n' +
+            '                <li ><a href="#">2</a></li>\n' +
+            '                <li><a href="#">3</a></li>\n' +
+            '                <li><a href="#">4</a></li>\n' +
+            '                <li><a href="#">5</a></li>\n' +
+            '                <li><a href="#">6</a></li>\n' +
+            '                <li><a href="#">7</a></li>\n' +
+            '                <li><a href="#">8</a></li>\n' +
+            '                <li><a href="#">9</a></li>\n' +
+            '                <li id="pageDown">\n' +
+            '                    <a href="#" aria-label="Next">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '            </ul>');
+        $.ajax({
+            url: "/JSON/Stock",
+            data: {},
+            type: "POST",
+            success: function (data) {
+                $('.Show_data').remove();
+                if (data == '')
+                    alert("数据持续更新中!");
+                else {
+                    for (var i = 0; i < data.length; i++) {
+                        $('tr.success').after('<tr><td><input type="checkbox"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>')
+                        $('tr.success').next().addClass('Show_data');
+                        $('.Show_data td').eq(1).text(data[data.length - 1 - i].stockDate);
+                        $('.Show_data td').eq(2).text(data[data.length - 1 - i].productId);
+                        $('.Show_data td').eq(3).text(data[data.length - 1 - i].productName);
+                        $('.Show_data td').eq(4).text(data[data.length - 1 - i].productType);
+                        $('.Show_data td').eq(5).text(data[data.length - 1 - i].purchasePrice);
+                        $('.Show_data td').eq(6).text(data[data.length - 1 - i].stockNumbers);
+                        $('.Show_data td').eq(7).text(data[data.length - 1 - i].employees);
+                        $('.Show_data td').eq(8).text(data[data.length - 1 - i].stockId);
+                        $('.Show_data td').eq(1).prop("contenteditable", true);
+                        $('.Show_data td').eq(2).prop("contenteditable", true);
+                        $('.Show_data td').eq(3).prop("contenteditable", true);
+                        $('.Show_data td').eq(4).prop("contenteditable", true);
+                        $('.Show_data td').eq(5).prop("contenteditable", true);
+                        $('.Show_data td').eq(6).prop("contenteditable", true);
+                        $('.Show_data td').eq(7).prop("contenteditable", true);
+                    }
+                }
+            }
+
+        });
+    });
+</script>
+<script>
+    //员工管理
+    $(document).on('click','.e_employees',function () {
+        $('#Intable table').remove();
+        $('#ct100_divContentSearch table').remove();
+        $('#ct100_divContentOperator a').remove();
+        $('div.pageclass nav ul').remove();
+        $('#ct100_divContentSearch').append('<table id="membertotal">\n' +
+            '            <tbody>\n' +
+            '            <tr>\n' +
+            '                <td><input name="textName" type="text" placeholder="员工编号" style="height: 32px; width: 194px; display: inline;"></td>\n' +
+            '                <td> <select id="selectType">\n' +
+            '                    <option value="">员工类型</option>\n' +
+            '                </select></td>\n' +
+            '                <td> <select id="counselorType">\n' +
+            '                    <option value="">会籍顾问</option>\n' +
+            '                </select></td>\n' +
+            '                <td>每页显示<input name="page" type="text" value="10" style="width: 34px;padding-left: 5px;\n' +
+            '                                                                              padding-right: 5px;">条</td>\n' +
+            '                <td> <a class="btn btn-info" style="width: 80px;" id="ee_select"><span class="glyphicon glyphicon-search" style="float: left;"></span>查询</a>\n' +
+            '                </td>\n' +
+            '            </tr>\n' +
+            '            </tbody>\n' +
+            '        </table>');
+        $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="Mem">\n' +
+            '                <tbody>\n' +
+            '                        <tr class="success">\n' +
+            '                            <th></th>\n' +
+            '                            <th>员工编号</th>\n' +
+            '                            <th>员工姓名</th>\n' +
+            '                            <th>员工类型</th>\n' +
+            '                            <th>性别</th>\n' +
+            '                            <th>联系电话</th>\n' +
+            '                            <th>加入时间</th>\n' +
+            '                        </tr></tbody></table>');
+        $('#ct100_divContentOperator').append('<a class="btn btn-info" id="ee_insert"><span class="glyphicon glyphicon-plus"></span>添加</a>\n' +
+            '        <a class="btn btn-danger"id="ee_delete"><span class="glyphicon glyphicon-remove"></span>删除</a>\n' +
+            '        <a class="btn btn-warning" id="ee_export"><span class="glyphicon glyphicon-export"></span>导出</a>');
+        $('div.pageclass nav').append('<ul class="pagination pagination-sm" id=ee_page">\n' +
+            '                <li id="pageUp">\n' +
+            '                    <a href="#" aria-label="Previous">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '                <li class="active"><a href="#" >1</a></li>\n' +
+            '                <li ><a href="#">2</a></li>\n' +
+            '                <li><a href="#">3</a></li>\n' +
+            '                <li><a href="#">4</a></li>\n' +
+            '                <li><a href="#">5</a></li>\n' +
+            '                <li><a href="#">6</a></li>\n' +
+            '                <li><a href="#">7</a></li>\n' +
+            '                <li><a href="#">8</a></li>\n' +
+            '                <li><a href="#">9</a></li>\n' +
+            '                <li id="pageDown">\n' +
+            '                    <a href="#" aria-label="Next">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '            </ul>');
+        $.ajax({
+            url: "/JSON/Employees",
+            data: {},
+            type: "POST",
+            success: function (data) {
+                $('.Show_data').remove();
+                if (data == '')
+                    alert("数据持续更新中!");
+                else {
+                    for (var i = 0; i < data.length; i++) {
+                        $('tr.success').after('<tr><td><input type="checkbox"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>')
+                        $('tr.success').next().addClass('Show_data');
+                        $('.Show_data td').eq(1).text(data[data.length - 1 - i].employeeId);
+                        $('.Show_data td').eq(2).text(data[data.length - 1 - i].employeeName);
+                        $('.Show_data td').eq(3).text(data[data.length - 1 - i].employeeType);
+                        $('.Show_data td').eq(4).text(data[data.length - 1 - i].employeeSex);
+                        $('.Show_data td').eq(5).text(data[data.length - 1 - i].employeePhone);
+                        $('.Show_data td').eq(6).text(data[data.length - 1 - i].employeeDate);
+
+
+                        $('.Show_data td').eq(2).prop("contenteditable", true);
+                        $('.Show_data td').eq(3).prop("contenteditable", true);
+                        $('.Show_data td').eq(4).prop("contenteditable", true);
+                        $('.Show_data td').eq(5).prop("contenteditable", true);
+                        $('.Show_data td').eq(6).prop("contenteditable", true);
+
+                    }
+                }
+            }
+
+        });
+    });
+    //点击出现添加员工管理界面
+    $(document).on('click','#ee_insert',function () {
+            $('#E_regist').css({
+                "display":"block"
+            });
+            $('.hidden1').css({
+                "display":"block"
+            });
+        });
+        $(document).on('click','#E_exit',function () {
+            $('#E_regist').css({
+                "display":"none"
+            });
+            $('.hidden1').css({
+                "display":"none"
+            });
+        });
+        $(document).on('click','#E_spanclose',function () {
+            $('#E_regist').css({
+                "display":"none"
+            });
+            $('.hidden1').css({
+                "display":"none"
+            });
+        });
+        //员工类型展示
+    $(document).on('click','.e_employeesType',function () {
+        $('#Intable table').remove();
+        $('#ct100_divContentSearch table').remove();
+        $('#ct100_divContentOperator a').remove();
+        $('div.pageclass nav ul').remove();
+
+        $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="Mem">\n' +
+            '                <tbody>\n' +
+            '                        <tr class="success">\n' +
+            '                            <th></th>\n' +
+
+            '                            <th class="col-md-6">员工类型</th>\n' +
+            '                        </tr></tbody></table>');
+        $('#ct100_divContentOperator').append('<a class="btn btn-info" id="ee_insert"><span class="glyphicon glyphicon-plus"></span>添加</a>\n' +
+            '        <a class="btn btn-danger"id="ee_delete"><span class="glyphicon glyphicon-remove"></span>删除</a>\n' +
+            '        <a class="btn btn-warning" id="ee_export"><span class="glyphicon glyphicon-export"></span>导出</a>');
+        $('div.pageclass nav').append('<ul class="pagination pagination-sm" id=eet_page">\n' +
+            '                <li id="pageUp">\n' +
+            '                    <a href="#" aria-label="Previous">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '                <li class="active"><a href="#" >1</a></li>\n' +
+            '                <li ><a href="#">2</a></li>\n' +
+            '                <li><a href="#">3</a></li>\n' +
+            '                <li><a href="#">4</a></li>\n' +
+            '                <li><a href="#">5</a></li>\n' +
+            '                <li><a href="#">6</a></li>\n' +
+            '                <li><a href="#">7</a></li>\n' +
+            '                <li><a href="#">8</a></li>\n' +
+            '                <li><a href="#">9</a></li>\n' +
+            '                <li id="pageDown">\n' +
+            '                    <a href="#" aria-label="Next">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '            </ul>');
+        $.ajax({
+            url: "/JSON/EmployeesType",
+            data: {},
+            type: "POST",
+            success: function (data) {
+                $('.Show_data').remove();
+                if (data == '')
+                    alert("数据持续更新中!");
+                else {
+                    for (var i = 0; i < data.length; i++) {
+                        $('tr.success').after('<tr><td><input type="checkbox"></td><td></td></tr>')
+                        $('tr.success').next().addClass('Show_data');
+                        $('.Show_data td').eq(1).text(data[data.length - 1 - i]);
+                    }
+                }
+            }
+
+        });
+    });
+    //确定添加员工
+    $(document).on('click','#Insert_Employee',function () {
+       var  employeeId=$("input[name='employeeId']").val();
+       var employeeName=$("input[name='employeeName']").val();
+       var  employeeType=$("#employeeType option:selected").val();
+        var  employeeSex=$("#employeeSex option:selected").val();
+        var employeePhone=$("input[name='employeePhone']").val();
+        var employeeDate=$("input[name='employeeDate']").val();
+        $.ajax({
+            url:"/JSON/Insert_Employee",
+            type:"POST",
+            data:JSON.stringify({
+                employeeId:employeeId,
+                employeeName:employeeName,
+                employeeType:employeeType,
+                employeeSex:employeeSex,
+                employeePhone:employeePhone,
+                employeeDate:employeeDate
+            }),
+            datatype:"json",
+            contentType:"application/json;charset=utf-8",
+            success:function (data) {
+                if(data==1) {
+                    alert("添加成功！");
+                }
+                else
+                    alert("添加失败，请检查会员编号是否重复");
+            }
+        });
+    });
+    //删除员工
+    $(document).on('click','#ee_delete',function () {
+        var message=confirm("确定要删除？");
+        var count=0;
+        var employeeId;
+        if(message==true){
+            $("input[type='checkbox']").each(function() {
+                if(this.checked==true)
+                {  count++;
+                    employeeId=$(this).parent().next().text();
+                }
+            });
+            if(count==1)
+            {
+                $.ajax({
+                    url:"/JSON/Delete_Employee",
+                    type:"Post",
+                    data:{employeeId:employeeId},
+                    success:function(data){
+                        if(data==1)
+                            alert("数据已删除,请刷新!");
+                        else{
+                            alert("删除失败");
+                        }
+                    }
+                });
+            }
+            else
+            {
+                alert("删除失败！请检查是否多选或者无选择!");
+            }
+
+        }
+    });
+    $(document).on('click','.user_record',function () {
+        $('#Intable table').remove();
+        $('#ct100_divContentSearch table').remove();
+        $('#ct100_divContentOperator a').remove();
+        $('div.pageclass nav ul').remove();
+
+        $('#Intable').append('<table class="GridViewTable table table-hover table-striped" id="Mem">\n' +
+            '                <tbody>\n' +
+            '                        <tr class="success">\n' +
+            '                            <th></th>\n' +
+            '                            <th>编号</th>\n' +
+            '                            <th>登录人</th>\n' +
+            '                            <th>登录时间</th>\n' +
+            '                            <th>IP</th>\n' +
+            '                            <th>类型</th>\n' +
+            '                        </tr></tbody></table>');
+        $('#ct100_divContentOperator').append('<a class="btn btn-danger"id="l_delete"><span class="glyphicon glyphicon-remove"></span>删除</a>\n' +
+            '        <a class="btn btn-warning" id="l_export"><span class="glyphicon glyphicon-export"></span>导出</a>');
+        $('div.pageclass nav').append('<ul class="pagination pagination-sm" id=l_page">\n' +
+            '                <li id="pageUp">\n' +
+            '                    <a href="#" aria-label="Previous">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&laquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '                <li class="active"><a href="#" >1</a></li>\n' +
+            '                <li ><a href="#">2</a></li>\n' +
+            '                <li><a href="#">3</a></li>\n' +
+            '                <li><a href="#">4</a></li>\n' +
+            '                <li><a href="#">5</a></li>\n' +
+            '                <li><a href="#">6</a></li>\n' +
+            '                <li><a href="#">7</a></li>\n' +
+            '                <li><a href="#">8</a></li>\n' +
+            '                <li><a href="#">9</a></li>\n' +
+            '                <li id="pageDown">\n' +
+            '                    <a href="#" aria-label="Next">\n' +
+            '                        <span aria-hidden="true" style="color: #018F93;">&raquo;</span>\n' +
+            '                    </a>\n' +
+            '                </li>\n' +
+            '            </ul>');
+        $.ajax({
+            url: "/JSON/Loginrecord",
+            data: {},
+            type: "POST",
+            success: function (data) {
+                $('.Show_data').remove();
+                if (data == '')
+                    alert("数据持续更新中!");
+                else {
+                    for (var i = 0; i < data.length; i++) {
+                        $('tr.success').after('<tr><td><input type="checkbox"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>')
+                        $('tr.success').next().addClass('Show_data');
+                        $('.Show_data td').eq(1).text(data[data.length - 1 - i].loginId);
+                        $('.Show_data td').eq(2).text(data[data.length - 1 - i].loginName);
+                        $('.Show_data td').eq(3).text(data[data.length - 1 - i].loginDate);
+                        $('.Show_data td').eq(4).text(data[data.length - 1 - i].loginIp);
+                        $('.Show_data td').eq(5).text(data[data.length - 1 - i].loginType);
+                        $('.Show_data td').eq(2).prop("contenteditable", true);
+                        $('.Show_data td').eq(3).prop("contenteditable", true);
+                        $('.Show_data td').eq(4).prop("contenteditable", true);
+                        $('.Show_data td').eq(5).prop("contenteditable", true);
+                        $('.Show_data td').eq(6).prop("contenteditable", true);
+
+                    }
+                }
+            }
+
+        });
+    });
+</script>
+<script>//导出文件
+$('#export').click(function () {
+    var meassage=confirm("确定要导出文件吗？")
+    if(meassage==true)
+    {
+        $("#Mem").table2excel({
+            exclude  : ".noExl",                                       //过滤位置的 css 类名
+            filename : "Exce会员信息" + new Date() + ".xls",        //文件名称
+            name: "Excel Document Name.xlsx",
+            exclude_img: true,
+            exclude_links: true,
+            exclude_inputs: true
+        });
+    }
+});
+</script>
+<script>//顾问数据绑定
+function counselorType(){
+    var optionJson=[];
+    $.ajax({
+        type: "post",
+        url: "/JSON/memberCounselor",
+        data: {},
+        async:false,
+        success : function(data){
+            console.log(data);
+            optionJson=data;
+            var selectObj=document.getElementById("counselorType");
+            for(var i=0;i<optionJson.length;i++){
+                selectObj.add(new Option(optionJson[i],optionJson[i]));
+            }
+        }
+    });
+}
+counselorType(); //服务名数据绑定
+//员工类型数据绑定
+function EmployeesType(){
+    var optionJson=[];
+    $.ajax({
+        type: "post",
+        url: "/JSON/EmployeesType",
+        data: {},
+        async:false,
+        success : function(data){
+            console.log(data);
+            optionJson=data;
+            var selectObj=document.getElementById("employeeType");
+            for(var i=0;i<optionJson.length;i++){
+                selectObj.add(new Option(optionJson[i],optionJson[i]));
+            }
+        }
+    });
+}
+EmployeesType();//员工类型数据绑定
+function ServiceName() {
+    var optionJson=[];
+    $.ajax({
+        type:"post",
+        url:"/JSON/ServiceName",
+        data:{},
+        async:false,
+        success:function(data){
+            optionJson=data;
+            console.log(optionJson);
+            var selectObj=document.getElementById("A_Type");
+            for(var i=0;i<optionJson.length;i++)
+               selectObj.add(new Option(optionJson[i],optionJson[i]));
+        }
+    });
+
+}
+ServiceName();
+</script>
+</body>
+</html>

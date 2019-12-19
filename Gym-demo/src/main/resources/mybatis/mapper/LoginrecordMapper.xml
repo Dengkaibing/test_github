@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.respository.LoginrecordMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.Loginrecord">
+    <id column="Login_Id" jdbcType="INTEGER" property="loginId" />
+    <result column="Login_Name" jdbcType="VARCHAR" property="loginName" />
+    <result column="Login_Date" jdbcType="VARCHAR" property="loginDate" />
+    <result column="Login_IP" jdbcType="VARCHAR" property="loginIp" />
+    <result column="Login_Type" jdbcType="VARCHAR" property="loginType" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Login_Id, Login_Name, Login_Date, Login_IP, Login_Type
+  </sql>
+  <select id="selectByExample" parameterType="com.example.entity.LoginrecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from loginrecord
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from loginrecord
+    where Login_Id = #{loginId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from loginrecord
+    where Login_Id = #{loginId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.entity.LoginrecordExample">
+    delete from loginrecord
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.Loginrecord">
+    insert into loginrecord (Login_Id, Login_Name, Login_Date, 
+      Login_IP, Login_Type)
+    values (#{loginId,jdbcType=INTEGER}, #{loginName,jdbcType=VARCHAR}, #{loginDate,jdbcType=VARCHAR}, 
+      #{loginIp,jdbcType=VARCHAR}, #{loginType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.Loginrecord">
+    insert into loginrecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
+        Login_Id,
+      </if>
+      <if test="loginName != null">
+        Login_Name,
+      </if>
+      <if test="loginDate != null">
+        Login_Date,
+      </if>
+      <if test="loginIp != null">
+        Login_IP,
+      </if>
+      <if test="loginType != null">
+        Login_Type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
+        #{loginId,jdbcType=INTEGER},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginDate != null">
+        #{loginDate,jdbcType=VARCHAR},
+      </if>
+      <if test="loginIp != null">
+        #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginType != null">
+        #{loginType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.entity.LoginrecordExample" resultType="java.lang.Long">
+    select count(*) from loginrecord
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update loginrecord
+    <set>
+      <if test="record.loginId != null">
+        Login_Id = #{record.loginId,jdbcType=INTEGER},
+      </if>
+      <if test="record.loginName != null">
+        Login_Name = #{record.loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginDate != null">
+        Login_Date = #{record.loginDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginIp != null">
+        Login_IP = #{record.loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginType != null">
+        Login_Type = #{record.loginType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update loginrecord
+    set Login_Id = #{record.loginId,jdbcType=INTEGER},
+      Login_Name = #{record.loginName,jdbcType=VARCHAR},
+      Login_Date = #{record.loginDate,jdbcType=VARCHAR},
+      Login_IP = #{record.loginIp,jdbcType=VARCHAR},
+      Login_Type = #{record.loginType,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.Loginrecord">
+    update loginrecord
+    <set>
+      <if test="loginName != null">
+        Login_Name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginDate != null">
+        Login_Date = #{loginDate,jdbcType=VARCHAR},
+      </if>
+      <if test="loginIp != null">
+        Login_IP = #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginType != null">
+        Login_Type = #{loginType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Login_Id = #{loginId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.Loginrecord">
+    update loginrecord
+    set Login_Name = #{loginName,jdbcType=VARCHAR},
+      Login_Date = #{loginDate,jdbcType=VARCHAR},
+      Login_IP = #{loginIp,jdbcType=VARCHAR},
+      Login_Type = #{loginType,jdbcType=VARCHAR}
+    where Login_Id = #{loginId,jdbcType=INTEGER}
+  </update>
+</mapper>

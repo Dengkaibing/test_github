@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.respository.MembertypeMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.Membertype">
+    <id column="Type_Name" jdbcType="VARCHAR" property="typeName" />
+    <result column="product_Discount" jdbcType="DOUBLE" property="productDiscount" />
+    <result column="recharge_Money" jdbcType="INTEGER" property="rechargeMoney" />
+    <result column="given_Money" jdbcType="INTEGER" property="givenMoney" />
+    <result column="pot_Life" jdbcType="VARCHAR" property="potLife" />
+    <result column="valid_Days" jdbcType="VARCHAR" property="validDays" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Type_Name, product_Discount, recharge_Money, given_Money, pot_Life, valid_Days
+  </sql>
+  <select id="selectByExample" parameterType="com.example.entity.MembertypeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from membertype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="PageSize != null and PageSize !=0 and StartRow!=null">
+      limit  #{StartRow},#{PageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from membertype
+    where Type_Name = #{typeName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from membertype
+    where Type_Name = #{typeName,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.entity.MembertypeExample">
+    delete from membertype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.Membertype">
+    insert into membertype (Type_Name, product_Discount, recharge_Money, 
+      given_Money, pot_Life, valid_Days
+      )
+    values (#{typeName,jdbcType=VARCHAR}, #{productDiscount,jdbcType=DOUBLE}, #{rechargeMoney,jdbcType=INTEGER}, 
+      #{givenMoney,jdbcType=INTEGER}, #{potLife,jdbcType=VARCHAR}, #{validDays,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.Membertype">
+    insert into membertype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="typeName != null">
+        Type_Name,
+      </if>
+      <if test="productDiscount != null">
+        product_Discount,
+      </if>
+      <if test="rechargeMoney != null">
+        recharge_Money,
+      </if>
+      <if test="givenMoney != null">
+        given_Money,
+      </if>
+      <if test="potLife != null">
+        pot_Life,
+      </if>
+      <if test="validDays != null">
+        valid_Days,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="typeName != null">
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="productDiscount != null">
+        #{productDiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="rechargeMoney != null">
+        #{rechargeMoney,jdbcType=INTEGER},
+      </if>
+      <if test="givenMoney != null">
+        #{givenMoney,jdbcType=INTEGER},
+      </if>
+      <if test="potLife != null">
+        #{potLife,jdbcType=VARCHAR},
+      </if>
+      <if test="validDays != null">
+        #{validDays,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.entity.MembertypeExample" resultType="java.lang.Long">
+    select count(*) from membertype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update membertype
+    <set>
+      <if test="record.typeName != null">
+        Type_Name = #{record.typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productDiscount != null">
+        product_Discount = #{record.productDiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.rechargeMoney != null">
+        recharge_Money = #{record.rechargeMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.givenMoney != null">
+        given_Money = #{record.givenMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.potLife != null">
+        pot_Life = #{record.potLife,jdbcType=VARCHAR},
+      </if>
+      <if test="record.validDays != null">
+        valid_Days = #{record.validDays,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update membertype
+    set Type_Name = #{record.typeName,jdbcType=VARCHAR},
+      product_Discount = #{record.productDiscount,jdbcType=DOUBLE},
+      recharge_Money = #{record.rechargeMoney,jdbcType=INTEGER},
+      given_Money = #{record.givenMoney,jdbcType=INTEGER},
+      pot_Life = #{record.potLife,jdbcType=VARCHAR},
+      valid_Days = #{record.validDays,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.Membertype">
+    update membertype
+    <set>
+      <if test="productDiscount != null">
+        product_Discount = #{productDiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="rechargeMoney != null">
+        recharge_Money = #{rechargeMoney,jdbcType=INTEGER},
+      </if>
+      <if test="givenMoney != null">
+        given_Money = #{givenMoney,jdbcType=INTEGER},
+      </if>
+      <if test="potLife != null">
+        pot_Life = #{potLife,jdbcType=VARCHAR},
+      </if>
+      <if test="validDays != null">
+        valid_Days = #{validDays,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Type_Name = #{typeName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.Membertype">
+    update membertype
+    set product_Discount = #{productDiscount,jdbcType=DOUBLE},
+      recharge_Money = #{rechargeMoney,jdbcType=INTEGER},
+      given_Money = #{givenMoney,jdbcType=INTEGER},
+      pot_Life = #{potLife,jdbcType=VARCHAR},
+      valid_Days = #{validDays,jdbcType=VARCHAR}
+    where Type_Name = #{typeName,jdbcType=VARCHAR}
+  </update>
+</mapper>
