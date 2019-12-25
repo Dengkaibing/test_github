@@ -16,7 +16,7 @@
         <!--数据库连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/mysql?characterEncoding=utf8&amp;
-    serverTimezone=UTC&amp;useSSL=false" userId="root" password="123456">
+    serverTimezone=UTC&amp;useSSL=false" userId="root" password="dkb2219">
         </jdbcConnection>
         <!--默认false Java type resolver will always use java.math.BigDecimal if
             the database column is of type DECIMAL or NUMERIC. -->
@@ -36,13 +36,13 @@
         <!--生成SQLMAP文件 -->
         <sqlMapGenerator targetPackage="mybatis.mapper"
                          targetProject="src/main/resources">
-            <property name="enableSubPackages" value="false" />
+            <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
         <!--生成Dao文件 可以配置 type="XMLMAPPER"生成xml的dao实现 context id="DB2Tables" 修改targetRuntime="MyBatis3" -->
         <javaClientGenerator type="XMLMAPPER"
                              targetPackage="com.example.respository"
                              targetProject="src/main/java">
-            <property name="enableSubPackages" value="false" />
+            <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 <!--        <table tableName="member"></table>-->
 <!--        <table tableName="memberType"></table>-->
