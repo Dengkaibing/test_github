@@ -1,0 +1,26 @@
+mybatis:
+  #项目启动后，spring boot对mybatis的配置
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/config/mybatis-config.xml
+#数据源配置
+spring:
+  datasource:
+    username: root
+    password: dkb2219
+    url: jdbc:mysql://localhost:3306/mysql?characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#输出为JSON字符串，方便观察
+  jackson:
+    serialization:
+      indent-output: true
+  data:
+    rest:
+      base-path: /api
+#配置日志
+logging:
+  file:
+    path: log/mybatis-log
+  level:
+    root: info
+server:
+  port: 8888
