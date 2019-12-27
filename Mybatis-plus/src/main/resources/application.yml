@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    username: root
+    password: dkb2219
+    url: jdbc:mysql://localhost:3306/mysql?characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    serialization:
+      indent-output: true
+#mybatis-plus 配置 在控制台输出SQL语句
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 8888
+logging:
+  file:
+    path: log/mybatisPlus-log
+  level:
+    root: info
