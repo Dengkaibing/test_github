@@ -3,8 +3,6 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Person;
 import com.example.demo.service.impl.PersonServiceImpl;
-import freemarker.log.Logger;
-import org.hibernate.validator.internal.util.logging.Log;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -29,6 +26,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/demo/person")
 public class PersonController {
+    //进行日志管理
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(PersonController.class);
 
     @Autowired
@@ -38,6 +36,7 @@ public class PersonController {
     @ResponseBody
     public List<Person> List() {
         List<Person> list = personService.list();
+        logger.info("我在打印日志");
         return list;
     }
 

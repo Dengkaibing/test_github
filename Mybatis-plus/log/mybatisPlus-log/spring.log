@@ -248,3 +248,61 @@ java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check th
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.29.jar:9.0.29]
 	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_221]
 
+2019-12-27 15:04:23.544  INFO 20312 --- [main] com.example.demo.DemoApplication         : Starting DemoApplication on LAPTOP-N5DDMR3K with PID 20312 (F:\demo\test_github\Mybatis-plus\target\classes started by dkb in F:\demo\test_github\Mybatis-plus)
+2019-12-27 15:04:23.549  INFO 20312 --- [main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2019-12-27 15:04:26.282  INFO 20312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-12-27 15:04:26.299  INFO 20312 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-27 15:04:26.300  INFO 20312 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-27 15:04:26.539  INFO 20312 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-27 15:04:26.539  INFO 20312 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2872 ms
+2019-12-27 15:04:29.184  INFO 20312 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-27 15:04:30.078  INFO 20312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-12-27 15:04:30.084  INFO 20312 --- [main] com.example.demo.DemoApplication         : Started DemoApplication in 7.559 seconds (JVM running for 10.28)
+2019-12-27 15:05:03.464  INFO 20312 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-27 15:05:03.464  INFO 20312 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-12-27 15:05:03.470  INFO 20312 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2019-12-27 15:05:20.134  INFO 20312 --- [http-nio-8888-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-12-27 15:05:20.314  INFO 20312 --- [http-nio-8888-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-12-27 15:06:25.321  INFO 19312 --- [main] com.example.demo.DemoApplication         : Starting DemoApplication on LAPTOP-N5DDMR3K with PID 19312 (F:\demo\test_github\Mybatis-plus\target\classes started by dkb in F:\demo\test_github\Mybatis-plus)
+2019-12-27 15:06:25.327  INFO 19312 --- [main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2019-12-27 15:06:27.097  INFO 19312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-12-27 15:06:27.108  INFO 19312 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-27 15:06:27.109  INFO 19312 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-27 15:06:27.298  INFO 19312 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-27 15:06:27.299  INFO 19312 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1900 ms
+2019-12-27 15:06:29.202  INFO 19312 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-27 15:06:29.669  INFO 19312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-12-27 15:06:29.679  INFO 19312 --- [main] com.example.demo.DemoApplication         : Started DemoApplication in 5.044 seconds (JVM running for 6.967)
+2019-12-27 15:06:36.585  INFO 19312 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-27 15:06:36.585  INFO 19312 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-12-27 15:06:36.590  INFO 19312 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2019-12-27 15:06:36.652  INFO 19312 --- [http-nio-8888-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-12-27 15:06:36.735  INFO 19312 --- [http-nio-8888-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-12-27 15:06:36.784  INFO 19312 --- [http-nio-8888-exec-1] c.e.demo.controller.PersonController     : 我在打印日志
+2019-12-27 15:58:16.864  INFO 19840 --- [main] com.example.demo.DemoApplication         : Starting DemoApplication on LAPTOP-N5DDMR3K with PID 19840 (F:\demo\test_github\Mybatis-plus\target\classes started by dkb in F:\demo\test_github\Mybatis-plus)
+2019-12-27 15:58:16.868  INFO 19840 --- [main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2019-12-27 15:58:18.273  INFO 19840 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-12-27 15:58:18.284  INFO 19840 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-27 15:58:18.284  INFO 19840 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-27 15:58:18.416  INFO 19840 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-27 15:58:18.417  INFO 19840 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1487 ms
+2019-12-27 15:58:20.149  INFO 19840 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-27 15:58:20.514  INFO 19840 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-12-27 15:58:20.517  INFO 19840 --- [main] com.example.demo.DemoApplication         : Started DemoApplication in 4.203 seconds (JVM running for 5.714)
+2019-12-27 16:00:28.807  INFO 17348 --- [main] com.example.demo.DemoApplication         : Starting DemoApplication on LAPTOP-N5DDMR3K with PID 17348 (F:\demo\test_github\Mybatis-plus\target\classes started by dkb in F:\demo\test_github\Mybatis-plus)
+2019-12-27 16:00:28.812  INFO 17348 --- [main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2019-12-27 16:00:30.838  INFO 17348 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-12-27 16:00:30.847  INFO 17348 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-27 16:00:30.848  INFO 17348 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-27 16:00:30.969  INFO 17348 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-27 16:00:30.969  INFO 17348 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2095 ms
+2019-12-27 16:00:32.421  INFO 17348 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-27 16:00:32.731  INFO 17348 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-12-27 16:00:32.734  INFO 17348 --- [main] com.example.demo.DemoApplication         : Started DemoApplication in 4.497 seconds (JVM running for 5.905)
+2019-12-27 16:00:36.459  INFO 17348 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-27 16:00:36.460  INFO 17348 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-12-27 16:00:36.467  INFO 17348 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2019-12-27 16:00:36.528  INFO 17348 --- [http-nio-8888-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-12-27 16:00:36.617  INFO 17348 --- [http-nio-8888-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-12-27 16:00:36.665  INFO 17348 --- [http-nio-8888-exec-1] c.e.demo.controller.PersonController     : 我在打印日志
+2019-12-27 16:00:51.963  INFO 17348 --- [http-nio-8888-exec-3] c.e.demo.controller.PersonController     : 我在打印日志
