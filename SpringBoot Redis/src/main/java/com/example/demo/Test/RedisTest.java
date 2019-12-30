@@ -19,12 +19,18 @@ public class RedisTest {
 
     @Test
     public  void set(){
-        redisUtils.set("first_key","dkb");
+        System.out.println(redisUtils.set("first_key","dkb"));
     }
     @Test
     public void get(){
-        String value=redisUtils.get("first_key");
+        Object value=new String();
+               value =redisUtils.get("first_key");
         System.out.println(value);
+    }
+    @Test
+    public void expire(){
+       redisUtils.expire("first_key",20);
+        System.out.println(redisUtils.getExpire("first_key"));
     }
 
 }
