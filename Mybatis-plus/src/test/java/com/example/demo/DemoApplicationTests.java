@@ -4,9 +4,7 @@ package com.example.demo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.example.demo.entity.Person;
-import com.example.demo.entity.TestUser;
 import com.example.demo.mapper.PersonMapper;
-import com.example.demo.repository.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,22 +16,11 @@ import java.util.*;
 @SpringBootTest
 class DemoApplicationTests {
     @Autowired
-    private UserMapper userMapper;
-    @Autowired
     private PersonMapper personMapper;
 
     @Test
     void contextLoads() {
-        System.out.println(("----- selectAll method test ------"));
-        List<TestUser> userList = userMapper.selectList(null);
-        userList.forEach(System.out::println);
 
-        userMapper.insert(new TestUser(null, "邓凯", 1, "123@"));
-//      TestUser testUser=new TestUser(null,"ch",22,"95338");
-//      testUser.toString();
-        System.out.println(("----- selectAll method test ------"));
-        List<Person> personList = personMapper.selectList(null);
-        personList.forEach(System.out::println);
     }
 
     /**

@@ -67,6 +67,12 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+         <!--        使用Swagger2构建强大的API文档-->
+        <dependency>
+            <groupId>com.spring4all</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
+            <version>1.9.0.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>

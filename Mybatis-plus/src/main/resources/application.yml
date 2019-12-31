@@ -11,8 +11,9 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mybatisPlus/mapper/*.xml
 server:
-  port: 8888
+  port: 8080
 logging:
   file:
     path: log/mybatisPlus-log
