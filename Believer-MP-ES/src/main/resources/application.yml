@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.154.128:3306/mysql?characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    serialization:
+      indent-output: true
+  data:
+    elasticsearch:
+      cluster-name: my-application
+      cluster-nodes : 192.168.154.128:9300
+mybatis-plus:
+  mapper-locations: classPath:mybatisPlus/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  file:
+    path: log/Believer
+  level:
+    root: info
