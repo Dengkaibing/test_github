@@ -11,6 +11,8 @@ spring:
     elasticsearch:
       cluster-name: my-application
       cluster-nodes : 192.168.154.128:9300
+  mvc:
+    static-path-pattern: /**
 mybatis-plus:
   mapper-locations: classPath:mybatisPlus/mapper/*.xml
   configuration:
@@ -20,3 +22,4 @@ logging:
     path: log/Believer
   level:
     root: info
+

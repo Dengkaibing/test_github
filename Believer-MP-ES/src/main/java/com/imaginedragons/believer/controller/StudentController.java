@@ -3,7 +3,7 @@ package com.imaginedragons.believer.controller;
 
 import com.imaginedragons.believer.Esconfig.ESUtils;
 import com.imaginedragons.believer.entity.Student;
-import com.imaginedragons.believer.service.StudentRepository;
+import com.imaginedragons.believer.repository.StudentRepository;
 import com.imaginedragons.believer.service.impl.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
