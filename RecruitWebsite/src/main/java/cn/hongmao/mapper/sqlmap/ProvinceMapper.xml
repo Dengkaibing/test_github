@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hongmao.mapper.ProvinceMapper">
+<sql id="Base_Column">
+	PROVINCIALID,
+	PROVINCIALNAME
+</sql>
+<select id="findProvince" resultType="cn.hongmao.bean.Province">
+	SELECT <include refid="Base_Column"></include> FROM PROVINCIAL
+</select>
+<select id="findProvinceById" parameterType="Integer" resultType="cn.hongmao.bean.Province">
+	SELECT <include refid="Base_Column"></include> FROM PROVINCIAL WHERE PROVINCIALID=#{provincialID}
+</select>
+</mapper> 

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>项目信息</title>
+<script src="../../static/Hunter/js/JQuery.js" data-th-src="@{/Hunter/js/JQuery.js}"></script>
+<style type="text/css">
+body{
+	width: 95vw;
+	height: 100%;
+	position: relative;
+}
+h2,h4{
+text-align: center;
+}
+
+h4 a{
+	margin-top:20px;
+	display: block; 
+	color: white;
+	text-decoration: none;
+	font-size: 20px;
+}
+h4 a:hover{
+	color: blue;
+}
+p{
+	height:10px;
+	margin-right:10px;
+	text-align: right;
+}
+p>a{
+ 	position: absolute; 
+ 	top:20px; 
+ 	right:20px;
+	display: inline-block;
+	width:80px;
+	text-align:center;
+	border-radius: 15px;
+	text-decoration: none;
+	background: white;
+	color: black;
+}
+p>a:hover{
+	color: white;
+	background: none;
+}
+	table{
+	border: 1px solid black;
+	border-collapse: collapse;	
+	text-align: center;
+	margin: 50px auto;
+	}
+	th,td{
+	width:200px;
+	height:35px;
+	border: 1px solid black;
+		
+	}
+	td a{
+		width:60px;
+		height:25px;
+		text-align:center;
+		display:inline-block;
+		color:black;
+		text-decoration: none;
+		margin: 0 5px;
+		border-radius: 15px;
+		background: rgba(0, 0, 255, 0.31);
+	}
+	#delete:hover{
+		color: white;
+		background: #e20e0e;
+		cursor: pointer;
+	}
+	
+	#description:hover{
+		background: white;
+		
+	}
+	#ensure{
+		width: 200px;
+		height: 100px;
+		display: none; 
+		position: absolute;
+		top: 50%;
+		left: 35%;
+		background: white;
+		text-align: center;
+		line-height: 50px;
+		border-radius: 15px;
+	}
+	#misk{
+ 		width: 100%; 
+ 		height: 100%; 
+		background: rgb(0,0,0,0.5);
+		display: none; 
+		position: absolute;
+		top: 0
+	}
+</style>
+</head>
+<body>
+	<div data-th-if="${project.isEmpty()}">
+		<h2>暂无项目!</h2>
+		<h4><a data-th-href="@{/hunter/addProject}">添加项目</a></h4>
+			
+		
+	</div>
+	<div data-th-unless="${project.isEmpty()}">
+	<p><a data-th-href="@{/hunter/addProject}">添加项目</a></p>
+		<table>
+			<tr>
+				<th>序　　号</th>
+				<th>项目名称</th>
+				<th>项目详情</th>
+			</tr>
+			<tr data-th-each="pro,iterStat:${project}">
+				<td data-th-text="${iterStat.count}"></td>
+				<td data-th-text="${pro.projectName}"></td>
+				<td>
+					<a id="description" data-th-href="|@{/hunter/}${pro.projectId}|">详情</a>
+					<span hidden="true" data-th-text="${pro.projectId}"></span>
+					<a id="delete" class="del">删除</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="misk">
+		<div id="ensure">
+			<span>删除该项目?</span><br/>
+			<a><button>确定</button></a>
+			<button>取消</button>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(function(){
+		$(".del").click(function(){
+			$("#ensure,#misk").css({display:'block'});
+			$("#ensure a").eq(0).attr("href","/hunter/delete?projectId="+$(this).prev().html());
+			
+		});
+		
+		$("#ensure>button").click(function(){
+			$("#ensure,#misk").css({display:"none"});
+		});
+	});
+</script>
+</html>

@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>虹猫高端招聘</title>
+<!-- Stylesheets -->
+		<link data-th-href="@{/Zlog/css/bootstrap.css}" href="css/bootstrap.css" rel="stylesheet">
+		<link data-th-href="@{/Zlog/css/style.css}" href="css/style.css" rel="stylesheet">
+		<link data-th-href="@{/Zlog/css/responsive.css}" href="css/responsive.css" rel="stylesheet">
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+</head>
+
+<body>
+
+<div class="page-wrapper">
+    <!-- Preloader -->
+    <div class="preloader"><div class="icon"></div></div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <!-- Header Top -->
+        <div class="header-top">
+            <div class="auto-container clearfix">
+
+                <div class="top-left clearfix">
+                    <ul class="info-list">
+                        <li>找工作就去BOSS招聘</li>
+                    </ul>
+                </div>
+                  <!-- 博客facebook -->
+               <!-- <div class="top-right">
+                    <ul class="social-icons">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+						<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- Header Upper 头部跳转11111111111111111111111 -->
+        <div class="header-upper">
+            <div class="inner-container">
+                <div class="auto-container clearfix">
+                    <!--主题大Logo图标           -->
+                    <div class="logo-outer">
+                        <div class="logo"><a href="index.html"><img data-th-href="@{/Zlog/images/logo3.png}" src="Zlog/images/logo3.png" style="
+    width: 130px;
+" alt="" title="Gamon - Digital Gaming and Esports HTML Template"></a></div>
+                    </div>
+
+                    <!--Nav Box-->
+                    <div class="nav-outer clearfix">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler"><span class="icon flaticon-menu-1"></span></div>
+
+                        <!-- Main Menu -->
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix pull-left">
+                                    <li class="current"><a data-th-href="@{/index}" href="index.html">主页</a></li>
+									<li><a data-th-href="@{/company/home}" href="players.html">公司</a></li>
+                                    <li><a data-th-href="@{/job/home}" href="jobs.html">职位</a></li>
+                                </ul>
+
+                                <ul class="navigation pull-right clearfix">
+                                
+                                <li class="dropdown" data-th-if="${session.userInfo.status==0}"><a data-th-href="@{/hunter/show}">个人中心</a></li>
+                                <li class="dropdown" data-th-if="${session.userInfo.status==1}"><a data-th-href="@{/employer/main}">个人中心</a></li>
+                                
+                                    <li class="dropdown" data-th-if="${session.userInfo.status==0}"><a data-th-href="@{/job/home}" href="jobs.html">找工作</a></li>
+                                    <li class="dropdown" data-th-if="${session.userInfo.status==1}"><a data-th-href="@{/employer/main}">招聘</a></li>
+                                    <li><a data-th-href="|@{/}?userId=${session.userInfo.id}|" href="matches.html">消息</a>
+                                    </li>
+                                        
+                                    <li  class="dropdown" ><a >登陆/注册</a>
+                                       <ul>
+                                           <li><a href="/login.html">登陆</a></li>
+                                          <li><a href="/register.html">立即注册</a></li>
+                                       </ul>
+                                    </li>                           
+                                </ul>
+                            </div>
+                        </nav>
+                        <!-- Main Menu End-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Header Upper-->
+
+        <!-- Sticky Header 头部移动中跳转 -->
+        <div class="sticky-header">
+            <div class="auto-container clearfix">
+                <!--Logo图标-->
+                <div class="logo pull-left">
+                    <a href="index.html" title=""><img  data-th-src="@{/Zlog/images/logo3.png}" src="Zlog/images/logo3.png" style="width: 70px;" alt="" title=""></a>
+                </div>
+                <!--Right Col-->
+                <div class="pull-right">
+                    <!-- Main Menu -->
+                    <nav class="main-menu clearfix">
+                        <!--Keep This Empty / Menu will come through Javascript-->
+                    </nav><!-- Main Menu End-->
+                </div>
+            </div>
+        </div><!-- End Sticky Menu -->
+
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><span class="icon flaticon-close"></span></div>
+            
+            <nav class="menu-box">
+                <div class="nav-logo"><a href="index.html"><img src="Zlog/images/logo.png" alt="" title=""></a></div>
+                <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+				<!--Social Links-->
+				<div class="social-links">
+					<ul class="clearfix">
+						<li><a href="#"><span class="fab fa-twitter"></span></a></li>
+						<li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+						<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+						<li><a href="#"><span class="fab fa-instagram"></span></a></li>
+						<li><a href="#"><span class="fab fa-youtube"></span></a></li>
+					</ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+    </header>
+    <!-- End Main Header -->
+
+    <!-- Banner Section 主页海报 -->
+    <section class="banner-section">
+        <div class="banner-carousel owl-theme owl-carousel">
+            <!-- Slide Item -->
+            <div class="slide-item">
+            	<div class="image-layer" style="background-image:url(Zlog/images/first1.jpg)"></div>
+
+                <div class="auto-container">
+                    <div class="content-box">
+                        <h2>博闻强识 <br> 招贤纳士</h2>
+                        <div class="btn-box"><a href="#" class="theme-btn btn-style-one"><span class="btn-title">联系BOSS</span></a></div>
+                    </div>  
+                </div>
+            </div>
+
+            <!-- Slide Item -->
+            <div class="slide-item">
+            	<div class="image-layer" style="background-image:url(Zlog/images/first2.jpg)"></div>
+                <div class="auto-container">
+                    <div class="content-box">
+                        <h2>绽放异彩 <br></h2>
+                        <div class="btn-box"><a href="#" class="theme-btn btn-style-one"><span class="btn-title">联系BOSS</span></a></div>
+                    </div>  
+                </div>
+            </div>
+			
+			<!-- Slide Item -->
+            <div class="slide-item">
+            	<div class="image-layer" style="background-image:url(Zlog/images/first3.jpg)"></div>
+                <div class="auto-container">
+                    <div class="content-box">
+                        <h2>成功抉择 <br>美好前程</h2>
+                        <div class="btn-box"><a href="#" class="theme-btn btn-style-one"><span class="btn-title">联系BOSS</span></a></div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Banner Section -->
+
+	<!-- Welcome Section 求职查找栏 -->
+	<section class="welcome-section">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title centered">
+				<div class="title">企业热门招聘职业</div>
+				<h2>热门职业</h2>
+			</div>
+			
+			<div class="row clearfix">
+				
+				<!--Default Portfolio Item-->
+				<div class="default-portfolio-item col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+					<div class="inner-box hvr-bob">
+						<figure class="image-box"><img  src="Zlog/images/java1.png" alt=""></figure>
+						<!--Overlay Box-->
+						<div class="overlay-box">
+							<div class="overlay-inner">
+								<div class="content">
+									<h3><a href="#">JAVA <br>开发工程师</a></h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!--Default Portfolio Item-->
+				<div class="default-portfolio-item col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
+					<div class="inner-box hvr-bob">
+						<figure class="image-box"><img src="Zlog/images/an.jpg" alt=""></figure>
+						<!--Overlay Box-->
+						<div class="overlay-box">
+							<div class="overlay-inner">
+								<div class="content">
+									<h3><a href="#">Android <br>开发工程师</a></h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!--Default Portfolio Item-->
+				<div class="default-portfolio-item col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+					<div class="inner-box hvr-bob">
+						<figure class="image-box"><img src="Zlog/images/xs.jpg" alt=""></figure>
+						<!--Overlay Box-->
+						<div class="overlay-box">
+							<div class="overlay-inner">
+								<div class="content">
+									<h3><a href="#">销售 <br></a></h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<!-- Lower Box -->
+			<div class="lower-box">
+				<div class="text">Just do it</div>
+				<a href="about-clan.html" class="theme-btn btn-style-one"><span class="btn-title">查看更多职业</span></a>
+			</div>
+			
+		</div>
+	</section>
+	<!-- End Welcome Section  -->
+	
+	<!-- Gallery Section     热门公司招聘 -->
+	<section class="gallery-section" style="background-image:url(Zlog/images/background/2.jpg)">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title centered">
+				<div class="title">热门公司宣传</div>
+				<h2>热门公司宣传信息</h2>
+			</div>
+			
+			<div class="row clearfix">
+			
+				<!-- Column -->
+				<div class="column col-lg-6 col-md-12 col-sm-12">
+					
+					<!-- Gallery Block -->
+					<div class="gallery-block">
+						<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+							<div class="image">
+								<img src="Zlog/images/gallery/4.jpg" alt="" />
+								<div class="overlay-box">
+									<div class="overlay-inner">
+										<a href="Zlog/images/CD PROJEKT RED.mp4" class="lightbox-image play-box"><span class="flaticon-play-button"><i class="ripple"></i></span></a>
+										<div class="content">
+											<div class="title">Inner Mongolia Yili Industrial Group Limited by Share </div>
+											<h2><a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image">CD  PROJEKT<br></a></h2>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				
+				<!-- Column -->
+				<div class="column col-lg-6 col-md-12 col-sm-12">
+					
+					<!-- Gallery Block Two -->
+					<div class="gallery-block-two">
+						<div class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+							<div class="image hvr-bob">
+								<img src="Zlog/images/f8.jpg" alt="" />
+								<div class="overlay-box">
+									<a href="Zlog/images/CD PROJEKT RED.mp4" class="lightbox-image overlay-link"></a>
+									<h3><span class="icon flaticon-play-button"></span> 百度集团</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Gallery Block Two -->
+					<div class="gallery-block-two">
+						<div class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+							<div class="image hvr-bob">
+								<img src="Zlog/images/f2.jpg" alt="" />
+								<div class="overlay-box">
+									<a href="Zlog/images/CD PROJEKT RED.mp4" class="lightbox-image overlay-link"></a>
+									<h3><span class="icon flaticon-play-button"></span> 企鹅帝国</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			
+			</div>
+		</div>
+	</section>
+	<!-- End Gallery Section -->
+	
+	<!-- 热门招聘点选择 -->
+	<section class="matches-section">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title centered">
+				<div class="title">地点招聘</div>
+				<h2>城市热招</h2>
+			</div>
+			
+			<!-- Matches Info Tabs-->
+			<div class="matches-info-tabs">
+				<!-- Matches Tabs-->
+				<div class="matches-tabs tabs-box">
+				
+					<!--Tab Btns-->
+					<ul class="tab-btns tab-buttons clearfix">
+						<li data-tab="#prod-all" class="tab-btn active-btn"><span>北京</span></li>
+						<li data-tab="#prod-matches" class="tab-btn"><span>上海</span></li>
+						<li data-tab="#prod-results" class="tab-btn"><span>深圳</span></li>
+						<a data-tab="#prod-ck"  class="tab-btn" href="index.html"><span>查看更多热门城市</span></a>
+					</ul>
+					
+					<!--Tabs Container-->
+					<div class="tabs-content">
+						
+						<!--Tab / Active Tab-->
+						<div class="tab active-tab" id="prod-all">
+							<div class="content">
+								
+								<!-- Matches Block -->
+								<div class="matches-block">
+									<div class="inner-block">
+										<div class="row clearfix">
+											
+										
+											
+											<!-- Content Column -->
+											<div class="content-column col-lg-7 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<ul class="tags">
+														<li>14K-18K</li>
+														<li>5-10年/本科</li>
+													</ul>
+													<div class="title">京东集团 <span>电子商务/已上市</span></div>
+													<h2><a href="matches-single.html">高级开发构架师/高级测试开发</a></h2>
+													<div class="date">北京 朝阳 小营</div>
+												</div>
+											</div>
+											
+											<!-- Match Column -->
+											<div class="match-column col-lg-5 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<div class="row clearfix">
+														<!-- 图标 -->
+														<img src="Zlog/images/q2.jpg" />
+														<div class="rmdd">
+															<h2><a  href="matches-single.html">李先生 /高级测试经理</a></h2>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								
+								<!-- Matches Block -->
+								<div class="matches-block">
+									<div class="inner-block">
+										<div class="row clearfix">
+											
+											<!-- Content Column -->
+											<div class="content-column col-lg-7 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<ul class="tags">
+														<li>30-60K</li>
+														<li>5-10年本科</li>
+													</ul>
+													<div class="title">贝壳找房<span>电子商务/已上市</span></div>
+													<h2><a href="matches-single.html">基础架构高P</a></h2>
+													<div class="date">北京 海淀区 上地</div>
+												</div>
+											</div>
+											
+											<!-- Match Column -->
+											<div class="match-column col-lg-5 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<div class="row clearfix">
+														
+														<!-- 图标 -->
+														<img src="Zlog/images/q3.jpg" />
+														<div class="rmdd">
+															<h2><a  href="matches-single.html">陆女士 /HR</a></h2>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								
+								<!-- Matches Block -->
+								<div class="matches-block">
+									<div class="inner-block">
+										<div class="row clearfix">
+											
+											<!-- Content Column -->
+											<div class="content-column col-lg-7 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<ul class="tags">
+														<li>40-70K</li>
+														<li>5-10年本科</li>
+													</ul>
+													<div class="title">北京阿里巴巴云计算技术有限公司<span>电子商务/已上市</span></div>
+													<h2><a href="matches-single.html">Java开发专家</a></h2>
+													<div class="date">北京朝阳区环球金融中心</div>
+												</div>
+											</div>
+											
+											<!-- Match Column -->
+											<div class="match-column col-lg-5 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<div class="row clearfix">
+														
+														<!-- 图标 -->
+														<img src="Zlog/images/q1.jpg" />
+														<div class="rmdd">
+															<h2><a  href="matches-single.html">李先生 /高级技术专家</a></h2>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						
+						<!--Tab-->
+                        <div class="tab" id="prod-matches">
+							<div class="content">
+								
+								<!-- Matches Block -->
+								<div class="matches-block">
+									<div class="inner-block">
+										<div class="row clearfix">
+											
+											<!-- Content Column -->
+											<div class="content-column col-lg-7 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<ul class="tags">
+														<li>30-60K·15薪</li>
+														<li>经验不限/本科</li>
+													</ul>
+													<div class="title">今日头条  <span>移动互联网</span></div>
+													<h2><a href="matches-single.html">Java专家/架构师</a></h2>
+													<div class="date">上海市 闵行区 上海科技绿洲B区</div>
+												</div>
+											</div>
+											
+											<!-- Match Column -->
+											<div class="match-column col-lg-5 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<div class="row clearfix">
+														
+														<!-- 图标 -->
+														<img src="Zlog/images/s1.jpg" />
+														<div class="rmdd">
+															<h2><a  href="matches-single.html">李先生/企业技术负责人</a></h2>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								
+								<!-- Matches Block -->
+								<div class="matches-block">
+									<div class="inner-block">
+										<div class="row clearfix">
+											
+											<!-- Content Column -->
+											<div class="content-column col-lg-7 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<ul class="tags">
+														<li>30-45K·14薪</li>
+														<li>5-10年本科</li>
+													</ul>
+													<div class="title">掌门1对1<span>移动互联网</span></div>
+													<h2><a href="matches-single.html">实时计算架构师</a></h2>
+													<div class="date">上海虹口区海伦路</div>
+												</div>
+											</div>
+											
+											<!-- Match Column -->
+											<div class="match-column col-lg-5 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<img src="Zlog/images/s2.png" />
+													<div class="rmdd">
+														<h2><a  href="matches-single.html">李先生/企业技术负责人</a></h2>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								
+								<!-- Matches Block -->
+								<div class="matches-block">
+									<div class="inner-block">
+										<div class="row clearfix">
+											
+											<!-- Content Column -->
+											<div class="content-column col-lg-7 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<ul class="tags">
+														<li>20-21K</li>
+														<li>3-5年本科</li>
+													</ul>
+													<div class="title">阿里巴巴集团<span>互联网</span></div>
+													<h2><a href="matches-single.html">Android</a></h2>
+													<div class="date">上海杨浦区杭州阿里总部</div>
+												</div>
+											</div>
+											
+											<!-- Match Column -->
+											<div class="match-column col-lg-5 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<div class="row clearfix">
+														
+														<!-- 图标 -->
+														<img src="Zlog/images/s3.jpg" />
+														<div class="rmdd">
+															<h2><a  href="matches-single.html">李先生/企业技术负责人</a></h2>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						
+						<!--Tab-->
+                        <div class="tab" id="prod-results">
+							<div class="content">
+								
+								<!-- Matches Block -->
+								<div class="matches-block">
+									<div class="inner-block">
+										<div class="row clearfix">
+											
+											<!-- Content Column -->
+											<div class="content-column col-lg-7 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<ul class="tags">
+														<li>30-55K</li>
+														<li>3-5年本科</li>
+													</ul>
+													<div class="title">腾讯<span>互联网</span></div>
+													<h2><a href="matches-single.html">高级后台开发工程师/架构师</a></h2>
+													<div class="date">深圳市 南山区 腾讯大厦</div>
+												</div>
+											</div>
+											
+											<!-- Match Column -->
+											<div class="match-column col-lg-5 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<div class="row clearfix">
+														
+														<!-- 图标 -->
+														<img src="Zlog/images/c1.jpg" />
+														<div class="rmdd">
+															<h2><a  href="matches-single.html">郑女士/招聘经理</a></h2>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								
+								<!-- Matches Block -->
+								<div class="matches-block">
+									<div class="inner-block">
+										<div class="row clearfix">
+											
+											<!-- Content Column -->
+											<div class="content-column col-lg-7 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<ul class="tags">
+														<li>25-50K</li>
+														<li>3-5年本科</li>
+													</ul>
+													<div class="title">百度<span>.互联网</span></div>
+													<h2><a href="matches-single.html">Android系统开发工程师</a></h2>
+													<div class="date">深圳南山区深圳百度国际大厦</div>
+												</div>
+											</div>
+											
+											<!-- Match Column -->
+											<div class="match-column col-lg-5 col-md-12 col-sm-12">
+												<div class="inner-column">
+													<div class="row clearfix">
+														
+														<!-- 图标 -->
+														<img src="Zlog/images/ss1.jpg" />
+														<div class="rmdd">
+															<h2><a  href="matches-single.html">罗先生/车联网资深研发工程师</a></h2>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+	</section>	
+	<!-- End Matches Section -->
+	
+	<!-- Gallery Section Two成功人士BOSS -->
+	<section class="gallery-section-two">
+	
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title centered">
+				<div class="title">企业大亨</div>
+				<h2>企业BOSS面对面</h2>
+			</div>
+			
+			<div class="row clearfix">
+            
+                <!--Gallery Item-->
+                <div class="gallery-item col-lg-4 col-md-6 col-sm-12 wow fadeInLeft" data-wow-delay="0ms">
+                    <div class="inner-box">
+                        <figure class="image-box">
+                            <img src="Zlog/images/boss1.jpg" alt="">
+                            <!--Overlay Box-->
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="#" class="link"><span class="icon flaticon-unlink"></span></a>
+                                        <a href="Zlog/images/boss1.jpg" data-fancybox="gallery-2" data-caption="" class="link"><span class="icon flaticon-add"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+                
+                <!--Gallery Item-->
+                <div class="gallery-item col-lg-4 col-md-6 col-sm-12 wow fadeInLeft" data-wow-delay="300ms">
+                    <div class="inner-box">
+                        <figure class="image-box">
+                            <img src="Zlog/images/boss2.jpg" alt="">
+                            <!--Overlay Box-->
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="#" class="link"><span class="icon flaticon-unlink"></span></a>
+                                        <a href="Zlog/images/boss2.jpg" data-fancybox="gallery-2" data-caption="" class="link"><span class="icon flaticon-add"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+                
+                <!--Gallery Item-->
+                <div class="gallery-item col-lg-4 col-md-6 col-sm-12 wow fadeInLeft" data-wow-delay="600ms">
+                    <div class="inner-box">
+                        <figure class="image-box">
+                            <img src="Zlog/images/boss3.jpg" alt="">
+                            <!--Overlay Box-->
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="#" class="link"><span class="icon flaticon-unlink"></span></a>
+                                        <a href="Zlog/images/boss3.jpg" data-fancybox="gallery-2" data-caption="" class="link"><span class="icon flaticon-add"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+                
+                <!--Gallery Item-->
+                <div class="gallery-item col-lg-4 col-md-6 col-sm-12 wow fadeInLeft" data-wow-delay="0ms">
+                    <div class="inner-box">
+                        <figure class="image-box">
+                            <img src="Zlog/images/boss4.jpg" alt="">
+                            <!--Overlay Box-->
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="#" class="link"><span class="icon flaticon-unlink"></span></a>
+                                        <a href="Zlog/images/boss4.jpg" data-fancybox="gallery-2" data-caption="" class="link"><span class="icon flaticon-add"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+                
+                <!--Gallery Item-->
+                <div class="gallery-item col-lg-4 col-md-6 col-sm-12 wow fadeInLeft" data-wow-delay="300ms">
+                    <div class="inner-box">
+                        <figure class="image-box">
+                            <img src="Zlog/images/boss6.jpg" alt="">
+                            <!--Overlay Box-->
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="#" class="link"><span class="icon flaticon-unlink"></span></a>
+                                        <a href="Zlog/images/boss6.jpg" data-fancybox="gallery-2" data-caption="" class="link"><span class="icon flaticon-add"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+                
+                <!--Gallery Item-->
+                <div class="gallery-item col-lg-4 col-md-6 col-sm-12 wow fadeInLeft" data-wow-delay="600ms">
+                    <div class="inner-box">
+                        <figure class="image-box">
+                            <img src="Zlog/images/boss5.jpg" alt="">
+                            <!--Overlay Box-->
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="#" class="link"><span class="icon flaticon-unlink"></span></a>
+                                        <a href="Zlog/images/boss5.jpg" data-fancybox="gallery-2" data-caption="" class="link"><span class="icon flaticon-add"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+                
+            </div>
+			
+		</div>
+		
+	</section>
+	
+	<!-- 部分问题解答 -->
+	<section class="questions-section">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title centered">
+				<div class="title">Inditex Careers常见问答</div>
+				<h2>Question & Answers</h2>
+			</div>
+			
+			<!-- Inner Container -->
+			<div class="inner-container">
+				<div class="row clearfix">
+					
+					<!-- Question Block -->
+					<div class="question-block col-lg-6 col-md-12 col-sm-12">
+						<div class="inner-box">
+							<div class="icon-box">
+								<span class="icon flaticon-question"></span>
+							</div>
+							<h3><a href="#">我没有找到我感兴趣的招聘信息?</a></h3>
+							<div class="text">如果你没有找到自己想找的信息，我们邀请你订阅Inditex招聘通告。这样出现适合你的工作机会时，我们可以及时通知你。</div>
+						</div>
+					</div>
+					
+					<!-- Question Block -->
+					<div class="question-block col-lg-6 col-md-12 col-sm-12">
+						<div class="inner-box">
+							<div class="icon-box">
+								<span class="icon flaticon-question"></span>
+							</div>
+							<h3><a href="#">我已经申请了一个职位，但是没有收到回复。我可以跟谁联系？</a></h3>
+							<div class="text">你可以登录你的账户点击“申请”查看申请状态。</div>
+						</div>
+					</div>
+					
+					<!-- Question Block -->
+					<div class="question-block col-lg-6 col-md-12 col-sm-12">
+						<div class="inner-box">
+							<div class="icon-box">
+								<span class="icon flaticon-question"></span>
+							</div>
+							<h3><a href="#">如果我只想发送简历，为什么需要注册？</a></h3>
+							<div class="text">对于我们而言，你是什么样的人比你做什么更重要。我们的人力资源团队需要关于你的基本个人信息以完善你的简历，帮助你获得你想要的工作机</div>
+						</div>
+					</div>
+					
+					<!-- Question Block -->
+					<div class="question-block col-lg-6 col-md-12 col-sm-12">
+						<div class="inner-box">
+							<div class="icon-box">
+								<span class="icon flaticon-question"></span>
+							</div>
+							<h3><a href="#">如果我这次没有申请成功，我可以再次尝试吗？</a></h3>
+							<div class="text">当然！我们会不断推出新的工作机会。</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+		</div>
+	</section>
+	
+		
+		<!-- 成功案例人数 -->
+		<div class="lower-boxed">
+			<div class="auto-container">
+				<div class="row clearfix">
+					
+					<!-- Counter Column -->
+					<div class="counter-column col-lg-6 col-md-12 col-sm-12">
+						<div class="inner-column">
+							
+							<!-- Featured Block -->
+							<div class="featured-block">
+								<div class="inner-box">
+									<div class="icon-box">
+										<span class="icon flaticon-joystick"></span>
+									</div>
+									<h3>785,000</h3>
+									<div class="text">每一年有785000人在BOSS虹猫网站找到工作</div>
+								</div>
+							</div>
+							
+							<!-- Featured Block -->
+							<div class="featured-block">
+								<div class="inner-box">
+									<div class="icon-box">
+										<span class="icon flaticon-man"></span>
+									</div>
+									<h3>63,000</h3>
+									<div class="text">每一年有63000家公司达成合作</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+					<!-- Testimonial Column -->
+					<div class="testimonial-column col-lg-6 col-md-12 col-sm-12">
+						<div class="inner-column wow fadeInRight" data-wow-delay="0ms">
+							
+							<div class="single-item-carousel owl-carousel owl-theme">
+								
+								<!-- Testimonial Block -->
+								<div class="testimonial-block">
+									<div class="inner-box">
+										<div class="quote-icon flaticon-quote-1"></div>
+										<div class="text">我已经看到我所在的地区开了一家门店，我怎样才能到那里工作？<br><br>每次出现职位空缺时都会在Inditex Careers发布。我们建议你关注我们的网站或者订阅我们的动态，以便我们可以及时通知你新的招聘信息。</div>
+										<div class="author">常见问题-智联招聘</div>
+									</div>
+								</div>
+								
+								<!-- Testimonial Block -->
+								<div class="testimonial-block">
+									<div class="inner-box">
+										<div class="quote-icon flaticon-quote-1"></div>
+										<div class="text">如果我对总部的职位感兴趣，但是我不住在西班牙也没有工作许可，怎么办？<br><br>我们总是聘请我们最喜欢的人进入这个职位，无论你来自哪里。如果你是那个人，我们为你解决所有相关手续。</div>
+										<div class="author">常见问题-智联招聘</div>
+									</div>
+								</div>
+								
+								<!-- Testimonial Block -->
+								<div class="testimonial-block">
+									<div class="inner-box">
+										<div class="quote-icon flaticon-quote-1"></div>
+										<div class="text">我已经看到我所在的地区开了一家门店，我怎样才能到那里工作？<br>每次出现职位空缺时都会在Inditex Careers发布。我们建议你关注我们的网站或者订阅我们的动态，以便我们可以及时通知你新的招聘信息。</div>
+										<div class="author">常见问题-智联招聘</div>
+									</div>
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+	</section>
+	<!-- End Call To Action Section -->
+
+	
+	<!--合作公司轮动图片-->
+    <section class="sponsors-section">
+    	<div class="auto-container">
+        	
+            <div class="sponsors-outer">
+                <!--Sponsors Carousel-->
+                <ul class="sponsors-carousel owl-carousel owl-theme">
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="Zlog/images/f1.jpg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="Zlog/images/clients/3.png" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="Zlog/images/f1.jpg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="Zlog/images/f1.jpg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="Zlog/images/clients/3.png" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="Zlog/images/f1.jpg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="Zlog/images/f1.jpg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="Zlog/images/clients/3.png" alt=""></a></figure></li>
+					<li class="slide-item"><figure class="image-box"><a href="#"><img src="Zlog/images/clients/3.png" alt=""></a></figure></li>
+                </ul>
+            </div>
+            
+        </div>
+    </section>
+    <!--End Sponsors Section-->
+
+	<!-- 底部链接 -->
+		<footer class="main-footer">
+			<div class="auto-container">
+				<!--Widgets Section-->
+				<div class="widgets-section">
+					<div class="row clearfix">
+	
+						<!--Column-->
+						<div class="column col-lg-4 col-md-6 col-sm-12">
+							<div class="footer-widget logo-widget">
+								<div class="logo">
+									<a href="index.html"><img src="Zlog/images/logo3.png" alt="" /></a>
+								</div>
+								<div class="text">There are many variations of passages of lorem ipsum available, but the majority have
+									suffered alteration in some form by injected.</div>
+							</div>
+						</div>
+	
+						<!--Column-->
+						<div class="column col-lg-4 col-md-6 col-sm-12">
+							<div class="footer-widget links-widget">
+								<div class="widget-content">
+									<div class="footer-title">
+										<h2>企业服务</h2>
+									</div>
+									<div class="row clearfix">
+										<div class="column col-lg-6 col-md-6 col-sm-12">
+											<ul class="list">
+												<li><a href="#">用户协议与隐私政策</a></li>
+												<li><a href="#">公司团队</a></li>
+												<li><a href="#">防骗指南</a></li>
+												<li><a href="#">职位发布规则</a></li>
+											</ul>
+										</div>
+										<div class="column col-lg-6 col-md-6 col-sm-12">
+											<ul class="list">
+												<li><a href="#">使用帮助</a></li>
+												<li><a href="#">新闻资讯</a></li>
+												<li><a href="#">了解自己</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<!--Column-->
+						<div class="column col-lg-4 col-md-6 col-sm-12">
+							<div class="footer-widget newsletter-widget">
+								<div class="footer-title">
+									<h2>企业服务热线</h2>
+								</div>
+								<div class="text">400-XXXXXX-XXXXXX</div>
+								<div class="newsletter-form">
+								
+								</div>
+							</div>
+						</div>
+	
+					</div>
+				</div>
+			</div>
+	
+			<!-- Footer Bottom -->
+			<div class="footer-bottom">
+				<div class="auto-container">
+					<!--Scroll to top-->
+					<div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></div>
+					<!--Scroll to top-->
+					<div class="row clearfix">
+						<!-- Column -->
+						<div class="column col-lg-6 col-md-12 col-sm-12">
+							<div class="copyright">&copy; Copyrights, 2019 BOSS虹猫招聘</div>
+						</div>
+						<!-- Column -->
+						<div class="column col-lg-6 col-md-12 col-sm-12">
+							<ul class="social-icons">
+								<li><a href="#"><span class="fab fa-twitter"></span></a></li>
+								<li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+								<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+								<li><a href="#"><span class="fab fa-instagram"></span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	
+		</footer>
+	
+	</div>
+	
+<!--End pagewrapper-->
+
+<script data-th-src="@{/Zlog/js/jquery.js}" src='js/jquery.min1.js'></script>
+		<script data-th-src="@{/Zlog/js/index1.js}" src="js/index1.js"></script>
+		<script data-th-src="@{/Zlog/js/jquery.js}" src="js/jquery.js"></script>
+		<script data-th-src="@{/Zlog/js/popper.min.js}" src="js/popper.min.js"></script>
+		<script data-th-src="@{/Zlog/js/bootstrap.min.js}" src="js/bootstrap.min.js"></script>
+		<script data-th-src="@{/Zlog/js/jquery-ui.js}" src="js/jquery-ui.js"></script>
+		<script data-th-src="@{/Zlog/js/jquery.fancybox.js}" src="js/jquery.fancybox.js"></script>
+		<script data-th-src="@{/Zlog/js/owl.js}" src="js/owl.js"></script>
+		<script data-th-src="@{/Zlog/js/appear.js}" src="js/appear.js"></script>
+		<script data-th-src="@{/Zlog/js/wow.js}" src="js/wow.js"></script>
+		<script data-th-src="@{/Zlog/js/validate.js}" src="js/validate.js"></script>
+		<script data-th-src="@{/Zlog/js/scrollbar.js}" src="js/scrollbar.js"></script>
+		<script data-th-src="@{/Zlog/js/script.js}" src="js/script.js"></script>
+
+</body>
+</html>

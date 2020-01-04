@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hongmao.mapper.JobMapper">
+	<sql id="Base_Column1">
+		J_NAME ,
+		J_EXPRESSION
+	</sql>
+	<sql id="Base_Column2">
+		JOB_ID ,
+		COMPANY_ID ,
+		PAY ,
+		USER_ID ,
+		USER_EXPRESSION  
+
+	</sql>
+	
+	<resultMap type="cn.hongmao.bean.Job" id="jobMap">
+		<id column="j_id" property="jId" />
+		<result column="j_name" property="JName" />
+		<result column="j_expression" property="JExpression" />
+		<result column="company_id" property="companyId" />
+		<result column="c_name" property="cName" />
+		<result column="pay" property="pay" />
+		<result column="user_id" property="userId" />
+		<result column="user_expression" property="userExpression" />
+	</resultMap>
+
+	<sql id="Base_Where">
+		<where>
+			<if test="jId != null">
+				and j_id = #{jId}
+			</if>
+			<if test="jName != null">
+				and j_name like concat("%",#{jName},"%")
+			</if>
+			<if test="companyId != null">
+				and company_id = #{companyId}
+			</if>
+			<if test="userId != null">
+				and user_id = #{userId}
+			</if>
+		</where>
+	</sql>
+
+	<select id="findAll" resultMap="jobMap">
+		select
+		job_info.*,c_name,job_company_user.* from company_info, job_info,
+		job_company_user
+		where company_info.c_id = job_company_user.company_id and job_info.j_id =
+		job_company_user.job_id
+		and j_name like concat("%",#{jName},"%")
+	</select>
+
+	<select id="findByUserJobId" parameterType="int"
+		resultMap="jobMap">
+		select job_info.*,c_name,job_company_user.* from
+		company_info, job_info, job_company_user
+		where company_info.c_id = job_company_user.company_id and job_info.j_id =
+		job_company_user.job_id
+		and user_id = #{userId} and job_id = #{jobId}
+	</select>
+	<select id="findByJName" parameterType="cn.hongmao.bean.Job"
+		resultType="cn.hongmao.bean.Job">
+		SELECT J_NAME,J_ID FROM JOB_INFO WHERE J_NAME LIKE
+		CONCAT('%',#{job.jName},'%')
+	</select>
+	<insert id="insertJob" parameterType="cn.hongmao.bean.Job">
+		INSERT INTO JOB_INFO (
+		<include refid="Base_Column1"></include>) 
+		VALUES(#{job.jName},#{job.jExpression})
+	</insert>
+	<insert id="insertContact"  parameterType="cn.hongmao.bean.Job">
+		INSERT INTO JOB_COMPANY_USER (
+		<include refid="Base_Column2"></include>) 
+		VALUES(#{job.jId},#{job.companyId},#{job.pay},#{job.userId},#{job.userExpression})
+	</insert>
+	<select id="findJid" parameterType="cn.hongmao.bean.Job" resultType="int">
+		SELECT J_ID FROM JOB_INFO WHERE J_NAME=#{job.jName} AND J_EXPRESSION=#{job.jExpression}
+	</select>
+	<select id="findByCid" resultMap="jobMap" parameterType="int">
+		SELECT
+		JOB_INFO.*,C_NAME,JOB_COMPANY_USER.* FROM COMPANY_INFO, JOB_INFO,
+		JOB_COMPANY_USER
+		WHERE COMPANY_INFO.C_ID = JOB_COMPANY_USER.COMPANY_ID AND JOB_INFO.J_ID =
+		JOB_COMPANY_USER.JOB_ID
+		AND C_ID = #{cId}
+	</select>
+</mapper>

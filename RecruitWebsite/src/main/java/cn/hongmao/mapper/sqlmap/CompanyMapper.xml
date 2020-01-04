@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hongmao.mapper.CompanyMapper">
+
+	<sql id="Base_Where">
+		C_ID,C_NAME,C_ADDRESS,C_TYPE,C_INFO,C_ISMARKET,C_HOTJOB,C_HOTPAY,C_COUNT,C_REPRESENTATIVE,C_COST,C_CREATETIME,C_IMAGE
+	</sql>
+	
+	<resultMap type="cn.hongmao.bean.Company" id="companyMap">
+		<id column="c_id" property="CId"/>
+		<result column="c_name" property="CName"/>
+		<result column="c_address" property="CAddress"/>
+		<result column="c_type" property="cType"/>
+		<result column="c_info" property="CInfo"/>
+		<result column="c_isMarket" property="CIsMarket"/>
+		<result column="c_hotJob" property="CHotJob"/>
+		<result column="c_hotPay" property="CHotPay"/>
+		<result column="c_count" property="CCount"/>
+		<result column="c_representative" property="cRepresentative"/>
+		<result column="c_cost" property="cCost"/>
+		<result column="c_createTime" property="cCreateTime"/>
+		<result column="c_image" property="cImage"/>
+		<collection property="jobs" ofType="cn.hongmao.bean.Job" column="c_id" select="findById">
+			<id column="j_id" property="jId"/>
+			<result column="j_name" property="JName"/>
+			<result column="j_expression" property="JExpression"/>
+			<result column="company_id" property="companyId"/>
+			<result column="pay" property="pay"/>
+			<result column="user_id" property="userId"/>
+			<result column="user_expression" property="userExpression"/>
+		</collection>
+	</resultMap>
+	
+	<select id="searchByName" resultType="cn.hongmao.bean.Company" parameterType="string">
+		select <include refid="Base_Where"/> from company_info where c_name like concat("%",#{name},"%")
+	</select>
+	
+	<select id="searchInfoById" parameterType="int" resultMap="companyMap">
+		select * from company_info where c_id = #{cId}
+	</select>
+	
+	<select id="findById" resultType="cn.hongmao.bean.Job" parameterType="int">
+		select * from job_info, job_company_user where job_info.j_id = job_company_user.job_id and company_id = #{companyId}
+	</select>
+</mapper>

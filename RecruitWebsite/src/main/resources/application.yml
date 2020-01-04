@@ -1,0 +1,70 @@
+#端口配置
+server:
+  port: 80
+  connection-timeout: 180000
+  
+#him
+him:
+  hostname: localhost #访问域名
+  origin: ':*:' #允许访问域名
+  heartbeat-interval: 25 #心跳发送间隔时间(单位秒): 默认25s
+  heartbeat-timeout: 60 #心跳超时时间(单位秒): 默认60s
+  port: 8088 #服务端口
+  
+#数据源配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/recruit?serverTimezone=GMT%2b8
+    username: root
+    password: root
+
+#Mybatis配置
+mybatis:
+  mapper-locations: classpath:cn/hongmao/mapper/sqlmap/*.xml
+  type-aliases-package: cn.hongmao.bean
+  configuration:
+    map-underscore-to-camel-case: true
+    
+#日志配置
+logging:
+  level:
+    cn.hongmao: trace
+    
+#邮箱配置
+---
+spring:
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 1341992571@qq.com
+    password: oweoenreeugzbagg
+    protocol: smtp
+    properties:
+      smtp:
+        ssl:
+          enable: true
+
+#格式化日期
+---
+spring:
+  jackson:
+     date-format: "yyyy-MM-dd HH:mm:ss"
+     time-zone: "GMT+8"
+     
+#文件上传
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 0
+      max-file-size: 50MB
+      max-request-size: 100MB
+      resolve-lazily: false
+        
+ 
+---
+spring:
+  thymeleaf:
+    cache: false
+    
+         

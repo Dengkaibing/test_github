@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>完善招聘者信息</title>
+<link rel="stylesheet" type="text/css"
+	href="../../static/employer/css/form.css"
+	data-th-href="@{/employer/css/form.css}">
+</head>
+<body>
+<form  action="http://www.baidu.com" data-th-action="@{/employer/insert}" method="post">
+	<p>姓名：<input class="input" type="text" name="name"></p>
+	<p>邮箱：<input class="input" id="email" required type="text" name="email" ></p>
+	<p>性别： <input  class="sex" type="radio" name="sex" value="0" checked="checked">男
+     	&nbsp;&nbsp;&nbsp;<input  class="sex" type="radio" name="sex" value="1">女</p>
+	<p>年龄：<input class="input" type="text" name="age">
+	<p>公司：<input class="input" id="company" name="company" required list="companyNameList">
+	<datalist id="companyNameList"></datalist></p>
+	<p><button type="submit" id="button">提交</button></p>
+</form>
+
+</body>
+<script data-th-inline="javascript">
+    jQuery.noConflict();
+    jQuery(function () {
+		
+		//邮箱
+		function verifyEmail() {
+			jQuery("#email_p").delegate("#email","propertychange input",function(){
+				let email = jQuery("#email").val();
+				console.log(email);
+	            let reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+	            if(!reg.test(email)){
+	                jQuery("#email_info").text("邮箱格式有误,提交按钮已禁用!");
+	                jQuery("#email_info").css({
+	                            "color": "#ff0011",
+	                            "font-size":"12px",
+	                            "position":"absolute",
+	                            "top":"-20%",
+	                            "left":"40%",
+	                            "display":"inline-block",
+	                            "height":"20px",
+	                            "line-height":"20px",
+	                            "border":"1px solid black"
+	                        }
+	                );
+	               jQuery(".submit").attr("disabled","true");
+	            }else{
+	            	jQuery(".submit").removeAttr("disabled");
+	            	jQuery("#email_info").text("");
+	            	jQuery("#email_info").css({"border":"none"});
+	            }
+			});
+        };
+		jQuery("#email").on("focus",verifyEmail);
+
+		//薪资
+		function verifySalary(){
+			jQuery("#salary_p").delegate("#salary","propertychange input",function(){
+				var salary = jQuery("#salary").val();
+				if(isNaN(salary)){
+					jQuery("#salary_info").text("含有非数字字符,提交按钮已禁用!");
+	                jQuery("#salary_info").css({
+	                            "color": "#ff0011",
+	                            "font-size":"12px",
+	                            "position":"absolute",
+	                            "top":"-20%",
+	                            "left":"40%",
+	                            "display":"inline-block",
+	                            "height":"20px",
+	                            "line-height":"20px",
+	                            "border":"1px solid black"
+	                        }
+	                );
+	               jQuery(".submit").attr("disabled","true");
+				}else{
+					jQuery(".submit").removeAttr("disabled");
+	            	jQuery("#salary_info").text("");
+	            	jQuery("#salary_info").css({"border":"none"});
+				}
+			});
+		};
+		jQuery("#salary").on("focus",verifySalary);
+		
+		//省份
+    	jQuery.ajax(
+                {
+                    type:'GET',
+                    url:'/hunter/province',
+                    success:function(data){
+                    	jQuery("#province option").remove();
+                    	for(var i in data){
+                    		
+                    		var html = "";
+    						html="<option value='"+data[i].provincialID+"'>"+data[i].provincialName+"</option>"
+                    		jQuery("#province").append(html);
+                    	}
+                    }
+                }
+        );
+
+		//城市
+		jQuery("#province").change(function(){
+			let provincialID = jQuery(this).find("option:selected").attr("value");
+			
+			jQuery.ajax({
+				type:'GET',
+				url:'/hunter/city',
+				data:{
+					provincialID:provincialID
+				},
+				dataType:'json',
+				success:function(data){
+					jQuery("#city option").remove();
+					for(var i in data){
+						html="<option>"+data[i].cityName+"</option>"
+						jQuery("#city").append(html);
+					}
+				}
+			});
+		});
+		
+        //学校
+        jQuery('#schoolName').keyup(function(e) {
+            var e = e || window.event;
+            if(e.keyCode==32 ||	
+                    e.keyCode==49 ||
+                    e.keyCode==50 ||
+                    e.keyCode==51 ||
+                    e.keyCode==52 ||
+                    e.keyCode==53 ||
+                    e.keyCode==54 ||
+                    e.keyCode==55 ||
+                    e.keyCode==56 ||
+                    e.keyCode==57 ||
+                    e.keyCode==48
+            ){
+                jQuery("#schoolNameList option").remove();
+                jQuery.ajaxSetup({async: true});
+                jQuery.get("/hunter/school", {'schoolName' : jQuery("#schoolName").val() == "" ? null : jQuery("#schoolName").val()}, function(data) {
+                    for(var i in data) {
+                        var html = "";
+                        html += "<option value='" + data[i].schoolName + "' data-schoolId='" + data[i].schoolId + "'></option>";
+                        jQuery("#schoolNameList").append(html);
+                    }
+                }, "json")
+            }
+        });
+        
+        //专业
+        jQuery('#majorName').keyup(function(e) {
+            var e = e || window.event;
+            if(e.keyCode==32 ||
+                    e.keyCode==49 ||
+                    e.keyCode==50 ||
+                    e.keyCode==51 ||
+                    e.keyCode==52 ||
+                    e.keyCode==53 ||
+                    e.keyCode==54 ||
+                    e.keyCode==55 ||
+                    e.keyCode==56 ||
+                    e.keyCode==57 ||
+                    e.keyCode==48
+            ){
+                jQuery("#majorNameList option").remove();
+                jQuery.ajaxSetup({async: true});
+                jQuery.get("/hunter/major", {'majorName' : jQuery("#majorName").val() == "" ? null : jQuery("#majorName").val()}, function(data) {
+                    for(var i in data) {
+                        var html = "";
+                        html += "<option value='" + data[i].majorName + "' data-schoolId='" + data[i].majorId + "'></option>";
+                        jQuery("#majorNameList").append(html);
+                    }
+                }, "json")
+            }
+        });
+        
+        //base地
+        jQuery('#baseName').keyup(function(e) {
+            var e = e || window.event;
+            if(e.keyCode==32 ||
+                    e.keyCode==49 ||
+                    e.keyCode==50 ||
+                    e.keyCode==51 ||
+                    e.keyCode==52 ||
+                    e.keyCode==53 ||
+                    e.keyCode==54 ||
+                    e.keyCode==55 ||
+                    e.keyCode==56 ||
+                    e.keyCode==57 ||
+                    e.keyCode==48
+            ){
+                jQuery("#baseNameList option").remove();
+                jQuery.ajaxSetup({async: true});
+                jQuery.get("/hunter/base", {'cityName' : jQuery("#baseName").val() == "" ? null : jQuery("#baseName").val()}, function(data) {
+                    for(var i in data) {
+                        var html = "";
+                        html += "<option value='" + data[i].cityName + "' data-baseId='" + data[i].cityID + "'></option>";
+                        jQuery("#baseNameList").append(html);
+                    }
+                }, "json")
+            }
+        });
+        
+        //求职意向
+        jQuery('#jobName').keyup(function(e) {
+            var e = e || window.event;
+            if(e.keyCode==32 ||
+            		e.keyCode==8 ||
+            		e.keyCode==13 ||
+            		e.keyCode==16 ||
+                    e.keyCode==49 ||
+                    e.keyCode==50 ||
+                    e.keyCode==51 ||
+                    e.keyCode==52 ||
+                    e.keyCode==53 ||
+                    e.keyCode==54 ||
+                    e.keyCode==55 ||
+                    e.keyCode==56 ||
+                    e.keyCode==57 ||
+                    e.keyCode==48
+            ){
+                jQuery("#jobNameList option").remove();
+                jQuery.ajaxSetup({async: true});
+                jQuery.get("/hunter/job", {'jName' : jQuery("#JobName").val() == "" ? null : jQuery("#jobName").val()}, function(data) {
+                    for(var i in data) {
+                        var html = "";
+                        html += "<option value='" + data[i].jname + "' data-baseId='" + data[i].jId + "'></option>";
+                        jQuery("#jobNameList").append(html);
+                    }
+                }, "json")
+            }
+        });
+        
+    });
+</script>
+</html>

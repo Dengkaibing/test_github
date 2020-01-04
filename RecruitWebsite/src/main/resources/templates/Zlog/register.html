@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>虹猫招聘网页登陆</title>
+		<!-- Stylesheets -->
+		<link data-th-href="@{/Zlog/css/bootstrap.css}" href="css/bootstrap.css" rel="stylesheet">
+		<link data-th-href="@{/Zlog/css/style.css}" href="css/style.css" rel="stylesheet">
+		<link data-th-href="@{/Zlog/css/responsive.css}" href="css/responsive.css" rel="stylesheet">
+
+		<!-- Responsive -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+		<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+	</head>
+
+	<body>
+
+		<div class="page-wrapper">
+		    <!-- Preloader -->
+		    <div class="preloader"><div class="icon"></div></div>
+		
+		    <!-- Main Header -->
+		    <header class="main-header">
+		        <!-- Header Top -->
+		        <div class="header-top">
+		            <div class="auto-container clearfix">
+		
+		                <div class="top-left clearfix">
+		                    <ul class="info-list">
+		                        <li>找工作就去BOSS招聘</li>
+		                    </ul>
+		                </div>
+		                  <!-- 博客facebook -->
+		               <!-- <div class="top-right">
+		                    <ul class="social-icons">
+		                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+		                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+								<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+		                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+		                    </ul>
+		                </div> -->
+		            </div>
+		        </div>
+		
+		        <!-- Header Upper 头部跳转11111111111111111111111 -->
+		        <div class="header-upper">
+		            <div class="inner-container">
+		                <div class="auto-container clearfix">
+		                    <!--主题大Logo图标           -->
+		                    <div class="logo-outer">
+		                        <div class="logo"><a href="index.html"><img src="/Zlog/images/logo3.png" style="
+		    width: 130px;
+		" alt="" title="Gamon - Digital Gaming and Esports HTML Template"></a></div>
+		                    </div>
+		
+		                    <!--Nav Box-->
+		                    <div class="nav-outer clearfix">
+		                        <!--Mobile Navigation Toggler-->
+		                        <div class="mobile-nav-toggler"><span class="icon flaticon-menu-1"></span></div>
+		                    
+		                        <!-- Main Menu -->
+		                        <nav class="main-menu navbar-expand-md navbar-light">
+		                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+		                                <ul class="navigation clearfix pull-left">
+		                                    <li class="current dropdown"><a href="index.html">主页</a>
+		                                    </li>
+		                    				<li class="dropdown"><a href="about-clan.html">职位</a>   
+		                                    </li>
+		                                    <li><a href="gallery.html">公司</a></li>
+		                                </ul>
+		                    
+		                                <ul class="navigation pull-right clearfix">
+		                                    <li class="dropdown"><a href="matches.html">找工作</a>
+		                                    </li>
+		                                    <li class="dropdown"><a href="blog.html">招聘</a>
+		                                    </li>
+		                                    <li  class="dropdown"><a href="DL.html">登陆/注册</a>
+											   <ul>
+											       <li><a href="login.html">登陆</a></li>
+											       <li><a href="register.html">立即注册</a></li>
+											   </ul>
+											</li>
+		                                </ul>
+		                            </div>
+		                        </nav>
+		                        <!-- Main Menu End-->
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+				<!--End Header Upper-->
+
+				<!-- Sticky Header  -->
+				<div class="sticky-header">
+					<div class="auto-container clearfix">
+						<!--Logo-->
+						<div class="logo pull-left">
+							<a href="index.html" title=""><img src="/Zlog/images/logo3.png" alt="" title=""></a>
+						</div>
+						<!--Right Col-->
+						<div class="pull-right">
+							<!-- Main Menu -->
+							<nav class="main-menu clearfix">
+								<!--Keep This Empty / Menu will come through Javascript-->
+							</nav><!-- Main Menu End-->
+						</div>
+					</div>
+				</div><!-- End Sticky Menu -->
+
+				<!-- Mobile Menu  -->
+				<div class="mobile-menu">
+					<div class="menu-backdrop"></div>
+					<div class="close-btn"><span class="icon flaticon-close"></span></div>
+
+					<nav class="menu-box">
+						<div class="nav-logo"><a href="index.html"><img src="/Zlog/images/logo.png" alt="" title=""></a></div>
+						<div class="menu-outer">
+							<!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+						</div>
+						<!--微博连接-->
+						<div class="social-links">
+							<ul class="clearfix">
+								<li><a href="#"><span class="fab fa-twitter"></span></a></li>
+								<li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+								<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+								<li><a href="#"><span class="fab fa-instagram"></span></a></li>
+								<li><a href="#"><span class="fab fa-youtube"></span></a></li>
+							</ul>
+						</div>
+					</nav>
+				</div><!-- End Mobile Menu -->
+			</header>
+			<!-- End Main Header -->
+
+
+			<!-- Contact Form Section -->
+			<section class="contact-form-section style-two">
+				<div class="auto-container">
+					<div class="row clearfix">
+
+
+
+
+
+
+
+
+
+
+						<!-- 中间重甲类容 -->
+						<div class="title-column col-lg-5 col-md-12 col-sm-12">
+							<div class="inner-column wow fadeInLeft" data-wow-delay="0ms">
+								<!-- Sec Title -->
+								<div class="sec-title">
+									<div class="title">更多牛人BOSS在线交谈</div>
+									<h2>职位人才<br>最好定位</h2>
+								</div>
+								<div class="text">最好的团队服务最优秀的你<br><br><br>
+									<!-- 切换登陆方式 -->
+								</div>
+								<ul class="social-icons">
+									<li><a href="#"><span class="fab fa-twitter"></span></a></li>
+									<li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+									<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+									<li><a href="#"><span class="fab fa-instagram"></span></a></li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- 登陆右侧表 -->
+
+
+
+						<div class="form">
+							<ul class="tab-group">
+								<li class="tab active"><a href="#signup">我要找工作</a></li>
+								<li class="tab"><a href="#login">我要招聘</a></li>
+							</ul>
+
+							<div class="tab-content">
+								<div id="signup">
+									<form data-th-action="@{/register}" method="post">
+
+										<div class="field-wrap" style="position: relative;">
+											<label>
+												手机号码<span class="req">*</span>
+											</label>
+											<input id="phone" name="phone" type="text" required autocomplete="off" style="width:   422px;" />
+											<span class="span1" style="position: absolute;top:124%;left: 15%" id="msg4" data-th-text="${msg4}"></span>
+										</div>
+
+										<div class="field-wrap">
+										
+										<input type="text" class="msgcod" placeholder="短信验证码*" id="rphonecode" name="rphonecode" maxlength="6" /><input type="hidden" name="status" value="0" />&nbsp;&nbsp;&nbsp;&nbsp;
+												 <input type="button" value="发送验证码" class="btn btn-sms" id="getCode"  style=" width: 226px;" ></input><span id="msg" 
+					data-th-text="${msg}" class="tishi" style="position: absolute;top: 113%;left: 1%; color: red"></span>
+										</div>
+										<div class="mm"><input type="password"  placeholder="密码*" id="password" name="password"  /></div>
+										  <div class="qrmm"><input type="password"  placeholder="确认密码*" id="apassword" name="apassword"  />
+										  <span class="tishi" id="error2"></span></div>
+
+										<button type="submit" class="button button-block" >注册</button>
+
+									</form>
+
+								</div>
+
+								<div id="login">
+									<form data-th-action="@{/appregister}" method="post">
+
+										<div class="field-wrap">
+											<label>
+												手机号码<span class="req">*</span>
+											</label>
+											<input id="appphone" name="appphone" type="text" required autocomplete="off" style="width:   422px;" />
+										<span class="span1" style="position: absolute;top:124%;left: 15%" id="appmsg4" data-th-text="${appmsg4}"></span>
+										</div>
+
+										<div class="field-wrap">
+										
+										<input type="text" class="msgcod" placeholder="短信验证码*" id="appphonecode" name="appphonecode" maxlength="6" /><input type="hidden" name="status" value="1" />&nbsp;&nbsp;&nbsp;&nbsp;
+												 <input type="button" value="发送验证码" class="btn btn-sms" id="appgetCode"  style=" width: 226px;" ></input><span id="appmsg"
+					data-th-text="${appmsg}" class="tishi" style="position: absolute;top: 113%;left: 1%; color: red"></span>
+										</div>
+										<div class="mm"><input type="password"  placeholder="密码*" id="apppassword" name="apppassword"  /></div>
+										  <div class="qrmm"><input type="password"  placeholder="确认密码*" id="appapassword" name="appapassword"  />
+										  <span class="tishi" id="apperror2"></span></div>
+
+										<button type="submit" class="button button-block" >注册</button>
+
+									</form>
+
+								</div>
+
+							</div><!-- tab-content -->
+
+						</div> <!-- /form -->
+
+
+
+
+
+
+
+					</div>
+				</div>
+			</section>
+			<!-- End Contact Form Section -->
+
+
+
+			<!-- Main Footer -->
+			<footer class="main-footer">
+				<div class="auto-container">
+					<!--Widgets Section-->
+					<div class="widgets-section">
+						<div class="row clearfix">
+
+							<!--Column-->
+							<div class="column col-lg-4 col-md-6 col-sm-12">
+								<div class="footer-widget logo-widget">
+									<div class="logo">
+										<a href="index.html"><img src="/Zlog/images/logo3.png" alt="" /></a>
+									</div>
+									<div class="text">There are many variations of passages of lorem ipsum available, but the majority have
+										suffered alteration in some form by injected.</div>
+								</div>
+							</div>
+
+							<!--Column-->
+							<div class="column col-lg-4 col-md-6 col-sm-12">
+								<div class="footer-widget links-widget">
+									<div class="widget-content">
+										<div class="footer-title">
+											<h2>企业服务</h2>
+										</div>
+										<div class="row clearfix">
+											<div class="column col-lg-6 col-md-6 col-sm-12">
+												<ul class="list">
+													<li><a href="#">用户协议与隐私政策</a></li>
+													<li><a href="#">公司团队</a></li>
+													<li><a href="#">防骗指南</a></li>
+													<li><a href="#">职位发布规则</a></li>
+												</ul>
+											</div>
+											<div class="column col-lg-6 col-md-6 col-sm-12">
+												<ul class="list">
+													<li><a href="#">使用帮助</a></li>
+													<li><a href="#">新闻资讯</a></li>
+													<li><a href="#">了解自己</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!--Column-->
+							<div class="column col-lg-4 col-md-6 col-sm-12">
+								<div class="footer-widget newsletter-widget">
+									<div class="footer-title">
+										<h2>企业服务热线</h2>
+									</div>
+									<div class="text">400-XXXXXX-XXXXXX</div>
+									<div class="newsletter-form">
+									
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<!-- Footer Bottom -->
+				<div class="footer-bottom">
+					<div class="auto-container">
+						<!--Scroll to top-->
+						<div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></div>
+						<!--Scroll to top-->
+						<div class="row clearfix">
+							<!-- Column -->
+							<div class="column col-lg-6 col-md-12 col-sm-12">
+								<div class="copyright">&copy; Copyrights, 2019 BOSS虹猫招聘</div>
+							</div>
+							<!-- Column -->
+							<div class="column col-lg-6 col-md-12 col-sm-12">
+								<ul class="social-icons">
+									<li><a href="#"><span class="fab fa-twitter"></span></a></li>
+									<li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+									<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+									<li><a href="#"><span class="fab fa-instagram"></span></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</footer>
+
+		</div>
+		<!--End pagewrapper-->
+
+		<script data-th-src="@{/Zlog/js/jquery.js}" src='js/jquery.min1.js'></script>
+		<script data-th-src="@{/Zlog/js/index1.js}" src="js/index1.js"></script>
+		<script data-th-src="@{/Zlog/js/jquery.js}" src="js/jquery.js"></script>
+		<script data-th-src="@{/Zlog/js/popper.min.js}" src="js/popper.min.js"></script>
+		<script data-th-src="@{/Zlog/js/bootstrap.min.js}" src="js/bootstrap.min.js"></script>
+		<script data-th-src="@{/Zlog/js/jquery-ui.js}" src="js/jquery-ui.js"></script>
+		<script data-th-src="@{/Zlog/js/jquery.fancybox.js}" src="js/jquery.fancybox.js"></script>
+		<script data-th-src="@{/Zlog/js/owl.js}" src="js/owl.js"></script>
+		<script data-th-src="@{/Zlog/js/appear.js}" src="js/appear.js"></script>
+		<script data-th-src="@{/Zlog/js/wow.js}" src="js/wow.js"></script>
+		<script data-th-src="@{/Zlog/js/validate.js}" src="js/validate.js"></script>
+		<script data-th-src="@{/Zlog/js/scrollbar.js}" src="js/scrollbar.js"></script>
+		<script data-th-src="@{/Zlog/js/script.js}" src="js/script.js"></script>
+		<script type="text/javascript">
+		var waitTime = 60;
+		$("#getCode").click(function() {
+			let phone = $("#phone").val();
+			time(this, phone);
+			$.ajax({
+				url: '/login/getCode',
+				type: 'post',
+				data: {
+					phone: phone
+				},
+				dataType: 'text',
+				success: function(rs) {
+					$("#msg").html(rs);
+					if(rs=="短信发送失败"){
+						$("#register").attr("disabled","true");
+						
+					}
+				}
+			});
+
+		})
+
+		function time(ele, value) {
+			if (waitTime == 0) {
+				ele.disabled = false;
+				ele.value = "获取验证码";
+				waitTime = 60; // 恢复计时
+			} else {
+				ele.disabled = true;
+				ele.value = waitTime + "秒后可以重新发送";
+				waitTime--;
+				setTimeout(function() {
+					time(ele) // 关键处-定时循环调用
+				}, 1000)
+			}
+		}
+		    </script>
+			
+			<script type="text/javascript">
+			        var countdown2 = 60;
+			        $(function () {
+			            $("#getcode2").bind("click", function () {
+			                settime2();
+			            });
+			        })
+			        function settime2(e) {
+			            if (countdown2 == 0) {
+			                countdown2 = 60;
+			                $("#getcode2").val("获取验证码");
+			                $("#getcode2").removeAttr("disabled");
+			                return false;
+			            } else {
+			                countdown2--;
+			                $("#getcode2").val(countdown2 + "秒后重新获取");
+			                $("#getcode2").attr("disabled", "disabled");
+			            }
+			            setTimeout(function () {
+			                settime2();
+			            }, 1000);
+			        }
+			    </script>
+
+		<!--Google Map APi Key-->
+		<script src="https://ditu.google.cn/maps/api/js?key=AIzaSyBKS14AnP3HCIVlUpPKtGp7CbYuMtcXE2o"></script>
+		<script data-th-src="@{/Zlog/js/map-script.js}" src="js/map-script.js"></script>
+		<!--End Google Map APi-->
+
+	</body>
+	<script type="text/javascript">
+		var waitTime = 60;
+		$("#getCode").click(function() {
+			let phone = $("#phone").val();
+			time(this, phone);
+			$.ajax({
+				url: '/login/getCode',
+				type: 'post',
+				data: {
+					phone: phone
+				},
+				dataType: 'text',
+				success: function(rs) {
+					$("#msg").html(rs);
+					if(rs=="短信发送失败"){
+						$("#register").attr("disabled","true");
+						
+					}
+				}
+			});
+
+		})
+
+		function time(ele, value) {
+			if (waitTime == 0) {
+				ele.disabled = false;
+				ele.value = "获取验证码";
+				waitTime = 60; // 恢复计时
+			} else {
+				ele.disabled = true;
+				ele.value = waitTime + "秒后可以重新发送";
+				waitTime--;
+				setTimeout(function() {
+					time(ele) // 关键处-定时循环调用
+				}, 1000)
+			}
+		}
+		    </script>
+		    
+		    <script type="text/javascript">
+		    var appwaitTime = 60;
+			$("#appgetCode").click(function() {
+				let phone = $("#appphone").val();
+				time(this, phone);
+				$.ajax({
+					url: '/login/getCode',
+					type: 'post',
+					data: {
+						phone: phone
+					},
+					dataType: 'text',
+					success: function(rs) {
+						$("#appmsg").html(rs);
+						if(rs=="短信发送失败"){
+							$("#register").attr("disabled","true");
+							
+						}
+					}
+				});
+
+			})
+
+			function apptime(ele, value) {
+				if (appwaitTime == 0) {
+					ele.disabled = false;
+					ele.value = "获取验证码";
+					appwaitTime = 60; // 恢复计时
+				} else {
+					ele.disabled = true;
+					ele.value = appwaitTime + "秒后可以重新发送";
+					appwaitTime--;
+					appsetTimeout(function() {
+						time(ele) // 关键处-定时循环调用
+					}, 1000)
+				}
+			}
+		
+		//电话输入框失去焦点 立马验证此电话是否存在
+		$("#phone").blur(function() {
+			let phone = $("#phone").val();
+			var msg4 = document.getElementById("msg4");
+			$.ajax({
+				url: '/register/phone',
+				type: 'post',
+				data: {
+					phone: phone
+				},
+				dataType: 'text',
+				success: function(rs) {
+					$("#msg4").html(rs);
+					if(rs == "此电话已注册"||rs=="电话不能为空"||rs=="电话不正确"){
+						msg4.style.color = "red";
+						$("#register").attr("disabled","true");
+					}
+				}
+			})
+
+		})
+		
+		//电话输入框失去焦点 立马验证此电话是否存在
+		$("#appphone").blur(function() {
+			let phone = $("#appphone").val();
+			var appmsg4 = document.getElementById("appmsg4");
+			$.ajax({
+				url: '/register/phone',
+				type: 'post',
+				data: {
+					phone: phone
+				},
+				dataType: 'text',
+				success: function(rs) {
+					$("#appmsg4").html(rs);
+					if(rs == "此电话已注册"||rs=="电话不能为空"||rs=="电话不正确"){
+						msg4.style.color = "red";
+						$("#register").attr("disabled","true");
+					}
+				}
+			})
+
+		})
+		
+		//验证两次输入的密码是否一致
+		var password = document.getElementById("password");
+		var error1 = document.getElementById("error1");
+		var apassword = document.getElementById("apassword");
+		var error2 = document.getElementById("error2");
+
+		var regex = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z]).{8,30}');
+		password.onblur = function() {
+			if (!regex.test(password.value)) {
+				error1.innerHTML = "*密码中必须包含字母、数字，至少8个字符，最多30个字符";
+				error1.style.color = "red";
+				$("#register").attr("disabled","true");
+				} else {
+				error1.innerHTML = "*密码格式正确";
+			}
+		}
+
+		apassword.onblur = function() {
+			if (apassword.value != password.value) {
+				error2.innerHTML = "*两次密码不一致";
+				error2.style.color = "red";
+				$("#register").attr("disabled","true");
+			} else {
+			}
+		}
+		
+		
+		var apppassword = document.getElementById("apppassword");
+		var apperror1 = document.getElementById("apperror1");
+		var appapassword = document.getElementById("appapassword");
+		var apperror2 = document.getElementById("apperror2");
+
+		var regex = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z]).{8,30}');
+		password.onblur = function() {
+			if (!regex.test(apppassword.value)) {
+				apperror1.innerHTML = "*密码中必须包含字母、数字，至少8个字符，最多30个字符";
+				apperror1.style.color = "red";
+				$("#register").attr("disabled","true");
+				} else {
+				error1.innerHTML = "*密码格式正确";
+			}
+		}
+
+		apassword.onblur = function() {
+			if (appapassword.value != apppassword.value) {
+				apperror2.innerHTML = "*两次密码不一致";
+				apperror2.style.color = "red";
+				$("#register").attr("disabled","true");
+			} else {
+			}
+		}
+		    </script>
+		    
+</html>

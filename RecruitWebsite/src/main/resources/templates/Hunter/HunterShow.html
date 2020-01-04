@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>完善信息</title>
+<script src="../../static/Hunter/js/JQuery.js" data-th-src="@{/Hunter/js/jQuery.js}"></script>
+<link href="../../static/Hunter/css/Hunter/hunterShow.css "
+	rel="stylesheet" type="text/css"
+	data-th-href="@{/Hunter/css/Hunter/hunterShow.css}"/>
+</head>
+<body>
+	<div class="head">
+		<ul class="navigation clearfix pull-left">
+			<li class="current"><a data-th-href="@{/index}"
+				href="index.html">主页</a></li>
+			<li><a data-th-href="@{/company/home}" href="players.html">公司</a></li>
+			<li><a data-th-href="@{/job/home}" href="jobs.html">职位</a></li>
+		</ul>
+
+		<ul class="navigation pull-right clearfix">
+
+			<li class="dropdown"><a data-th-href="@{/hunter/show}">个人中心</a>
+			<li class="dropdown" data-th-if="${session.userInfo.status==0}"><a
+				data-th-href="@{/job/home}" href="jobs.html">找工作</a>
+			<li class="dropdown" data-th-if="${session.userInfo.status==1}"><a
+				href="blog.html">招聘</a>
+			<li><a data-th-href="|@{/}?userId=${session.userInfo.id}|"
+				href="matches.html">消息</a></li>
+		</ul>
+	</div>
+	<div class="center">
+		<div class="right">
+			<div class="top">
+				<div class="image">
+					<img src="../../static/Hunter/image/Hunter/man.png"
+						data-th-src="@{|/Hunter/image/upload/${hunter.jImage}|}" />
+					<p>
+						用户<span data-th-text="${hunter.jName}">XXX</span><label>|</label>身份<span>求职者</span>
+					</p>
+					<p>
+						年龄<span id="span">1</span><label>|</label>
+						性别<span data-th-if="${hunter.jSex ==0}">男</span>
+						   	<span data-th-if="${hunter.jSex ==1}">女</span><label>|</label>
+						 学历<span data-th-text="${hunter.jEducation}">本科</span>
+					</p>
+				</div>
+				<div class="info">
+					<h6></h6>
+					<p>
+						<a href="InfoShow.html" data-th-href="@{/hunter/infoShow}" target="content"><img
+							src="../../static/Hunter/image/Hunter/info.png"
+							data-th-src="@{/Hunter/image/Hunter/info.png}" /> <span>基本信息</span></a>
+					</p>
+					<p>
+						<a href="InfoShow.html" data-th-href="@{/hunter/updatePhoto}" target="content"><img
+							src="../../static/Hunter/image/Hunter/receive.png"
+							data-th-src="@{/Hunter/image/Hunter/receive.png}" /><span>更换头像</span></a>
+					</p>
+					<p>
+						<a href="HunterProject.html" data-th-href="@{/hunter/project}" target="content"><img
+							src="../../static/Hunter/image/Hunter/project.png"
+							data-th-src="@{/Hunter/image/Hunter/project.png}" /><span>项目详情</span></a>
+					</p>
+					<p>
+						<a href="ChangePassword.html" data-th-href="@{/hunter/changePassword}" target="content"><img
+							src="../../static/Hunter/image/Hunter/password.png"
+							data-th-src="@{/Hunter/image/Hunter/password.png}" /><span>修改密码</span></a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="left">
+			<iframe name="content" src="InfoShow.html" data-th-src="@{/hunter/infoShow}"></iframe>
+		</div>
+	</div>
+	<script type="text/javascript" data-th-inline="javascript">
+        jQuery.noConflict();
+        jQuery(function () {
+        	
+            var date1 = [[${hunter.jBirth}]];
+            var date2 = new Date();
+            function GetNumberOfDays(date1,date2){//获得天数
+                //date1：开始日期，date2结束日期
+                var a1 = Date.parse(new Date(date1));
+                var a2 = Date.parse(new Date(date2));
+                var day = parseInt((a2-a1)/ (1000 * 60 * 60 * 24*365));//核心：时间戳相减，然后除以天数
+                return day
+            };
+            var c = GetNumberOfDays(date1,date2);
+            jQuery("#span").text(c);
+        });
+
+
+</script>
+</body>
+</html>

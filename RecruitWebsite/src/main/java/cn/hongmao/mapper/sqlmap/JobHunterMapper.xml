@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hongmao.mapper.JobHunterMapper">
+	<sql id="Base_Column">
+		J_ID ,
+		USER_ID ,
+		J_NAME ,
+		J_EMAIL ,
+		J_SEX ,
+		J_PLACE ,
+		J_SCHOOL ,
+		J_MAJOR ,
+		ENTRY_TIME ,
+		GRADUATE_TIME ,
+		J_SKILL ,
+		J_EXPERIENCE ,
+		J_JOB ,
+		J_SALARY ,
+		J_BASE ,
+		J_IMAGE,
+		J_BIRTH,
+		J_EDUCATION
+	</sql>
+	<sql id="Insert_Column">
+		USER_ID ,
+		J_NAME ,
+		J_EMAIL ,
+		J_SEX ,
+		J_PLACE ,
+		J_SCHOOL ,
+		J_MAJOR ,
+		ENTRY_TIME ,
+		GRADUATE_TIME ,
+		J_SKILL ,
+		J_EXPERIENCE ,
+		J_JOB ,
+		J_SALARY ,
+		J_BASE ,
+		J_IMAGE,
+		J_BIRTH,
+		J_EDUCATION
+	</sql>
+	<sql id="Base_Where">
+		<where>
+			<if test="hunter.jId != null">
+				AND J_ID=#{hunter.jId}
+			</if>
+			<if test="hunter.userId != null">
+				AND USER_ID=#{hunter.userId}
+			</if>
+			<if test="hunter.jName != null and hunter.jName !=''">
+				AND J_NAME=#{hunter.jName}
+			</if>
+			<if test="hunter.jEmail != null and hunter.jEmail !=''">
+				AND J_EMAIL=#{hunter.jEmail}
+			</if>
+			<if test="hunter.jSex != null">
+				AND J_SEX=#{hunter.jSex}
+			</if>
+			<if test="hunter.jPlace != null and hunter.jPlace !=''">
+				AND J_PLACE=#{hunter.jPlace}
+			</if>
+			<if test="hunter.jSchool != null and hunter.jSchool !=''">
+				AND J_SCHOOL=#{hunter.jSchool}
+			</if>
+			<if test="hunter.jMajor != null and hunter.jMajor !=''">
+				AND J_MAJOR=#{hunter.jMajor}
+			</if>
+			<if test="hunter.entryTime != null">
+				AND ENTRY_TIME=#{hunter.entryTime}
+			</if>
+			<if test="hunter.graduateTime != null">
+				AND GRADUATE_TIME=#{hunter.graduateTime}
+			</if>
+			<if test="hunter.jSkill != null and hunter.jSkill !=''">
+				AND J_SKILL=#{hunter.jSkill}
+			</if>
+			<if test="hunter.jExperience != null and hunter.jExperience !=''">
+				AND J_EXPERIENCE=#{hunter.jExperience}
+			</if>
+			<if test="hunter.jJob != null and hunter.jJob !=''">
+				AND J_JOB=#{hunter.jJob}
+			</if>
+			<if test="hunter.jSalary != null">
+				AND J_SALARY=#{hunter.jSalary}
+			</if>
+			<if test="hunter.jBase != null and hunter.jBase !=''">
+				AND J_BASE=#{hunter.jBase}
+			</if>
+			<if test="hunter.jImage != null and hunter.jImage !=''">
+				AND J_IMAGE=#{hunter.jImage}
+			</if>
+			<if test="hunter.jAge != null">
+				AND J_BIRTH=#{hunter.jBirth}
+			</if>
+			<if test="hunter.jEducation != null and hunter.jEducation != ''">
+				AND J_EDUCATION=#{hunter.jEducation}
+			</if>
+		</where>
+	</sql>
+	<sql id="Update_Column">
+		<set>
+			<if test="hunter.jName != null and hunter.jName !=''">
+				J_NAME=#{hunter.jName},
+			</if>
+			<if test="hunter.jEmail != null and hunter.jEmail !=''">
+				J_EMAIL=#{hunter.jEmail},
+			</if>
+			<if test="hunter.jSex != null">
+				J_SEX=#{hunter.jSex},
+			</if>
+			<if test="hunter.jPlace != null and hunter.jPlace !=''">
+				J_PLACE=#{hunter.jPlace},
+			</if>
+			<if test="hunter.jSchool != null and hunter.jSchool !=''">
+				J_SCHOOL=#{hunter.jSchool},
+			</if>
+			<if test="hunter.jMajor != null and hunter.jMajor !=''">
+				J_MAJOR=#{hunter.jMajor},
+			</if>
+			<if test="hunter.entryTime != null">
+				ENTRY_TIME=#{hunter.entryTime},
+			</if>
+			<if test="hunter.graduateTime != null">
+				GRADUATE_TIME=#{hunter.graduateTime},
+			</if>
+			<if test="hunter.jSkill != null and hunter.jSkill !=''">
+				J_SKILL=#{hunter.jSkill},
+			</if>
+			<if test="hunter.jExperience != null and hunter.jExperience !=''">
+				J_EXPERIENCE=#{hunter.jExperience},
+			</if>
+			<if test="hunter.jJob != null and hunter.jJob !=''">
+				J_JOB=#{hunter.jJob},
+			</if>
+			<if test="hunter.jSalary != null">
+				J_SALARY=#{hunter.jSalary},
+			</if>
+			<if test="hunter.jBase != null and hunter.jBase !=''">
+				J_BASE=#{hunter.jBase},
+			</if>
+			<if test="hunter.jImage != null and hunter.jImage !=''">
+				J_IMAGE=#{hunter.jImage},
+			</if>
+			<if test="hunter.jBirth != null">
+				J_BIRTH=#{hunter.jBirth},
+			</if>
+			<if test="hunter.jEducation != null and hunter.jEducation != ''">
+				J_EDUCATION=#{hunter.jEducation},
+			</if>
+		</set>
+	</sql> 
+	<select id="findHunter" parameterType="Integer" resultType="cn.hongmao.bean.JobHunter">
+		SELECT <include refid="Base_Column"></include> FROM JOBHUNTER WHERE USER_ID=#{userId}
+	</select>
+	<insert id="insertHunter" parameterType="cn.hongmao.bean.JobHunter"> 
+		INSERT INTO JOBHUNTER (<include refid="Insert_Column"></include> ) 
+		VALUES (#{hunter.userId},#{hunter.jName},#{hunter.jEmail},#{hunter.jSex},#{hunter.jPlace},#{hunter.jSchool},
+		#{hunter.jMajor},#{hunter.entryTime,jdbcType=DATE},#{hunter.graduateTime,jdbcType=DATE},#{hunter.jSkill},
+		#{hunter.jExperience},#{hunter.jJob},#{hunter.jSalary},#{hunter.jBase},DEFAULT,#{hunter.jBirth,jdbcType=DATE},#{hunter.jEducation})
+	</insert>
+	<update id="updateHunter" parameterType="cn.hongmao.bean.JobHunter">
+		UPDATE JOBHUNTER <include refid="Update_Column"></include> WHERE USER_ID=#{hunter.userId}
+	</update>
+	<update id="updateImage">
+		UPDATE JOBHUNTER SET J_IMAGE=#{image} WHERE USER_ID=#{userId}
+	</update>
+</mapper>
