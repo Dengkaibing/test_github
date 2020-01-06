@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hongmao.mapper.EmployerMapper">
+	<sql id="Base_Column">
+		e_id ,
+		e_name ,
+		e_email ,
+		e_sex ,
+		e_image ,
+		e_age ,
+		user_id ,
+		c_id
+	</sql>
+
+	<sql id="Insert_Column">
+		e_name ,
+		e_email ,
+		e_sex ,
+		e_image ,
+		e_age ,
+		user_id ,
+		c_id
+	</sql>
+
+	<sql id="Update_Column">
+		<set>
+			<if test="employer.eName != null and employer.eName != ''">
+				E_NAME=#{employer.eName},
+			</if>
+			<if test="employer.eEmail != null and employer.eEmail != ''">
+				E_EMAIL=#{employer.eEmail},
+			</if>
+			<if test="employer.eSex != null">
+				E_SEX=#{employer.eSex},
+			</if>
+			<if test="employer.eImage != null and employer.eImage != ''">
+				E_IMAGE=#{employer.eImage},
+			</if>
+			<if test="employer.eAge != null">
+				E_AGE=#{employer.eAge},
+			</if>
+			<if test="employer.userId != null">
+				USER_ID=#{employer.userId},
+			</if>
+			<if test="employer.cId != null">
+				C_ID=#{employer.cId},
+			</if>
+		</set>
+	</sql>
+
+	<select id="findEmployerByEid" resultType="cn.hongmao.bean.Employer"
+		parameterType="int">
+		select
+		<include refid="Base_Column"></include>
+		from employer where e_id=#{eId}
+	</select>
+	
+	<select id="findEmployerByUserId" resultType="cn.hongmao.bean.Employer"
+		parameterType="int">
+		select
+		<include refid="Base_Column"></include>
+		from employer where user_id=#{userId}
+	</select>
+	
+
+	<update id="updateEmployer"
+		parameterType="cn.hongmao.bean.Employer">
+		UPDATE EMPLOYER
+		<include refid="Update_Column"></include>
+		WHERE USER_ID=#{employer.userId}
+	</update>
+
+	<insert id="insertEmployer"
+		parameterType="cn.hongmao.bean.Employer">
+		insert into employer (
+		<include refid="Insert_Column"></include>
+		)
+		values(#{employer.eName},#{employer.eEmail},#{employer.eSex},#{employer.eImage},#{employer.eAge},#{employer.userId},#{employer.cId})
+	</insert>
+
+
+</mapper>

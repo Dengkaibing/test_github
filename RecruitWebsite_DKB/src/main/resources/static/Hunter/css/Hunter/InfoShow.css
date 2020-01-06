@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    width: 97vw;
+    height: 89vh;
+    position: relative;
+}
+body .editor{
+  float: right;
+    font-size: 15px;
+    text-align: right;
+    position: absolute;
+    top: -4%;
+    right: 2%;
+}
+body .editor>a{
+    display: inline-block;
+    text-decoration: none;
+    width: 50px;
+    border-radius: 10px;
+    text-align: center;
+    background: white;
+    color: black;
+    font-weight: 100;
+}
+body .editor>a:hover{
+    display: inline-block;
+    width: 50px;
+    background:none;
+    color: white;
+    text-align: center;
+    font-weight: 100;
+}
+.content{
+    width: 90%;
+    height: 100%;
+    background: rgba(35, 118, 254, 0);
+    margin: 5% auto;
+}
+.content>p{
+    margin-top: 8px;
+    width: 100%;
+    text-align: left;
+    color: white;
+    height: 4%;
+    padding-left: 35%;
+    box-sizing: border-box;
+}
+.content>p>span{
+    margin-left: 10%;
+}
+
+.content>.experience{
+    width: 100%;
+    height: 100px;
+/*     border: 1px solid black; */
+    background: white;
+/*     line-height: 20px; */
+/*     text-indent: 2em; */
+/*     overflow-x: hidden; */
+/*     overflow-y: auto; */
+    border-radius: 5px; 
+/*     padding: 4px; */
+    margin-top:4px; 
+}
+.content>.skill{
+    width: 100%;
+    height: 80px;
+    border: none;
+    background: white;
+/*     line-height: 20px; */
+/*     text-indent: 2em; */
+/*     overflow-x: hidden; */
+/*     overflow-y: auto; */
+     border-radius: 5px; 
+     margin-top:4px; 
+/*     padding: 4px; */
+}
+.experience > textarea,.skill > textarea{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    text-indent: 2em;
+    padding: 0 4px;
+    resize: none;
+    font-family: "微软雅黑";
+    letter-spacing:0px;
+}
+::-webkit-scrollbar{
+    display:none;
+}
+
+
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>邮件发送</title>
+<link rel="stylesheet" type="text/css"
+	href="../../static/employer/css/form.css"
+	data-th-href="@{/employer/css/form.css}">
+</head>
+<body>
+	<form action="/send" data-th-action="@{/email/send}" method="post" onsubmit="updateContent(this)">
+		<p>发件人：<input class="input" type="text" name="addresser"></p>
+		<p>收件人：<input class="input" type="text" name="addressee"></p>
+		<p>邮件类型：<input type="radio" name="type" checked value="simple">简单邮件
+		<input type="radio" name="type" value="html">HTML邮件</p>
+		<input type="hidden" name="content" id="hc">
+		<div id="content" contenteditable="true">
+			
+		</div>
+		<p><button id="button" type="submit">发送邮件</button></p>
+	</form>
+	<script>
+		function updateContent(form){
+			form.hc.value=document.getElementById("content").innerHTML;	
+			return true;
+		}
+	</script>
+</body>
+</html>

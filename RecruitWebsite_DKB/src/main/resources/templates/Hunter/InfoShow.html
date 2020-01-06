@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>基本信息</title>
+    <link rel="stylesheet" type="text/css" href="../../static/Hunter/css/Hunter/InfoShow.css" data-th-href="@{/Hunter/css/Hunter/InfoShow.css}"/>
+    <script src="../../static/Hunter/js/JQuery.js" data-th-src="@{/Hunter/js/JQuery.js}"></script>
+</head>
+<body>
+    <h6 class="editor"><a href="InfoEditor.html" data-th-href="@{/hunter/editor}">编辑</a></h6>
+    <div class="content">
+        <p>姓　　名<span data-th-text="${hunter.jName}">XXX</span></p>
+        <p>出生日期<span data-th-text="${#dates.format(hunter.jBirth,'yyyy-MM-dd')}">XXXX</span></p>
+        <p>性　　别
+        			<span data-th-if="${hunter.jSex ==0}">男</span>
+					<span data-th-if="${hunter.jSex ==1}">女</span>
+        </p>
+        <p>邮　　箱<span data-th-text="${hunter.jEmail}">XXXX</span></p>
+        <p>学　　校<span data-th-text="${hunter.jSchool}">XXXX</span></p>
+        <p>专　　业<span data-th-text="${hunter.jMajor}">XXXX</span></p>
+        <p>入学时间<span data-th-text="${#dates.format(hunter.entryTime, 'yyyy-MM-dd')}">XXX</span></p>
+        <p>毕业时间<span data-th-text="${#dates.format(hunter.graduateTime,'yyyy-MM-dd')}">XXX</span></p>
+        <p>校园经历</p>
+        <div class="experience"><textarea readonly="readonly" name="jExperience" data-th-text="${hunter.jExperience}"></textarea></div>
+        <p>籍　　贯<span data-th-text="${hunter.jPlace}">XXXX</span></p>
+        <p>求职意向<span data-th-text="${hunter.jJob}">XXXX</span></p>
+        <p>个人技能</p>
+        <div class="skill"><textarea readonly="readonly" name="jSkill" data-th-text="${hunter.jSkill}"></textarea></div>
+        <p>薪　　资<span data-th-text="${hunter.jSalary} + ' RMB'">XXXX</span></p>
+        <p>base 地 <span data-th-text="${hunter.jBase}">XXXX</span></p>
+    </div>
+</body>
+<script type="text/javascript">
+	window.onload=function(){
+		
+// 		parent.location.reload(1);
+	}
+</script>
+</html>

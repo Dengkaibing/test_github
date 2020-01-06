@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hongmao.mapper.ProjectInfoMapper">
+	<sql id="Base_Column">
+		PROJECT_ID,
+		PROJECT_NAME,
+		DESCRIPTION,
+		USER_ID
+	</sql>
+	<sql id="Insert_Column">
+		PROJECT_NAME,
+		DESCRIPTION,
+		USER_ID
+	</sql>
+	
+	<select id="findProject" parameterType="Integer" resultType="cn.hongmao.bean.ProjectInfo">
+		select <include refid="Base_Column"></include> FROM PROJECT where user_id=#{userId}
+	</select>
+	<select id="findProjectById" parameterType="Integer" resultType="cn.hongmao.bean.ProjectInfo">
+		SELECT <include refid="Base_Column"></include> FROM PROJECT WHERE PROJECT_ID=#{projectId}
+	</select>
+	<insert id="insertProject" parameterType="cn.hongmao.bean.ProjectInfo">
+		insert into project (<include refid="Insert_Column"></include>) values(#{projectInfo.projectName},#{projectInfo.description},#{projectInfo.userId})
+	</insert>
+	<delete id="deleteProject" parameterType="Integer">
+		DELETE FROM PROJECT WHERE PROJECT_ID=#{projectId}	
+	</delete>
+</mapper>

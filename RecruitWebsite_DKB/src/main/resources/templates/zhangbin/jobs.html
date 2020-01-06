@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>公司</title>
+<!-- Stylesheets -->
+<link data-th-href="@{/zhangbin/css/bootstrap.css}" href="css/bootstrap.css" rel="stylesheet">
+<link data-th-href="@{/zhangbin/css/style.css}" href="css/style.css" rel="stylesheet">
+<link data-th-href="@{/zhangbin/css/responsive.css}" href="css/responsive.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" data-th-href="@{/layui/css/layui.css}" href="../../static/layui/css/layui.css">
+<script type="text/javascript" data-th-src="@{/layui/layui.js}" src="../../static/layui/layui.js"></script>
+<script type="text/javascript" data-th-src="@{/zhangbin/js/jquery.min.js}" src="../../static/zhangbin/js/jquery.min.js"></script>
+<script data-th-src="@{/commons.js}" src="../../static/commons.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/html" id="tableColToolbar">
+	<a class="layui-btn layui-btn-xs" lay-event="see" style="color:white">查看</a>
+</script>
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<style>
+	.index-search {width: 700px; margin: 2vh auto; }
+	.index-search .search-select{color: #444; text-decoration: none;}
+	.page-banner{
+		background-image: url([[@{/zhangbin/images/background/timg1.jpg}]]);
+		height: 13vh;
+	}
+</style>
+</head>
+
+<body>
+
+<div class="page-wrapper">
+    <!-- Preloader -->
+    <div class="preloader"><div class="icon"></div></div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <!-- Header Top -->
+        <div class="header-top">
+            <div class="auto-container clearfix">
+
+                <div class="top-left clearfix">
+                    <ul class="info-list">
+                        <li>欢迎来到BOSS直聘</li>
+                    </ul>
+                </div>
+
+                <div class="top-right">
+                    <ul class="social-icons">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+						<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Upper -->
+        <div class="header-upper">
+            <div class="inner-container">
+                <div class="auto-container clearfix">
+                    <!--Logo-->
+                    <div class="logo-outer">
+                        <div class="logo"><a href="index.html"><img data-th-src="@{/zhangbin/images/logo.png}" src="images/logo.png" alt="" title="Gamon - Digital Gaming and Esports HTML Template"></a></div>
+                    </div>
+
+                    <!--Nav Box-->
+                    <div class="nav-outer clearfix">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler"><span class="icon flaticon-menu-1"></span></div>
+
+                        <!-- Main Menu -->
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix pull-left">
+                                    <li><a data-th-href="@{/index}" href="index.html">主页</a></li>
+									<li><a data-th-href="@{/company/home}" href="players.html">公司</a></li>
+                                    <li class="current"><a data-th-href="@{/job/home}" href="jobs.html">职位</a></li>
+                                </ul>
+
+                                <ul class="navigation pull-right clearfix">
+                                    <li><a data-th-href="|@{/}?userId=${session.userInfo.id}|" href="matches.html">消息</a>
+                                    </li>
+                                    <li><a href="blog.html">招聘</a>
+                                        
+                                    </li>
+                                    <li  class="dropdown"><a href="DL.html">登陆/注册</a>
+                                       <ul>
+                                           <li><a href="/login.html">登陆</a></li>
+                                           <li><a href="/register.html">立即注册</a></li>
+                                       </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <!-- Main Menu End-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Header Upper-->
+
+        <!-- Sticky Header  -->
+        <div class="sticky-header">
+            <div class="auto-container clearfix">
+                <!--Logo-->
+                <div class="logo pull-left">
+                    <a href="index.html" title=""><img data-th-src="@{/zhangbin/images/logo.png}" src="images/logo.png" alt="" title=""></a>
+                </div>
+                <!--Right Col-->
+                <div class="pull-right">
+                    <!-- Main Menu -->
+                    <nav class="main-menu clearfix">
+                        <!--Keep This Empty / Menu will come through Javascript-->
+                    </nav><!-- Main Menu End-->
+                </div>
+            </div>
+        </div><!-- End Sticky Menu -->
+
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><span class="icon flaticon-close"></span></div>
+            
+            <nav class="menu-box">
+                <div class="nav-logo"><a href="index.html"><img data-th-src="@{/zhangbin/images/logo.png}" src="zhangbin/images/logo.png" alt="" title=""></a></div>
+                <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+				<!--Social Links-->
+				<div class="social-links">
+					<ul class="clearfix">
+						<li><a href="#"><span class="fab fa-twitter"></span></a></li>
+						<li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+						<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+						<li><a href="#"><span class="fab fa-instagram"></span></a></li>
+						<li><a href="#"><span class="fab fa-youtube"></span></a></li>
+					</ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+    </header>
+    <!-- End Main Header -->
+
+	<!--Page Title-->
+    <section class="page-banner">
+        <div class="auto-container" style="margin-top: -5vh;">
+            <div class="inner-container clearfix">
+                <ul class="bread-crumb clearfix">
+                    <!-- <li><a href="index.html">Home</a></li> -->
+                    <li style="font-size: 32px;">职位推荐</li>
+                </ul>
+                <h1>The Job Recommended</h1>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+	
+	<!-- 搜索框 -->
+	<div class="index-search">
+	  <form action="/job/home" method="post">
+	  <div class="input-group">
+	      <!-- <input name=tn type=hidden value=baidu> -->
+	      <input type="text" class="form-control" name=jName size=30 id="baidusearch" style="border: none;border-radius: 3px;" placeholder="请输入职位名">
+	      <span class="input-group-btn" style="margin-left: 2px;">
+	          <button id="findByName" class="btn btn-info" type="button">搜索</button>
+	      </span>
+	    </div>
+	  </form>
+	</div>
+
+	<!-- Players Section -->
+	<section class="players-section players-page-section">
+		<div class="auto-container" style="margin-top: -15vh;">
+			<div id="list" class="magicalcoder-table" mc-attr-bool-loading="true" data-th-mc-attr-str-url="@{/job/home}"
+	 		mc-attr-json-default-toolbar="[]"
+	 		mc-attr-str-method="post" mc-attr-bool-page="true" lay-filter="articles">
+				<span class="magicalcoder-table-th" mc-attr-str-field="jname">职位名称</span>
+				<span class="magicalcoder-table-th" mc-attr-str-field="pay">薪资待遇</span>
+				<span class="magicalcoder-table-th" mc-attr-str-field="cname">公司名称</span>
+				<span class="magicalcoder-table-th" mc-attr-str-field="userExpression">招聘者</span>
+				<span class="magicalcoder-table-th" mc-attr-str-toolbar="#tableColToolbar">操作</span>
+			</div>	
+		</div>
+	</section>
+	<!-- End Players Section -->
+	
+	<!-- Main Footer -->
+    <footer class="main-footer">
+    	<div class="auto-container">
+        	<!--Widgets Section-->
+            <div class="widgets-section">
+            	<div class="row clearfix">
+                	
+                    <!--Column-->
+                    <div class="column col-lg-4 col-md-6 col-sm-12">
+						<div class="footer-widget logo-widget">
+							<div class="logo">
+                            	<a href="index.html"><img data-th-src="@{/zhangbin/images/logo.png}" src="images/logo.png" alt="" /></a>
+                            </div>
+							<div class="text">There are many variations of passages of lorem ipsum available, but the majority have suffered alteration in some form by injected.</div>
+						</div>
+					</div>
+					
+					<!--Column-->
+                    <div class="column col-lg-4 col-md-6 col-sm-12">
+						<div class="footer-widget links-widget">
+							<div class="widget-content">
+								<div class="footer-title">
+									<h2>Links</h2>
+								</div>
+								<div class="row clearfix">
+									<div class="column col-lg-6 col-md-6 col-sm-12">
+										<ul class="list">
+											<li><a href="#">About</a></li>
+											<li><a href="#">Our Team</a></li>
+											<li><a href="#">Gallery</a></li>
+											<li><a href="#">Contact</a></li>
+										</ul>
+									</div>
+									<div class="column col-lg-6 col-md-6 col-sm-12">
+										<ul class="list">
+											<li><a href="#">Help & Support</a></li>
+											<li><a href="#">Privacy Policy</a></li>
+											<li><a href="#">Terms of Use</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>	
+						</div>
+					</div>
+					
+					<!--Column-->
+                    <div class="column col-lg-4 col-md-6 col-sm-12">
+						<div class="footer-widget newsletter-widget">
+							<div class="footer-title">
+                            	<h2>Newsletter</h2>
+                            </div>
+							<div class="text">Subsrcibe us now to get the latest news and updates</div>
+							<div class="newsletter-form">
+                                <form method="post" action="contact.html">
+                                    <div class="form-group clearfix">
+                                        <input type="email" name="email" value="" placeholder="Email address" required>
+                                        <button type="submit" class="theme-btn newsletter-btn"><span class="fas fa-envelope"></span></button>
+                                    </div>
+                                </form>
+                            </div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<!-- Footer Bottom -->
+		<div class="footer-bottom">
+			<div class="auto-container">
+				<!--Scroll to top-->
+				<div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></div>
+				<!--Scroll to top-->
+				<div class="row clearfix">
+					<!-- Column -->
+					<div class="column col-lg-6 col-md-12 col-sm-12">
+						<div class="copyright">&copy; Copyrights, 2019 All Rights Reserved</div>
+					</div>
+					<!-- Column -->
+					<div class="column col-lg-6 col-md-12 col-sm-12">
+						<ul class="social-icons">
+							<li><a href="#"><span class="fab fa-twitter"></span></a></li>
+							<li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+							<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+							<li><a href="#"><span class="fab fa-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</footer>
+	
+</div>
+<!--End pagewrapper-->
+
+<script data-th-src="@{/zhangbin/js/jquery.js}" src="js/jquery.js"></script>
+<script data-th-src="@{/zhangbin/js/popper.min.js}" src="js/popper.min.js"></script>
+<script data-th-src="@{/zhangbin/js/bootstrap.min.js}" src="js/bootstrap.min.js"></script>
+<script data-th-src="@{/zhangbin/js/jquery-ui.js}" src="js/jquery-ui.js"></script>
+<script data-th-src="@{/zhangbin/js/jquery.fancybox.js}" src="js/jquery.fancybox.js"></script>
+<script data-th-src="@{/zhangbin/js/owl.js}" src="js/owl.js"></script>
+<script data-th-src="@{/zhangbin/js/appear.js}" src="js/appear.js"></script>
+<script data-th-src="@{/zhangbin/js/wow.js}" src="js/wow.js"></script>
+<script data-th-src="@{/zhangbin/js/scrollbar.js}" src="js/scrollbar.js"></script>
+<script data-th-src="@{/zhangbin/js/script.js}" src="js/script.js"></script>
+<script type="text/javascript">
+	layui.use(["table", "jquery"], function() {
+		let table = layui.table,$ = layui.jquery;
+		//刷新表格数据
+		$("#findByName").click(function(){
+			let baidusearch = $("#baidusearch").val();
+			table.reload('list', {
+				url: '[[@{/job/home}]]',
+				where: {jName:baidusearch} //设定异步数据接口的额外参数
+			});
+		})
+		
+		
+		//监听工具条
+		table.on('tool(articles)', function(obj) {
+			var data = obj.data;
+			if (obj.event === 'see') {
+				window.location.href = `[[@{/job/findByUserId}]]` + "/" + data.userId + "/" + data.jid;
+			}
+		});
+	})
+
+ //绑定输入框，这里只能 是ID
+	/* $("#findByName").click(function(){
+		$.ajax({
+			url:'[[@{/job/home}]]',
+			type: 'post',
+			data:{
+				jName:'架构师'
+			},
+			dataType:'text',
+			success:function({
+				window.location.reload();
+			})
+		});
+		//location.href([[@{/job/home}]]);
+	}); */
+	 
+	$("#baidusearch").keydown(function(event){
+	  event=document.all?window.event:event;
+	  if((event.keyCode || event.which)==13){
+	  }
+	});
+</script>
+</body>
+</html>

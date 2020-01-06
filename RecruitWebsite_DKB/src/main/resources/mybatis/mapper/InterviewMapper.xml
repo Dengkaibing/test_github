@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hongmao.mapper.InterviewMapper">
+	<sql id="Insert_Column">
+		I_TIME,
+		I_ADDRESS,
+		I_JOB,
+		USER_ID,
+		C_ID
+	</sql>
+	
+	<insert id="insert" parameterType="cn.hongmao.bean.Interview"
+		useGeneratedKeys="true" keyColumn="i_id" keyProperty="iId">
+		INSERT INTO INTERVIEW (<include refid="Insert_Column"></include>)
+		VALUES(#{iTime},#{iAddress},#{iJob},#{userId},#{cId})
+	</insert>
+
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hongmao.mapper.UserInfoMapper">
+	<sql id="Base_Column">
+		ID ,
+		PHONE ,
+		PASSWORD ,
+		STATUS
+	</sql>
+	<sql id="Base_Where">
+		<where>
+			<if test="id != null">
+				and ID = #{id}
+			</if>
+			<if test="phone != null and phone !=''">
+				and PHONE = #{phone}
+			</if>
+			<if test="password != null and password !=''">
+				and PASSWORD = md5(#{password})
+			</if>
+			<if test="status != null and status !=''">
+				and STATUS = (#{status})
+			</if>
+		</where>
+	</sql>
+	
+	
+	<select id="getUserByPhone"
+		parameterType="String"
+		resultType="cn.hongmao.bean.UserInfo">
+		select
+		<include refid="Base_Column"></include>
+		from user_info
+		where PHONE = #{phone}
+	</select>
+	
+	<select id="getUserByPhonePass"
+		resultType="cn.hongmao.bean.UserInfo">
+		select
+		<include refid="Base_Column"></include>
+		from user_info
+		where PHONE = #{phone} AND PASSWORD= md5(#{password})
+	</select>
+	
+	
+	<select id="find" parameterType="cn.hongmao.bean.UserInfo"
+		resultType="cn.hongmao.bean.UserInfo">
+		select
+		<include refid="Base_Column"></include>
+		from user_info
+		where IS_DELETE = 0
+	</select>
+	
+	
+	
+	<select id="findById" parameterType="int"
+		resultType="cn.hongmao.bean.UserInfo">
+		select
+		<include refid="Base_Column"></include>
+		from user_info
+		where id = #{id}
+	</select>
+	
+	
+	
+	<insert id="insert" parameterType="cn.hongmao.bean.UserInfo"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into
+		user_info
+		values(NULL,#{phone},md5(#{password}),#{status})
+	</insert>
+	
+	<select id="findUserInfo" parameterType="cn.hongmao.bean.UserInfo" resultType="cn.hongmao.bean.UserInfo">
+		select <include refid="Base_Column"></include> from user_info where ID=#{userInfo.id} and PASSWORD=#{userInfo.password}
+ 	</select>
+ 	<update id="updatePassword">
+ 		update user_info set PASSWORD=md5(#{newPassword}) where ID=#{userId}
+ 	</update>
+</mapper>

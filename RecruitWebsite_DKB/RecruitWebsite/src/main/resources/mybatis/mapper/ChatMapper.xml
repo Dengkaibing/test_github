@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hongmao.mapper.ChatMapper">
+	<resultMap type="cn.jasonone.him.model.HimUserInfo" id="himMap">
+		<id column="id" property="id"/>
+		<result column="username" property="username"/>
+		<result column="sign" property="sign"/>
+		<result column="avatar" property="avatar"/>
+		<result column="status" property="status" typeHandler="cn.hongmao.handler.StatusHandler"/>
+	</resultMap>
+
+	<select id="findInfoById" parameterType="int" resultMap="himMap">
+		select * from himuserinfo where id = #{userId}
+	</select>
+	
+	<select id="findFriendsById" parameterType="int" resultMap="himMap">
+		select * from himuserinfo where id in (
+			select friend_id from himuserinfo inner join user_friend 
+			on himuserinfo.id = user_friend.user_id where id = #{userId})
+	</select>
+	
+	<insert id="addFriend">
+		insert into user_friend values(#{userId}, #{friendId})
+	</insert>
+	
+	<select id="isHave" resultType="cn.hongmao.bean.UserFriends">
+		select * from user_friend where user_id = #{userId} and friend_id = #{friendId}
+	</select>
+
+</mapper>

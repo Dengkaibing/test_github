@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>更换头像</title>
+<script src="../../static/Hunter/js/JQuery.js"
+	data-th-src="@{/Hunter/js/jQuery.js}"></script>
+<style type="text/css">
+.zz {
+	background: url("/Hunter/image/Hunter/log.png") no-repeat;
+	width: 260px;
+	height: 116px;
+	position: fixed;
+	bottom: 75px;
+	left: 210px;
+}
+.xx {
+   	display: none;   
+}
+
+#preview {
+	width: 400px;
+	height: 300px;
+	margin: 50px;
+}
+
+#content {
+	width: 500px;
+	height:400px;
+	margin: 100px auto;
+	text-align: center;
+}
+
+#submit {
+	width: 150px;
+	height: 50px;
+	border-radius: 30px;
+	border: none;
+}
+
+label {
+	float: left;
+	margin-left: 110px;
+	width: 260px;
+}
+
+input, label {
+	font-size: 20px;
+}
+</style>
+</head>
+<body>
+	<div class="xx zz" id="sss"></div>
+	<div id="content">
+		<label>请选择图片<input id="fileImage" type="file" accept="image/*"
+			name="file" /></label><br />
+		<div id="preview"></div>
+		<input id="submit" disabled="disabled" type="button" value="上传" />
+	</div>
+</body>
+<script type="text/javascript">
+	$(function() {
+		
+		//图片预览
+		
+		let fileImage = document.getElementById("fileImage");
+		let preview = document.getElementById("preview");
+		fileImage.onchange = function() {
+			let img = document.createElement("img");
+			img.width = 400;
+			img.height = 300;
+			preview.innerHTML = "";
+			preview.appendChild(img);
+			let fileReader = new FileReader();
+			fileReader.onloadend = function(e) {
+				img.src = e.target.result;
+			}
+			fileReader.readAsDataURL(fileImage.files[0]);
+			if ($(preview).html() === '') {
+				$("#submit").attr("disabled", "true");
+				alert($("#submit").prop("disabled"))
+			} else {
+				$("#submit").removeAttr("disabled");
+			}
+		};
+
+		//图片上传
+		
+		$("#submit").click(function() {
+			let fileImage = $("#fileImage");
+			let formData = new FormData();
+			formData.append("file", fileImage.get(0).files[0]);
+			$.ajax({
+				type : 'POST',
+				url : '/hunter/photo',
+				dataType : 'text',
+				data : formData,
+				contentType : false,//ajax上传图片需要添加
+				processData : false,
+				success : function(data) {
+					$("#sss").removeClass("xx");
+					setTimeout(function() {
+						$("#sss").addClass("xx");
+						parent.location.reload();
+					}, 1000);
+				}
+			});
+		});
+	});
+</script>
+</html>

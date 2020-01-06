@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>发布招聘信息</title>
+<link rel="stylesheet" type="text/css"
+	href="../../static/employer/css/form.css"
+	data-th-href="@{/employer/css/form.css}">
+</head>
+<body>
+	<form action="http://www.baidu.com" data-th-action="@{/employer/recruit}" method="post" onsubmit="updateContent(this)">
+		<p>职位名称：<input class="input" type="text" name="jName"></p>
+		<p>职位要求：</p>
+		<input class="input" type="hidden" name="jExpression" id="hc">
+		<div id="content" contenteditable="true"></div>
+		<p>薪&ensp;&ensp;&ensp;&ensp;&nbsp;资：<input class="input" type="text" name="pay"></p>
+		<p>Boss描述：<input class="input" type="text" name="userExpression"></p>
+		<button id="button" type="submit">发布</button>
+	</form>
+	<script>
+		function updateContent(form){
+			form.hc.value=document.getElementById("content").innerHTML;
+			return true;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hongmao.mapper.CityMapper">
+	<sql id="Base_Column">
+		CITYID,
+		CITYNAME,
+		PROVINCIALID
+	</sql>
+	<select id="findCity" parameterType="Integer" resultType="cn.hongmao.bean.City">
+		SELECT <include refid="Base_Column"></include> FROM CITY WHERE PROVINCIALID=#{provincialID}
+	</select>
+	<select id="findCityByName" parameterType="cn.hongmao.bean.City" resultType="cn.hongmao.bean.City">
+		SELECT <include refid="Base_Column"></include> FROM CITY WHERE CITYNAME LIKE CONCAT('%',#{city.cityName},'%')
+	</select>
+</mapper>

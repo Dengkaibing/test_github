@@ -1,0 +1,24 @@
+@charset "UTF-8";
+#content{
+		width:85vw;
+		height:50vh;
+		border:1px solid #ccc;
+		overflow:scroll;
+		background-color:white;
+	}
+	p{
+		margin-top:20px;
+		font-size:18px;
+	}
+	#button{
+		color:white;
+		width:100px;
+		height:50px;
+		border-radius:20px;
+		background-color:black;
+	}
+	.input{
+		width:500px;
+		height:40px;
+		border-radius:10px;
+	}
