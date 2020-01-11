@@ -13,6 +13,15 @@ spring:
       cluster-nodes : 192.168.154.128:9300
   mvc:
     static-path-pattern: /**
+#thymeleaf 配置
+  thymeleaf:
+    cache: false #开发时关闭thymeleaf缓存，不然没法看到实时页面
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+
+      
 mybatis-plus:
   mapper-locations: classPath:mybatisPlus/mapper/*.xml
   configuration:

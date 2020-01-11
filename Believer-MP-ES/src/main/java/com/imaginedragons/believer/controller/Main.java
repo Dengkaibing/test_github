@@ -18,4 +18,8 @@ public class Main {
         model.addAttribute("student",studentRepositoryAll);
         return "Main";
     }
+    @RequestMapping("test")
+    public String test(){
+        return "test";
+    }
 }

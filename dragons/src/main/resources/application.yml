@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:mysql://47.100.56.193:3306/imagine?characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: dkb2219
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    serialization:
+      indent-output: true
+  #thymeleaf 配置
+  thymeleaf:
+    cache: false #开发时关闭thymeleaf缓存，不然没法看到实时页面
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+  mvc:
+    favicon:
+      enabled: false
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mybatisPlus/mapper/*.xml
+logging:
+  file:
+    path: log/mybatisPlus-log
+  level:
+    root: info
+server:
+  port: 8888
