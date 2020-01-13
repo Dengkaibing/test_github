@@ -70,7 +70,11 @@ public class TUsersController  extends  BaseController{
 
     @RequestMapping("/index")
     public String index() {
-        return "admin/index";
+        return "blog/index";
+    }
+    @RequestMapping("/index-magazine")
+    public String index_magazine() {
+        return "blog/index-magazine";
     }
 
 
