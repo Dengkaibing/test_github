@@ -2,7 +2,7 @@ package com.imagine.dragons.util;
 
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.imagine.dragons.constant.WebConst;
-import com.imagine.dragons.entity.TUsers;
+import com.imagine.dragons.entity.MtoUser;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -40,12 +40,12 @@ public class TaleUtils {
         return hexString.toString();
     }
 
-    public static TUsers getLoginUser(HttpServletRequest request)
+    public static MtoUser getLoginUser(HttpServletRequest request)
     {
         HttpSession httpSession=request.getSession();
         if(httpSession==null)
             return null;
-        return (TUsers)httpSession.getAttribute(WebConst.LOGIN_SESSION_KEY);
+        return (MtoUser)httpSession.getAttribute(WebConst.LOGIN_SESSION_KEY);
     }
 
 }

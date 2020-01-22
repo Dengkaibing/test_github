@@ -49,7 +49,7 @@ public class CodeGenerator {//mybatis-plus代码生成器
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://47.100.56.193:3306/imagine?characterEncoding=utf8&serverTimezone=UTC&useSSL=false");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/db_mblog?characterEncoding=utf8&serverTimezone=UTC&useSSL=false");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");

@@ -78,7 +78,7 @@
 	 function login() {
          $.ajax({
 			 type:"post",
-			 url:"/users/login",
+			 url:"/login",
 			 data: $("#loginForm").serialize(),
 			success: function (result) {
 			 	console.log(result);

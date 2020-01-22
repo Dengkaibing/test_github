@@ -1,7 +1,7 @@
 package com.imagine.dragons.controller;
 
 
-import com.imagine.dragons.entity.TUsers;
+import com.imagine.dragons.entity.MtoUser;
 import com.imagine.dragons.util.MapCache;
 import com.imagine.dragons.util.TaleUtils;
 
@@ -23,7 +23,7 @@ public abstract class BaseController {
      * @param request
      * @return
      */
-    public TUsers user(HttpServletRequest request) {
+    public MtoUser user(HttpServletRequest request) {
         return TaleUtils.getLoginUser(request);
     }
 
@@ -32,9 +32,9 @@ public abstract class BaseController {
      * @param request
      * @return
      */
-    public Integer getUid(HttpServletRequest request) {
-        return this.user(request).getUid();
-    }
+//    public Integer getUid(HttpServletRequest request) {
+//        return this.user(request).getUid();
+//    }
 
 
     /**
